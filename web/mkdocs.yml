@@ -1,0 +1,45 @@
+site_name: AUD @ INSA Lyon
+site_description: Cours 5TC -- INSA Lyon -- Systèmes embarqués pour le traitement du signal audio en temps-réel
+nav:
+  - Syllabus: index.md
+  - Lectures:
+    - ' 1: Course Introduction and Programming Environment Setup ' : lectures/lecture1.md
+    - ' 2: Audio Signal Processing Fundamentals ' : lectures/lecture2.md
+    - ' 3: Digital Audio Systems Architectures and Audio Callback ' : lectures/lecture3.md
+    - ' 4: Hardware Control and Audio Codec Configuration ' : lectures/lecture4.md
+    - ' 5: Audio Processing Basics I ' : lectures/lecture5.md
+    - ' 6: Audio Processing Basics II ' : lectures/lecture6.md
+    - ' 9: Embedded System Basics: peripherals ' : lectures/lecture9.md
+    - ' 10: Embedded System Basics: Embedded OS ' : lectures/lecture10.md
+    - ' 11: Faust on the Teensy and Advanced Control ' : lectures/lecture11.md
+    
+theme: 
+  name: flatly
+  navigation_depth: 4
+
+site_dir: ../docs
+site_url: https://embaudio.grame.fr
+
+extra:
+    social:
+        - type: github
+          link: https://github.com/grame-cncm/embedaudio
+        - type: home
+          link: https://embedaudio.grame.fr
+        - type: envelope
+          link: mailto:michon@grame.fr
+
+plugins:
+  - search
+
+extra:
+  search:
+    language: fr
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - mdx_math
+    - markdown_include.include:
+        base_path: './docs'

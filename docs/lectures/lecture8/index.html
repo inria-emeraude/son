@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://embaudio.grame.fr/lectures/lecture8/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Lecture 8: Embedded System Basics - AUD @ INSA Lyon</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">AUD @ INSA Lyon</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Syllabus</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Lectures <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lecture1/" class="dropdown-item"> 1: Course Introduction and Programming Environment Setup </a>
+</li>
+                                    
+<li>
+    <a href="../lecture2/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
+</li>
+                                    
+<li>
+    <a href="../lecture3/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+</li>
+                                    
+<li>
+    <a href="../lecture4/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
+</li>
+                                    
+<li>
+    <a href="../lecture5/" class="dropdown-item"> 5: Audio Processing Basics I </a>
+</li>
+                                    
+<li>
+    <a href="../lecture6/" class="dropdown-item"> 6: Audio Processing Basics II </a>
+</li>
+                                    
+<li>
+    <a href="../lecture9/" class="dropdown-item"> 9: Embedded System Basics: peripherals </a>
+</li>
+                                    
+<li>
+    <a href="../lecture10/" class="dropdown-item"> 10: Embedded System Basics: Embedded OS </a>
+</li>
+                                    
+<li>
+    <a href="../lecture11/" class="dropdown-item"> 11: Faust on the Teensy and Advanced Control </a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#lecture-8-embedded-system-basics" class="nav-link">Lecture 8: Embedded System Basics</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#first-teensy-makefile-project" class="nav-link">First teensy-makefile project</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#interrupts" class="nav-link">INTERRUPTS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#interrupt-callback" class="nav-link">Interrupt Callback</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#exercice-led-blinking" class="nav-link">Exercice: LED blinking</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#exercice-led-and-timer" class="nav-link">Exercice: LED  and timer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#exercice-led-timer-and-uart" class="nav-link">Exercice: LED, timer and UART</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#exercice-led-timer-and-audio" class="nav-link">Exercice: LED, timer and Audio</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="lecture-8-embedded-system-basics">Lecture 8: Embedded System Basics</h1>
+<p>This course will explain in more details the principles of embedded programming,  peripheral programming, and interrupt handling. In this course and the following we will used simple makefile to program the teensy, not the arduino IDE. If you are using  Windows OS, use the WSL terminal (<a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#2-install-wsl">Windows Subsystem for Linux</a>)  </p>
+<h2 id="first-teensy-makefile-project">First teensy-makefile project</h2>
+<ul>
+<li>Download the teensy_makefile project <a href="lecture8/img/teensy_makefile.tar">here</a></li>
+<li>Untar the archive <code>tar xvf teensy_makefile.tar</code> somewhere (this will create <code>teensy_makefile</code> directory)</li>
+<li>Go into the <code>teensy_makefile</code> directory and edit the <code>Makefile</code> to fill up the definition of   <code>$ARDUINOPATH</code> (your arduino installation) and <code>$MYDSPPATH</code> (location of the AUD MyDsp library on your computer).</li>
+<li>Type <code>make</code> check that the compilation is going well. </li>
+</ul>
+<p>The object files are compiled in the build directory. The only file that are interesting for you are in the current directory: <code>main.cpp</code> and <code>MyDsp.cpp</code>. The files <code>MyDsp.h</code> and <code>MyDsp.cpp</code> are the same as in the the AUD examples projects. The <code>main.cpp</code> is this one: </p>
+<pre><code>#include &lt;Audio.h&gt;
+#include &quot;MyDsp.h&quot;
+
+int main(void)
+{
+  MyDsp myDsp;
+  AudioOutputI2S out;
+  AudioControlSGTL5000 audioShield;
+  AudioConnection patchCord0(myDsp,0,out,0);
+  AudioConnection patchCord1(myDsp,0,out,1);
+
+  AudioMemory(2);
+  audioShield.enable();
+  audioShield.volume(0.5);
+  while (1) {
+    myDsp.setFreq(random(50,1000));
+    delay(100);
+  }
+}
+
+</code></pre>
+<p>As one can see, we do not have a <code>setup()</code> and <code>loop()</code> function, but just a <code>main()</code> function with an initialization (which corresponds to the <code>setup()</code> function) and an infinite loop (which correponds to the <code>loop()</code> function). This is allways the case for embedded programming: initialization and infinite loop. Here, we know exactly what executes on the ARM CPU, and it is very explicit that the ARM processor is 100% running the loop doing nothing (i.e. no operating system is present on the ARM), hence sound processing relies on interrupts. A very common programming model for embedded system is to rely only on interrupts. </p>
+<h2 id="interrupts">INTERRUPTS</h2>
+<p>The principle of interrupt is the same on every machine.
+The processor running its program can receive interrupts (i.e. hardware interrupts no to mislead with software interrupts that are implemented by operating systems) at any time.
+An interrupt can be sent by a peripheral of the micro-controller (timer, radio chip, serial port, etc...), or received from the outside (via GPIOs) like the reset for example.</p>
+<p>There is another way to communicate with peripherals which is called <em>polling</em>: regularly look a the state of the peripheral to see if something has changed. It is simpler than using interrupts but much more compute-intensive for the CPU.  </p>
+<p>It is the programmer who configures the peripherals (for example the timer) to send an interrupt during certain events. For instance the user can ask the timer to send an interruption every 1.5 second. We will see how to do that with the Teensy.</p>
+<p>The interrupt "triggers"  an <em>interrupt handler</em> (or <em>interrupt
+routine service</em>: ISR), special function called for this particular interrupt. Each interrupt has its own ISR. The correspondence between the interrupt and the ISR is done with the <em>interrupt vector table</em>. This means that each processor knows exactly which interrupt can occur. Each interrupt has a flag bit, which is set by hardware when the interrupt trigger condition occurs. For instance the list of interrupt flags of the Teensy (i.e. of CorteX-M7) is <a href="https://www.pjrc.com/teensy/interrupts.html#names">here</a>.</p>
+<p>The flag's purpose is to remember the interrupt condition has occurred until it has been handled by software. An interrupt is said to be "pending" if the trigger condition has set the flag but the interrupt service routine has not been called yet, which can happen if the main program has disabled interrupts or another interrupt service routine is running (usually, interrupts are disable during the execution of an ISR).</p>
+<p>Usually, interrupt flags are automatically reset when the interrupt service routine is called. Some flags must be reset by the software inside the interrupt service routine. Some flags are completely controlled by the peripheral to reflect internal state (such as UART receive) and can only be changed indirectly by manipulating the peripheral.</p>
+<p>All interrupts are used in roughly the same way.</p>
+<ol>
+<li>Configure The Peripheral</li>
+<li>Reset Interrupt Flag</li>
+<li>Set Interrupt Mask</li>
+<li>Enable Global Interrupt, with sei() </li>
+</ol>
+<p>When the interrupt condition occurs, the interrupt flag is set. The interrupt service routine will be called at the first opportunity. </p>
+<p>In "traditionnal" embedded microcontroler programming, this is done "by hand", i.e. all these steps are performed by the programmer. However with the advent of complex micro-controllers such as the ARM CorteX-M, these tasks are simplified with higher level API for peripherals and with the use of interrupt callback.</p>
+<h2 id="interrupt-callback">Interrupt Callback</h2>
+<figure>
+<center>
+<p>
+<img src="img/callback.png"  width="50%"> 
+</p><figcaption><center>Interrupt Callback principle (Image Source: Reusable Firmware Development book]</center></figcaption>
+</figure>
+
+<p>In modern micro-controllers, interrupt handlers are usually in the kernel driver library, i.e. not written by the developper. However, the programmer has to indicate how to react to the interrupt. A way to have a flexible  interrupt handler  is to use a callback. </p>
+<p>An <em>interrupt callback</em> is a function, dynamically assigned, that will be called <em>from the ISR</em>. Using function pointer, the programmer can assign any function to the callback. Usually the kernel driver library provides a function that perform this assignement. </p>
+<p>For instance, the Teensy library propose an class <code>IntervalTimer</code> which uses the timers of the ARM CPU to send regular (i.e. at regular interval) an interrupt. The user can indicate the callback function <code>foo()</code> to be called at each timer interruption occuring, say, every 1.5 second:</p>
+<pre><code>IntervalTimer myTimer;
+myTimer.begin(foo, 150000);
+</code></pre>
+<p>For that,  <code>foo()</code> function must have type: <code>void foo()</code></p>
+<h2 id="exercice-led-blinking">Exercice: LED blinking</h2>
+<p>Copy the <code>teensy_example</code> directory to a new <code>teensy_led</code> directory. write a code that blinks the teensy LED every 100ms. For that:</p>
+<ol>
+<li>You have to know on which GPIO the LED has been soldered. You can look at the <a href="https://www.pjrc.com/teensy/schematic40.png">schematic of the Teensy 4.0</a> or a look at file <code>$ARDUINOPATH/hardware/teensy/avr/cos/teensy4/pins_arduino.h</code> and guess which macro can be used for the LED pin (let's call it <code>ledPin</code>).</li>
+<li>Then you just have to know that this pin has to be configured in output mode: <code>pinMode(ledPin, OUTPUT)</code> and that switching on and off the led can be done using <code>digitalWrite(ledPin, HIGH);</code> and <code>digitalWrite(ledPin, LOW);</code></li>
+<li>Using the built in function <code>delay(int numMilliSeconds)</code> write a program that blink the LED. </li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p>Posted after class...</p>
+<h2 id="exercice-led-and-timer">Exercice: LED  and timer</h2>
+<ol>
+<li>Copy the <code>teensy_led</code> directory to a <code>teensy_timer</code> directory. write a function <code>void toggle_LED()</code> that uses a global variable <code>LEDstate</code> which correspond to the current status of the LED. (In general, it is very common in embedded system to have a <em>local copy</em> of the state of peripheral, just to know in which state we are). </li>
+<li>Instantiate an <code>IntervalTimer</code> and, as shown above, use <code>toggle_LED()</code> function as timer callback. Have the  LED   blinking every 0.15s</li>
+<li>What is the advantage of this approach (i.e. using timers instead of dealys)</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p>Posted after class...</p>
+<h2 id="exercice-led-timer-and-uart">Exercice: LED, timer and UART</h2>
+<p>Create another project <code>teensy_serial</code> that prints, at each second, on the serial port the number of LED switch occured from the beguinning. Note that you will have to use a global variable shared by the ISR (in function <code>toogle_LED()</code>) and the main code. It is recommended to disable interrupt when modifyng this variable in the main code, using <code>noInterrupts()</code> and <code>Interrupts()</code> functions.</p>
+<p><strong>Solution:</strong></p>
+<p>Posted after class...</p>
+<h2 id="exercice-led-timer-and-audio">Exercice: LED, timer and Audio</h2>
+<p>Download the <a href="lecture8/img/teensy_audio.tar">teensy_audio</a> project. (do not forget to indicate the ARDUINOPATH and MYDSPPATH again). This project plays the crazy-sine sound while blinking the LED.</p>
+<ol>
+<li>Check that the sound is correct.</li>
+<li>Add a 10ms delai in the <code>blinkLED</code> callback. What do you notice. </li>
+</ol>
+<p>It is very important to spend a <em>very short time</em> in ISR, other wise your system can be blocked, miss interrupts or not respect real time constraints. </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

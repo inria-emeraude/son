@@ -1,0 +1,7 @@
+# Blink Example
+
+Starts a FreeRTOS task to blink an LED using a timer (and not VTaskDelay)
+
+See the README.md file in the upper level 'examples' directory for more information about examples.
+
+TANG: we had to modify the CONFIG_BLINK_GPIO default config (it was set to 5, using value 22: CONFIG_BLINK_GPIO=22), in order to see the 
