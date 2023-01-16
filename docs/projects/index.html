@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://inria-emeraude.github.io/son/projects/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Projects - SON @ INSA Lyon</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">SON @ INSA Lyon</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Lectures <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lectures/lecture1/" class="dropdown-item"> 1: Programming Environment Setup </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture2/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture3/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture4/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture5/" class="dropdown-item"> 5: Audio Processing Basics I </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture6/" class="dropdown-item"> 6: Audio Processing Basics II </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture7/" class="dropdown-item"> 7: Introduction to Faust </a>
+</li>
+                                    
+<li>
+    <a href="../lectures/lecture8/" class="dropdown-item"> 8: Faust on the Teensy and Advanced Control </a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Projects</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../lectures/lecture8/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#final-projects" class="nav-link">Final Projects</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#evaluation" class="nav-link">Evaluation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#final-project-ideas" class="nav-link">Final Project Ideas</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#auto-tune" class="nav-link">Auto-Tune</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#vocoder" class="nav-link">Vocoder</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#pitch-shifting-module" class="nav-link">Pitch-Shifting Module</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#hearing-aid" class="nav-link">Hearing Aid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#cochlear-implant-simulator" class="nav-link">Cochlear Implant Simulator</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#noise-reduction-headset" class="nav-link">Noise Reduction Headset</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#sonification-system" class="nav-link">Sonification System</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#superman-hearing" class="nav-link">Superman Hearing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#guitar-pedal-effect" class="nav-link">Guitar Pedal Effect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#sound-synthesis-module" class="nav-link">Sound Synthesis Module</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#ep-vinyl-simulator" class="nav-link">EP (Vinyl) Simulator</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#feedback-cancellation-microphone" class="nav-link">Feedback Cancellation Microphone</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#augmented-speaker" class="nav-link">Augmented Speaker</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#musical-instrument" class="nav-link">Musical Instrument</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#midi-controlled-polyphonic-synthesizer" class="nav-link">MIDI-Controlled Polyphonic Synthesizer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#granular-synthesizer" class="nav-link">Granular Synthesizer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#dafx" class="nav-link">DAFx</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#any-other-idea" class="nav-link">Any Other Idea...</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#some-tips" class="nav-link">Some Tips</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#making-resonant-lowpass-bandpass-and-highpass" class="nav-link">Making Resonant Lowpass, Bandpass and Highpass</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#peak-equalizers" class="nav-link">Peak Equalizers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="final-projects">Final Projects</h1>
+<p>Final projects constitute the heart of this course: students are 100% evaluated on projects. While you should feel free to use any of the code studied during class, found on the web, or generated using tools such as <a href="https://faust.grame.fr">Faust</a>, the following criterion should be taken into account:</p>
+<ul>
+<li>Doing what you were asked to do is good, but doing more is better :);</li>
+<li>Novelty, creativity, and initiatives are crucial: consider your project as a potential startup idea, think about how it can be better than what already exists. Along the same lines, try to have a "product" as finished and as polished as possible;</li>
+<li>Consider the research and scientific aspect of what you're doing: most project ideas will involve some bibliographical work before getting your hands dirty, this will help you get a sense of what has already been done by others and it will save you time when readying your poster.</li>
+</ul>
+<h2 id="evaluation">Evaluation</h2>
+<p>Projects will be evaluated through:</p>
+<ul>
+<li>A poster and a demo of your project which will be featured during a poster session taking place on 03/03/2023;</li>
+<li>A webpage presenting your project.</li>
+</ul>
+<p>The quality and the presentation of the poster and of the webpage will be taken into account towards your final grade.</p>
+<p>As for the project itself, you will be evaluated on its:</p>
+<ul>
+<li>robustness/stability;</li>
+<li>interface;</li>
+<li>novelty;</li>
+<li>rigorousness;</li>
+<li>overall quality;</li>
+<li>potential link to research.</li>
+</ul>
+<h2 id="final-project-ideas">Final Project Ideas</h2>
+<h3 id="auto-tune">Auto-Tune</h3>
+<p>Auto-tune (<a href="https://en.wikipedia.org/wiki/Auto-Tune">https://en.wikipedia.org/wiki/Auto-Tune</a>) is a sound effect which automatically correct the pitch of a sound by quantizing it to the nearest note of the chromatic scale. The goal of this project is make an "autotune box/audio processor" based on the Teensy. In addition to figuring out how to implement the algorithm (which should involve pitch shifting and frequency tracking), you should think about the interface that your project will have (which parameters can be controlled?, etc.).</p>
+<h3 id="vocoder">Vocoder</h3>
+<p>A Vocoder <a href="https://en.wikipedia.org/wiki/Vocoder">https://en.wikipedia.org/wiki/Vocoder</a> is an audio effect which replaces the natural sound of human voice with an artificial/synthesized one by preserving intelligibility of speech. It can be used to create a "robot/ghost voice." The goal of this project is to make a "vocoder box/audio processor" based on the Teensy. In addition to figuring out how to implement the algorithm (which should involve pitch shifting and frequency tracking), you should think about the interface that your project will have (which parameters can be controlled?, etc.).</p>
+<h3 id="pitch-shifting-module">Pitch-Shifting Module</h3>
+<p>Pitch-Shifting consists in transposing (up or down) the sound of an input source so that it sounds lower or higher. Pitch shifting can potentially be implemented using 2 different techniques: (i) using an FFT to transpose the spectrum and then an inverse FFT to put it back in the time domain, (ii) using the doppler effect produced by changing the length of delay lines in real-time. Hence, the goal of this project is to make a "pitch shifting box/audio processor" based on the Teensy. In addition to figuring out how to implement the algorithm (which should involve pitch shifting and frequency tracking), you should think about the interface that your project will have (which parameters can be controlled?, etc.).</p>
+<h3 id="hearing-aid">Hearing Aid</h3>
+<p>At the most fundamental level, hearing aids just implement a bunch of equalization filters (see TODO) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.</p>
+<h3 id="cochlear-implant-simulator">Cochlear Implant Simulator</h3>
+<p>Cochlear implants (<a href="https://en.wikipedia.org/wiki/Cochlear_implant">https://en.wikipedia.org/wiki/Cochlear_implant</a>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <a href="https://embaudio.grame.fr/cochlear.pdf">https://embaudio.grame.fr/cochlear.pdf</a> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described <a href="TODO">here</a>.</p>
+<h3 id="noise-reduction-headset">Noise Reduction Headset</h3>
+<p>The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described <a href="TODO">here</a> might be useful.</p>
+<h3 id="sonification-system">Sonification System</h3>
+<p>Data sonification is a trending method for analyzing data in real-time. The brain stethoscope (<a href="https://youtu.be/pnGzVW_7cfM">https://youtu.be/pnGzVW_7cfM</a>) is a good example of that. Choose a sensor technology and develop a sonification technology around it.</p>
+<h3 id="superman-hearing">Superman Hearing</h3>
+<p>Try to make your own version of Facebook's "superman hearing" system (<a href="https://about.fb.com/news/2020/09/facebook-reality-labs-research-future-of-audio/">https://about.fb.com/news/2020/09/facebook-reality-labs-research-future-of-audio/</a>).</p>
+<h3 id="guitar-pedal-effect">Guitar Pedal Effect</h3>
+<p>There exist dozens of guitar pedal effects: <a href="https://en.wikipedia.org/wiki/Effects_unit">https://en.wikipedia.org/wiki/Effects_unit</a>. The goal of this project is to make a guitar pedal "stompbox". Don't forget to think about the interface and the shape of the final product.</p>
+<h3 id="sound-synthesis-module">Sound Synthesis Module</h3>
+<p>Modular synthesizers (<a href="https://en.wikipedia.org/wiki/Modular_synthesizer">https://en.wikipedia.org/wiki/Modular_synthesizer</a>) became very popular in recent years. Each hardware module implements and sound synthesis or processing technique and offers an interface made of buttons, knobs, etc. The goal of this project is to implement your own sound synthesis module based on a Teensy. If you own a modular synth yourself, think about how your module could integrate to your toolchain, etc.</p>
+<h3 id="ep-vinyl-simulator">EP (Vinyl) Simulator</h3>
+<p>Love the sound of EPs (<a href="https://en.wikipedia.org/wiki/Extended_play">https://en.wikipedia.org/wiki/Extended_play</a>)? Implement a system that plugs to your living room sound system and makes the sound of any device you plug to it sound like an EP. For that, you will first have to document yourself on the impact on sound of this analog technology. There exists a couple of scientific papers that describe this fairly well. Make sure that you think about the interface that your system will have and about the form that your final product will take, etc.</p>
+<h3 id="feedback-cancellation-microphone">Feedback Cancellation Microphone</h3>
+<p>Feedback happens when a microphone and speaker implement a feedback loop. This results in a very annoying sound which sound engineers try to avoid as much as possible during concerts. Try to make a microphone carrying out real-time audio DSP to limit feedback. There exist many scientific papers on this topic which means that you will first have to document yourself on this topic.</p>
+<h3 id="augmented-speaker">Augmented Speaker</h3>
+<p>Make a speaker processing its audio input in real time to add audio effects, improve the quality of sound, etc. The goal of this project is to focus more on the product design aspect to try to design an appealing object. Think about the interface that system could have (maybe accessible through a smartphone? Etc.).</p>
+<h3 id="musical-instrument">Musical Instrument</h3>
+<p>The goal of this project is to make musical instrument based on a Teensy. The domain of New Interfaces for Musical Expression (NIME): <a href="https://www.nime.org/">https://www.nime.org/</a> has been booming in recent years and hundreds of musical instruments have been created. Feel free to get more inspiration here: <a href="https://ccrma.stanford.edu/courses/250a-winter-2022">https://ccrma.stanford.edu/courses/250a-winter-2022</a>!</p>
+<h3 id="midi-controlled-polyphonic-synthesizer">MIDI-Controlled Polyphonic Synthesizer</h3>
+<p>Build a polyphonic (multiple notes can be played at the same time) synthesizer based on a USB MIDI keyboard (using the <a href="https://www.pjrc.com/teensy/td_midi.html">Teensy USB MIDI Library</a>). The keyboard should connect directly to the Teensy through the USB port. The synth should have multiple parameters to control through MIDI CCs. For this project, you'll have to find a way to externally power your Teensy since the USB port will be used for connecting the MIDI keyboard, etc.</p>
+<h3 id="granular-synthesizer">Granular Synthesizer</h3>
+<p>Granular synthesis <a href="https://en.wikipedia.org/wiki/Granular_synthesis">https://en.wikipedia.org/wiki/Granular_synthesis</a> consists in looping a short sound sample to generate sound textures with it. The goal of this project is to make a granular synthesis module based on a Teensy. You should think about the interface that your system will have (i.e., which parameter to control, etc.). Note that since you will have to record audio samples on the Teensy, you will likely have to use an SD card for this because of the limited amount of memory available on the Teensy.</p>
+<h3 id="dafx">DAFx</h3>
+<p>DAFx is THE conference on digital audio effects: <a href="https://www.dafx.de/">https://www.dafx.de/</a>. The goal of this project is to pickup any paper in the DAFx literature and implement it on the Teensy.</p>
+<h3 id="any-other-idea">Any Other Idea...</h3>
+<p>Feel free to work on anything else but talk to us first :).</p>
+<h2 id="some-tips">Some Tips</h2>
+<h3 id="making-resonant-lowpass-bandpass-and-highpass">Making Resonant Lowpass, Bandpass and Highpass</h3>
+<p>This short tutorial demonstrates how to implement a series of filters that can be configured as resonant lowpass, bandpass, and highpasses.</p>
+<p>For this, you will first need to implement a biquad filter: <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a> (direct form 2 is preferred). You will then have to format the coefficients of that filter using the <a href="https://en.wikipedia.org/wiki/Bilinear_transform">bilinear transform</a> such that:</p>
+<pre><code>tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
+with {
+  c   = 1/tan(w1*0.5/SR);
+  csq = c*c;
+  d   = a0 + a1 * c + csq;
+  b0d = (b0 + b1 * c + b2 * csq)/d;
+  b1d = 2 * (b0 - b2 * csq)/d;
+  b2d = (b0 - b1 * c + b2 * csq)/d;
+  a1d = 2 * (a0 - csq)/d;
+  a2d = (a0 - a1*c + csq)/d;
+};
+</code></pre>
+<p>where <code>tf2</code> is a direct form 2 biquad and SR the sampling rate.</p>
+<p>Finally, you'll have to format the coefficients of the <code>tf2s</code> filter such that:</p>
+<pre><code>resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+with {
+     wc = 2*PI*fc;
+     a1 = 1/Q;
+     a0 = 1;
+     b2 = 0;
+     b1 = 0;
+     b0 = gain;
+};
+</code></pre>
+<p>(for the resonant lowpass)</p>
+<pre><code>resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+with {
+     wc = 2*PI*fc;
+     a1 = 1/Q;
+     a0 = 1;
+     b2 = 0;
+     b1 = gain;
+     b0 = 0;
+};
+</code></pre>
+<p>(for the resonant bandpass)</p>
+<pre><code>resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
+</code></pre>
+<p>(for the resonant highpass).</p>
+<p>Please, note that Q controls the bandwidth of the filter such that: <code>Q = fc/BW</code>.</p>
+<p>Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).</p>
+<h3 id="peak-equalizers">Peak Equalizers</h3>
+<p>Peak equalizers are yet another kind of filters allowing to reduce or increase some bands in the spectrum of a sound. A peak equalizer can take the following form:</p>
+<pre><code>peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
+  T = 1.0/SR;
+  Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
+  a1 = PI*Bw;
+  b1 = g*a1;
+  g = db2linear(abs(Lfx));
+  if(Lfx&gt;0) {
+    b1s = b1;
+    a1s = a1;
+  }
+  else {
+    b1s = a1;
+    a1s = b1;
+  }
+  wx = 2*PI*fx;
+};
+</code></pre>
+<p>where the definition of <code>tf2s</code> (direct-form 2 biquadratic filter operating the bilinear transform) can be found in <a href="#towards-resonant-filters">Towards Resonant Filter</a>. <code>Lfx</code> controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). <code>fx</code> is the center frequency, <code>B</code> the bandwidth in Hz.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

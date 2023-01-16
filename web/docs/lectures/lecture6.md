@@ -168,10 +168,6 @@ Modify the [crazy-saw](https://github.com/grame-cncm/embaudio/tree/master/exampl
 
 **Solution:**
 
-Shall be posted after class...
-
-<!--
-
 In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
 
 ```
@@ -190,7 +186,6 @@ float Phasor::tick(){
   return currentSample;
 }
 ```
--->
 
 ### Smoothing Potentiometer Values
 

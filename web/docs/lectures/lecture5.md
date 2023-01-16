@@ -150,8 +150,6 @@ Modify the [crazy-saw example](https://github.com/grame-cncm/embaudio/tree/maste
 
 **Solution:**
 
-Shall be posted here after class...
-
 In `MyDsp.h`:
 
 ```
@@ -206,8 +204,6 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
 The DX7 carried out frequency modulation over a total of six oscillators that could be patched in [different ways](https://static.righto.com/images/dx7-alg/algorithms-w800.jpg). So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -> 2 -> 1.
 
 **Solution:**
-
-Shall be posted after class...
 
 (non-exhaustive)
 

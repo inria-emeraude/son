@@ -62,26 +62,19 @@
 </li>
                                     
 <li>
-    <a href="../lecture9/" class="dropdown-item"> 9: Embedded System Basics: peripherals </a>
+    <a href="../lecture7/" class="dropdown-item"> 7: Introduction to Faust </a>
 </li>
                                     
 <li>
-    <a href="../lecture10/" class="dropdown-item"> 10: Embedded System Basics: Embedded OS </a>
-</li>
-                                    
-<li>
-    <a href="../lecture11/" class="dropdown-item"> 11: Faust on the Teensy and Advanced Control </a>
+    <a href="../lecture8/" class="dropdown-item"> 8: Faust on the Teensy and Advanced Control </a>
 </li>
                                 </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../../project/" class="nav-link">Project</a>
+                                <a href="../../projects/" class="nav-link">Projects</a>
                             </li>
                             <li class="navitem">
                                 <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../../project/" class="nav-link">Kits</a>
                             </li>
                         </ul>
 
@@ -262,7 +255,6 @@ float Noise::tick(){
 <p>An LFO is an oscillator whose frequency is below the human hearing range (20 Hz). LFOs are typically used to create vibrato. In that case, the frequency of the LFO is usually set to 6 Hz. </p>
 <p>Modify the <a href="https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-saw">crazy-saw example</a> so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.</p>
 <p><strong>Solution:</strong></p>
-<p>Shall be posted here after class...</p>
 <p>In <code>MyDsp.h</code>:</p>
 <pre><code>#include &quot;Sine.h&quot;
 
@@ -309,7 +301,6 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
 <h3 id="towards-the-dx7">Towards the DX7</h3>
 <p>The DX7 carried out frequency modulation over a total of six oscillators that could be patched in <a href="https://static.righto.com/images/dx7-alg/algorithms-w800.jpg">different ways</a>. So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -&gt; 2 -&gt; 1.</p>
 <p><strong>Solution:</strong></p>
-<p>Shall be posted after class...</p>
 <p>(non-exhaustive)</p>
 <p>In <code>Fm.cpp</code>:</p>
 <pre><code>float Fm::tick(){
