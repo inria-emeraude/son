@@ -32,6 +32,8 @@ extra:
 plugins:
   - search
 
+extra_css: [extra.css]
+
 extra:
   search:
     language: fr
