@@ -1,9 +1,8 @@
-site_name: AUD @ INSA Lyon
-site_description: Cours 5TC -- INSA Lyon -- Systèmes embarqués pour le traitement du signal audio en temps-réel
+site_name: SON @ INSA Lyon
+site_description: 3TC Course -- INSA Lyon -- Embedded Audio DSP Project
 nav:
-  - Syllabus: index.md
   - Lectures:
-    - ' 1: Course Introduction and Programming Environment Setup ' : lectures/lecture1.md
+    - ' 1: Programming Environment Setup ' : lectures/lecture1.md
     - ' 2: Audio Signal Processing Fundamentals ' : lectures/lecture2.md
     - ' 3: Digital Audio Systems Architectures and Audio Callback ' : lectures/lecture3.md
     - ' 4: Hardware Control and Audio Codec Configuration ' : lectures/lecture4.md
@@ -12,22 +11,25 @@ nav:
     - ' 9: Embedded System Basics: peripherals ' : lectures/lecture9.md
     - ' 10: Embedded System Basics: Embedded OS ' : lectures/lecture10.md
     - ' 11: Faust on the Teensy and Advanced Control ' : lectures/lecture11.md
+  - Project: project.md
+  - Code: "https://github.com/inria-emeraude/son"
+  - Kits: project.md
     
 theme: 
-  name: flatly
+  name: yeti
   navigation_depth: 4
 
 site_dir: ../docs
-site_url: https://embaudio.grame.fr
+site_url: https://inria-emeraude.github.io/son/
 
 extra:
     social:
         - type: github
-          link: https://github.com/grame-cncm/embedaudio
+          link: https://inria-emeraude.github.io/son/
         - type: home
-          link: https://embedaudio.grame.fr
+          link: https://inria-emeraude.github.io/son/
         - type: envelope
-          link: mailto:michon@grame.fr
+          link: mailto:romain.michon@inria.fr
 
 plugins:
   - search

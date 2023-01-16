@@ -4,15 +4,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Cours 5TC -- INSA Lyon -- Systèmes embarqués pour le traitement du signal audio en temps-réel">
+        <meta name="description" content="3TC Course -- INSA Lyon -- Embedded Audio DSP Project">
         
-        <link rel="canonical" href="https://embaudio.grame.fr/">
+        <link rel="canonical" href="https://inria-emeraude.github.io/son/">
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>AUD @ INSA Lyon</title>
+        <title>SON @ INSA Lyon</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
 
         <script src="js/jquery-1.10.2.min.js" defer></script>
         <script src="js/bootstrap.min.js" defer></script>
@@ -23,7 +23,7 @@
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">AUD @ INSA Lyon</a>
+                <a class="navbar-brand" href=".">SON @ INSA Lyon</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -33,15 +33,12 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
-                                <a href="." class="nav-link">Syllabus</a>
-                            </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Lectures <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="lectures/lecture1/" class="dropdown-item"> 1: Course Introduction and Programming Environment Setup </a>
+    <a href="lectures/lecture1/" class="dropdown-item"> 1: Programming Environment Setup </a>
 </li>
                                     
 <li>
@@ -77,6 +74,15 @@
 </li>
                                 </ul>
                             </li>
+                            <li class="navitem">
+                                <a href="project/" class="nav-link">Project</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="project/" class="nav-link">Kits</a>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ml-auto">
@@ -85,16 +91,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="lectures/lecture1/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -113,46 +109,18 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#embedded-audio-signal-processing" class="nav-link">Embedded Audio Signal Processing</a>
+            <li class="nav-item" data-level="1"><a href="#son-3tc-audio-project-insa-lyon" class="nav-link">SON: 3TC Audio Project @ INSA Lyon</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-level="2"><a href="#instructors" class="nav-link">Instructors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#organization-and-ects" class="nav-link">Organization and ECTS</a>
+            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#course-overview" class="nav-link">Course Overview</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#final-projects" class="nav-link">Final Projects</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="3"><a href="#project-idea-1-towards-resonant-filters" class="nav-link">Project Idea 1: Towards Resonant Filters</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="3"><a href="#project-idea-2-hearing-aids" class="nav-link">Project Idea 2: Hearing Aids</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="3"><a href="#project-idea-3-midi-controlled-synthesizer" class="nav-link">Project Idea 3: MIDI-Controlled Synthesizer</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="3"><a href="#project-idea-4-guitar-pedal-effect" class="nav-link">Project Idea 4: Guitar Pedal Effect</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="3"><a href="#project-idea-5-sound-synthesis-module" class="nav-link">Project Idea 5: Sound Synthesis Module</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="3"><a href="#project-idea-6-cochlear-implant-simulation" class="nav-link">Project Idea 6: Cochlear Implant Simulation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
               </ul>
@@ -162,31 +130,21 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="embedded-audio-signal-processing">Embedded Audio Signal Processing</h1>
-<p>This course is a collaboration between <a href="https://www.insa-lyon.fr/en/">Insa-Lyon</a> (TC-Dept, <a href="http://www.citi-lab.fr/">Citi Lab</a>), <a href="https://www.inria.fr/fr">INRIA</a>, and <a href="http://www.grame.fr">GRAME-CNCM</a>. The objective is to foster the development of emerging embedded audio devices and to take advantage of the resources of the CITI/INRIA Emeraude Team (Embedded Programmable Audio Systems) in this domain.</p>
-<p>In this course, students will learn about:</p>
-<ul>
-<li>Low-level embedded systems for real-time audio signal processing</li>
-<li>Digital audio system architecture</li>
-<li>Audio codec configuration</li>
-<li>IC communication protocols</li>
-<li>Audio signal processing</li>
-<li>Audio sound synthesis and effects design </li>
-<li>The Faust programming language</li>
-</ul>
+<h1 id="son-3tc-audio-project-insa-lyon">SON: 3TC Audio Project @ INSA Lyon</h1>
+<p>In this project, students program an embedded system (the Teensy 4.0: <a href="https://www.pjrc.com/store/teensy40.html">https://www.pjrc.com/store/teensy40.html</a>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++).</p>
+<p>The 3 weeks project period starts with a workshop on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.</p>
+<p>After this period, various project ideas are suggested to students. Projects can focus more on DSP or on the "product/hardware" aspect. Students work in groups of 2 on projects.</p>
+<p>The project period culminates in a final presentation taking the form of a poster/demo session where each group of students has a booth and can present his project, etc.</p>
+<p>Students are provided with plenty of fully-operational starter code/projects so that they have "something that works" right from the beginning.</p>
 <h2 id="instructors">Instructors</h2>
 <ul>
 <li><a href="https://ccrma.stanford.edu/~rmichon">Romain Michon</a> (INRIA)</li>
 <li><a href="http://perso.citi.insa-lyon.fr/trisset/">Tanguy Risset</a> (INSA Lyon)</li>
-<li>Yann Orlarey (GRAME-CNCM)</li>
 </ul>
-<h2 id="organization-and-ects">Organization and ECTS</h2>
-<p>The course will consists of 32 hours (2 ECTS) divided into 16h TD (or CM, this is equivalent) and 16h TP (two instructors):</p>
+<h2 id="resources">Resources</h2>
 <ul>
-<li>2x2h CM</li>
-<li>6x2h CM/TD</li>
-<li>8x2h TP</li>
-<li>Evaluation on TPs</li>
+<li>Course GitHub Repository: <a href="https://github.com/inria-emeraude/son">https://github.com/inria-emeraude/son</a></li>
+<li>Teensy Audio Library: <a href="https://www.pjrc.com/teensy/td_libs_Audio.html">https://www.pjrc.com/teensy/td_libs_Audio.html</a></li>
 </ul>
 <h2 id="course-overview">Course Overview</h2>
 <ul>
@@ -209,83 +167,7 @@
 <li><em>14/12/2022 16h00-18h00</em></li>
 </ul>
 </li>
-</ul>
-<h2 id="final-projects">Final Projects</h2>
-<p>For your final project, we would like you to work in groups of 2. Pick any of the following projects up (they are ordered by level of complexity). Have fun!</p>
-<h3 id="project-idea-1-towards-resonant-filters">Project Idea 1: Towards Resonant Filters</h3>
-<p>The goal of this project is to implement a resonant filter that can be configured as a lowpass, bandpass, or highpass. For this, you will first need to implement a biquad filter: <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a> (direct form 2 is preferred). You will then have to format the coefficients of that filter using the <a href="https://en.wikipedia.org/wiki/Bilinear_transform">bilinear transform</a> such that:</p>
-<pre><code>tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
-with {
-  c   = 1/tan(w1*0.5/SR);
-  csq = c*c;
-  d   = a0 + a1 * c + csq;
-  b0d = (b0 + b1 * c + b2 * csq)/d;
-  b1d = 2 * (b0 - b2 * csq)/d;
-  b2d = (b0 - b1 * c + b2 * csq)/d;
-  a1d = 2 * (a0 - csq)/d;
-  a2d = (a0 - a1*c + csq)/d;
-};
-</code></pre>
-<p>where <code>tf2</code> is a direct form 2 biquad and SR the sampling rate.</p>
-<p>Finally, you'll have to format the coefficients of the <code>tf2s</code> filter such that:</p>
-<pre><code>resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
-with {
-     wc = 2*PI*fc;
-     a1 = 1/Q;
-     a0 = 1;
-     b2 = 0;
-     b1 = 0;
-     b0 = gain;
-};
-</code></pre>
-<p>(for the resonant lowpass)</p>
-<pre><code>resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
-with {
-     wc = 2*PI*fc;
-     a1 = 1/Q;
-     a0 = 1;
-     b2 = 0;
-     b1 = gain;
-     b0 = 0;
-};
-</code></pre>
-<p>(for the resonant bandpass)</p>
-<pre><code>resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
-</code></pre>
-<p>(for the resonant highpass).</p>
-<p>Please, note that Q controls the bandwidth of the filter such that: <code>Q = fc/BW</code>.</p>
-<p>Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).</p>
-<h3 id="project-idea-2-hearing-aids">Project Idea 2: Hearing Aids</h3>
-<p>Basic hearing aids just implement a set of peak equalizing filters connected in sequence and taking the following form:</p>
-<pre><code>peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
-  T = 1.0/SR;
-  Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
-  a1 = PI*Bw;
-  b1 = g*a1;
-  g = db2linear(abs(Lfx));
-  if(Lfx&gt;0) {
-    b1s = b1;
-    a1s = a1;
-  }
-  else {
-    b1s = a1;
-    a1s = b1;
-  }
-  wx = 2*PI*fx;
-};
-</code></pre>
-<p>where the definition of <code>tf2s</code> (direct-form 2 biquadratic filter operating the bilinear transform) can be found in <a href="#towards-resonant-filters">Towards Resonant Filter</a>. <code>Lfx</code> controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). <code>fx</code> is the center frequency, <code>B</code> the bandwidth in Hz.</p>
-<p>Make an hearing aids allowing us to control at least five bands.</p>
-<h3 id="project-idea-3-midi-controlled-synthesizer">Project Idea 3: MIDI-Controlled Synthesizer</h3>
-<p>(This project idea is more targeted towards musicians.)</p>
-<p>Implement a MIDI-controlled synthesizer based on the Teensy using the <a href="https://www.pjrc.com/teensy/td_midi.html">Teensy USB MIDI Library</a>. For that, you will need a midi keyboard (we can provide one if necessary). You'll also have to externally power your Teensy (we can help with that). Beyond implementing a cool-sounding synth, we encourage you to think about how polyphony could be implemented.</p>
-<p>In the end, you wanna have a MIDI keyboard connected to your Teensy and sound coming out of it...</p>
-<h3 id="project-idea-4-guitar-pedal-effect">Project Idea 4: Guitar Pedal Effect</h3>
-<p>If you know what you're doing, feel free to implement any guitar pedal effect that you like and that hasn't been studied in class on the Teensy (e.g., distortion, chorus, phaser, etc.).</p>
-<h3 id="project-idea-5-sound-synthesis-module">Project Idea 5: Sound Synthesis Module</h3>
-<p>If you know what you're doing, feel free to implement any sound synthesis algorithm that you like and that hasn't been studied in class on the Teensy (e.g., granular synthesis, physical modeling, vocoder, etc.).</p>
-<h3 id="project-idea-6-cochlear-implant-simulation">Project Idea 6: Cochlear Implant Simulation</h3>
-<p>Implement a <a href="https://en.wikipedia.org/wiki/Cochlear_implant">cochlear implant</a> simulator on the Teensy using the description provided in <a href="cochlear.pdf">this paper</a>.</p></div>
+</ul></div>
             </div>
         </div>
 
@@ -367,5 +249,5 @@ with {
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-01-13 07:48:14.865267+00:00
+Build Date UTC : 2023-01-16 08:45:48.719666+00:00
 -->

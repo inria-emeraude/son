@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://embaudio.grame.fr/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture1/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/project/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture10/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture1/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture11/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture10/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture2/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture11/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture3/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture2/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture4/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture3/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture5/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture4/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture6/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture5/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture7/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture6/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture8/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture7/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/lecture9/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture8/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://embaudio.grame.fr/lectures/project/</loc>
-         <lastmod>2023-01-13</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/lecture9/</loc>
+         <lastmod>2023-01-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://inria-emeraude.github.io/son/lectures/project/</loc>
+         <lastmod>2023-01-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
