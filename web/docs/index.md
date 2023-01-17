@@ -19,6 +19,15 @@ Students are provided with plenty of fully-operational starter code/projects so 
 
 * Course GitHub Repository: <https://github.com/inria-emeraude/son>
 * Teensy Audio Library: <https://www.pjrc.com/teensy/td_libs_Audio.html>
+* The Son kit for a group of two students:
+<center>
+<img src="img/son-kit.jpg"  width="30%"> 
+</p><figcaption>One  teensy soldered with audio shield, two buttons, two potentiometers and one breadboard (do not loose these components!)
+</figcaption>
+</center>
+
+## Requirements:
+Installing teensyduino as explained in [Lecture 1](lectures/lecture1).
 
 ## Course Overview
 
@@ -28,7 +37,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 * **Lab** -- *08/02/2023 14h00-16h00*
 * **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/lecture4.md)** -- *08/02/2023 16h00-18h00*
 * **Lecture 5: [Audio Processing Basics I](lectures/lecture5.md)** -- *09/02/2023 08h00-10h00*
-* **Lab** -- *10/02/2023 10h00-12h00*
+* **Lab** -- *9/02/2023 10h00-12h00*
 * **Lecture 6: [Audio Processing Basics II](lectures/lecture6.md)** -- *10/02/2023 08h00-10h00*
 * **Lecture 7: Introduction to Faust (Yann Orlarey)** -- *10/02/2023 10h00-12h00*
 * **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/lecture8.md)** -- *10/02/2023 14h00-16h00*
