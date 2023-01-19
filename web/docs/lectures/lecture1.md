@@ -15,7 +15,7 @@ When combined together, the Teensy 4.0 and its companion audio adapter (see figu
 </p><figcaption><center>The Teensy 4.0 (left) and the associated audio adapter board (right)</center></figcaption>
 </figure>
 
-The [Teensy 4.0](https://www.pjrc.com/store/teensy40.html) is a microcontroller-based development board developed by PJRC. As an open source environment, tons of useful information can be found on their website: <https://www.pjrc.com>. The Teensy 4.0 is based on a powerful ARM Cortex-M7 microcontroller providing plenty of computational power (600 MHz with a Floating Point Unit - FPU) for real-time audio DSP (Digital Signal Processing) and many GPIOs (General Purpose Inputs and Outputs) for interfacing, etc. The CPU performances are many times faster than typical 32 bit microcontrollers. The FPU performs 32 bit float and 64 bit double precision math in directly in hardware. DSP extension instructions accelerate signal processing, filters, Fourier transform, etc. The [Teensy Audio library](https://www.pjrc.com/teensy/td_libs_Audio.html) automatically makes uses of these DSP instructions.
+The [Teensy 4.0](https://www.pjrc.com/store/teensy40.html) is a microcontroller-based development board developed by PJRC. As an open source environment, tons of useful information can be found on their website: <https://www.pjrc.com>. The Teensy 4.0 is based on a powerful ARM Cortex-M7 microcontroller providing plenty of computational power (600 MHz with a Floating Point Unit - FPU) for real-time audio DSP (Digital Signal Processing) and many GPIOs (General Purpose Inputs and Outputs) for interfacing, etc. The CPU performances are many times faster than typical 32 bit microcontrollers. The FPU performs 32 bit float and 64 bit double precision math directly in hardware. DSP extension instructions accelerate signal processing, filters, Fourier transform, etc. The [Teensy Audio library](https://www.pjrc.com/teensy/td_libs_Audio.html) automatically makes use of these DSP instructions.
 
 <figure>
 <p align="center">
@@ -52,7 +52,7 @@ In this course, we use the [audio adaptor board](https://www.pjrc.com/store/teen
 </center>
 </figure>
 
-The audio codec connects to Teensy using 7 signals (Yellow signal in pin map above) which are used by two protocols: I2C and I2S. This is a traditional configuration for audio codecs: the I2C (or I²C: Inter-Integrated Circuit) protocol is used to configure the codec (i.e., sample rate, input and output pins, etc.) and the I2S (or I²S: Inter-IC Sound) is used to transfer samples bit by bit in both direction (i.e., from and to the teensy). The I2C pins SDA and SCL are used to control the chip and adjust parameters. Audio data uses I2S signals, TX (to headphones and/or line out) and RX (from line in or mic), and 3 clocks, LRCLK (44.1 kHz), BCLK (1.41 MHz) and MCLK (11.29 MHz). All 3 clocks are created by Teensy which means that the SGTL5000 operates in "slave mode".
+The audio codec connects to Teensy using 7 signals (Yellow signal in pin map above) which are used by two protocols: I2C and I2S. This is a traditional configuration for audio codecs: the I2C (or I²C: Inter-Integrated Circuit) protocol is used to configure the codec (i.e., sample rate, input and output pins, etc.) and the I2S (or I²S: Inter-IC Sound) is used to transfer samples bit by bit in both direction (i.e., from and to the teensy). The I2C pins SDA and SCL are used to control the chip and adjust parameters. Audio data uses I2S signals, TX (to headphones and/or line out) and RX (from line in or mic), and 3 clocks, LRCLK (44.1 kHz), BCLK (1.41 MHz) and MCLK (11.29 MHz). All 3 clocks are created by Teensy which means that the SGTL5000 operates in "slave mode."
 
 The schematics of the audio shield board, rev. D,  can bee seen [here](https://www.pjrc.com/store/teensy3_audio.html) and the schematic of the Teensy 4.0 can be seen at the end of this page: <https://www.pjrc.com/store/teensy40.html>. Of course, as they are both made by PJRC, they are designed to be compatible.
 
@@ -102,7 +102,7 @@ void loop() {
 
 Uploaded it on the Teensy (make sure that the right board and port are selected in `Tools`).
 
-Open the serial debugger by clocking on the loop on the top right corner of the Arduino IDE.
+Open the serial debugger by clicking on the loop on the top right corner of the Arduino IDE.
 
 "Hello World" should be printed every 100ms.
 

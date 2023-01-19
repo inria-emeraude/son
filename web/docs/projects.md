@@ -10,8 +10,9 @@ Final projects constitute the heart of this course: students are 100% evaluated 
 
 Projects will be evaluated through:
 
-* A poster and a demo of your project which will be featured during a poster session taking place on 03/03/2023;
-* A webpage presenting your project.
+* A webpage presenting your project;
+* Your code submitted on Moodle;
+* A demo of your project which will be featured during a demo session taking place on 03/03/2023. During this session, students will use the webpage of their project as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
 
 The quality and the presentation of the poster and of the webpage will be taken into account towards your final grade.
 
@@ -28,7 +29,7 @@ As for the project itself, you will be evaluated on its:
 
 ### Auto-Tune
 
-Auto-tune (<https://en.wikipedia.org/wiki/Auto-Tune>) is a sound effect which automatically correct the pitch of a sound by quantizing it to the nearest note of the chromatic scale. The goal of this project is make an "autotune box/audio processor" based on the Teensy. In addition to figuring out how to implement the algorithm (which should involve pitch shifting and frequency tracking), you should think about the interface that your project will have (which parameters can be controlled?, etc.).
+Auto-tune (<https://en.wikipedia.org/wiki/Auto-Tune>) is a sound effect which automatically corrects the pitch of a sound by quantizing it to the nearest note of the chromatic scale. The goal of this project is to make an "autotune box/audio processor" based on the Teensy. In addition to figuring out how to implement the algorithm (which should involve pitch shifting and frequency tracking), you should think about the interface that your project will have (which parameters can be controlled?, etc.).
 
 ### Vocoder
 
@@ -40,15 +41,15 @@ Pitch-Shifting consists in transposing (up or down) the sound of an input source
 
 ### Hearing Aid
 
-At the most fundamental level, hearing aids just implement a bunch of equalization filters (see TODO) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.
+At the most fundamental level, hearing aids just implement a bunch of equalization filters (see [Peak Equalizers](#peak-equalizers)) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.
 
 ### Cochlear Implant Simulator
 
-Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](TODO).
+Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](#making-resonant-lowpass-bandpass-and-highpass).
 
 ### Noise Reduction Headset
 
-The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](TODO) might be useful.
+The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](#making-resonant-lowpass-bandpass-and-highpass) might be useful.
 
 ### Sonification System
 
@@ -60,7 +61,7 @@ Try to make your own version of Facebook's "superman hearing" system (<https://a
 
 ### Guitar Pedal Effect
 
-There exist dozens of guitar pedal effects: <https://en.wikipedia.org/wiki/Effects_unit>. The goal of this project is to make a guitar pedal "stompbox". Don't forget to think about the interface and the shape of the final product.
+There exist dozens of guitar pedal effects: <https://en.wikipedia.org/wiki/Effects_unit>. The goal of this project is to make a guitar pedal "stompbox." Don't forget to think about the interface and the shape of the final product.
 
 ### Sound Synthesis Module
 
