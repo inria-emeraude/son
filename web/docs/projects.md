@@ -10,9 +10,9 @@ Final projects constitute the heart of this course: students are 100% evaluated 
 
 Projects will be evaluated through:
 
-* A webpage presenting your project;
+* A poster (pdf) presenting your project;
 * Your code submitted on Moodle;
-* A demo of your project which will be featured during a demo session taking place on 03/03/2023. During this session, students will use the webpage of their project as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
+* A demo of your project which will be featured during a demo session taking place on 03/03/2023. During this session, students will use the poster of their project directly on their computer as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
 
 The quality and the presentation of the poster and of the webpage will be taken into account towards your final grade.
 
