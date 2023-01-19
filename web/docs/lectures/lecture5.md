@@ -150,6 +150,9 @@ Modify the [crazy-saw example](https://github.com/grame-cncm/embaudio/tree/maste
 
 **Solution:**
 
+After the lab...
+
+<!--
 In `MyDsp.h`:
 
 ```
@@ -198,6 +201,7 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   sawtooth.setFrequency(freq*(1 + LFO.tick()*0.1));
   float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
 ```
+-->
 
 ### Towards the DX7
 
@@ -205,6 +209,9 @@ The DX7 carried out frequency modulation over a total of six oscillators that co
 
 **Solution:**
 
+After the lab...
+
+<!--
 (non-exhaustive)
 
 In `Fm.cpp`:
@@ -221,3 +228,43 @@ float Fm::tick(){
   return sineTable.tick(cIndex)*gain;
 }
 ```
+-->
+
+### Smoothing
+
+In most cases, DSP parameters are executed at control rate. Moreover, the resolution of the value used to configure parameters is much lower than that of audio samples since it might come from a Graphical User Interface (GUI), a low resolution sensor ADC (e.g., arduino), etc. For all these reasons, changing the value of a DSP parameter will often result in a "click"/discontinuity. A common way to prevent this from happening is to interpolate between the values of the parameter using a "leaky integrator." In signal processing, this can be easily implemented using a normalized one pole lowpass filter:
+
+\[y(n) = (1-s)x(n) + sy(n-1)\]
+
+where \(s\) is the value of the pole and is typically set to 0.999 for optimal results.
+
+Modify the [crazy-saw](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-saw) example by "smoothing" the value of the frequency parameter by implementing the filter above with \(s=0.999\). Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).
+
+**Solution:**
+
+After the lab...
+
+<!--
+In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
+
+```
+  int samplingRate;
+  Smooth smooth;
+};
+```
+
+and `Phasor.cpp`:
+
+```
+float Phasor::tick(){
+  float currentSample = phasor;
+  phasor += smooth.tick(phasorDelta);
+  phasor = phasor - std::floor(phasor);
+  return currentSample;
+}
+```
+-->
+
+### Smoothing Potentiometer Values
+
+Try to use the smoothing function that you implemented in the previous step to smooth sensor values coming from a potential potentiometer controlling some parameter of one of the Teensy examples. The main idea is to get rid of sound artifacts when making abrupt changes in potentiometers.

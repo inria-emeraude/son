@@ -147,47 +147,99 @@ In practice, the Karplus-Strong algorithm is not a physical model per se and is 
 
 Waveguide physical modeling has been extensively used in modern synthesizers to synthesize the sound of acoustic instruments. Julius O. Smith (Stanford professor) is the father of waveguide physical modeling. 
 
-<!--
-## Flanger
-
-Flanger could be a bonus if we manage to fix it...
-
--->
-
 ## Exercises
 
-### Smoothing
+### Making Resonant Lowpass, Bandpass and Highpass
 
-In most cases, DSP parameters are executed at control rate. Moreover, the resolution of the value used to configure parameters is much lower than that of audio samples since it might come from a Graphical User Interface (GUI), a low resolution sensor ADC (e.g., arduino), etc. For all these reasons, changing the value of a DSP parameter will often result in a "click"/discontinuity. A common way to prevent this from happening is to interpolate between the values of the parameter using a "leaky integrator." In signal processing, this can be easily implemented using a normalized one pole lowpass filter: 
+This short tutorial demonstrates how to implement a series of filters that can be configured as resonant lowpass, bandpass, and highpasses.
 
-\[y(n) = (1-s)x(n) + sy(n-1)\]
-
-where \(s\) is the value of the pole and is typically set to 0.999 for optimal results.
-
-Modify the [crazy-saw](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-saw) example by "smoothing" the value of the frequency parameter by implementing the filter above with \(s=0.999\). Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).
-
-**Solution:**
-
-In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
+For this, you will first need to implement a biquad filter: [https://en.wikipedia.org/wiki/Digital_biquad_filter](https://en.wikipedia.org/wiki/Digital_biquad_filter) (direct form 2 is preferred). You will then have to format the coefficients of that filter using the [bilinear transform](https://en.wikipedia.org/wiki/Bilinear_transform) such that:
 
 ```
-  int samplingRate;
-  Smooth smooth;
+tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
+with {
+  c   = 1/tan(w1*0.5/SR);
+  csq = c*c;
+  d   = a0 + a1 * c + csq;
+  b0d = (b0 + b1 * c + b2 * csq)/d;
+  b1d = 2 * (b0 - b2 * csq)/d;
+  b2d = (b0 - b1 * c + b2 * csq)/d;
+  a1d = 2 * (a0 - csq)/d;
+  a2d = (a0 - a1*c + csq)/d;
 };
 ```
 
-and `Phasor.cpp`:
+where `tf2` is a direct form 2 biquad and SR the sampling rate.
+
+Finally, you'll have to format the coefficients of the `tf2s` filter such that:
 
 ```
-float Phasor::tick(){
-  float currentSample = phasor;
-  phasor += smooth.tick(phasorDelta);
-  phasor = phasor - std::floor(phasor);
-  return currentSample;
-}
+resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+with {
+     wc = 2*PI*fc;
+     a1 = 1/Q;
+     a0 = 1;
+     b2 = 0;
+     b1 = 0;
+     b0 = gain;
+};
 ```
 
-### Smoothing Potentiometer Values
+(for the resonant lowpass)
 
-Try to use the smoothing function that you implemented in the previous step to smooth sensor values coming from a potential potentiometer controlling some parameter of one of the Teensy examples. The main idea is to get rid of sound artifacts when making abrupt changes in potentiometers.
+```
+resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+with {
+     wc = 2*PI*fc;
+     a1 = 1/Q;
+     a0 = 1;
+     b2 = 0;
+     b1 = gain;
+     b0 = 0;
+};
+```
 
+(for the resonant bandpass)
+
+```
+resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
+```
+
+(for the resonant highpass).
+
+Please, note that Q controls the bandwidth of the filter such that: `Q = fc/BW`.
+
+Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).
+
+Test your filter by changing dynamically the cutoff frequency of the filter using a potentiometer, for example.
+
+### Peak Equalizers
+
+Peak equalizers are yet another kind of filters allowing to reduce or increase some bands in the spectrum of a sound. A peak equalizer can take the following form:
+
+```
+peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
+  T = 1.0/SR;
+  Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
+  a1 = PI*Bw;
+  b1 = g*a1;
+  g = db2linear(abs(Lfx));
+  if(Lfx>0) {
+    b1s = b1;
+    a1s = a1;
+  }
+  else {
+    b1s = a1;
+    a1s = b1;
+  }
+  wx = 2*PI*fx;
+};
+```
+
+where the definition of `tf2s` (direct-form 2 biquadratic filter operating the bilinear transform) can be found in [Towards Resonant Filter](#towards-resonant-filters). `Lfx` controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). `fx` is the center frequency, `B` the bandwidth in Hz.
+
+Implement this filter and test it the same way as you did for the resonant lowpass/bandpass/highpass.
+
+### Browsing Through the Teensy Audio Library Examples
+
+The Teensy audio library comes with a series of example programs which are pre-installed with Teensyduino in `File/Examples/Teensy/Audio` (in the Teensyduino interface). Browse through the examples to get a sense of what;s out there.

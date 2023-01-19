@@ -41,15 +41,15 @@ Pitch-Shifting consists in transposing (up or down) the sound of an input source
 
 ### Hearing Aid
 
-At the most fundamental level, hearing aids just implement a bunch of equalization filters (see [Peak Equalizers](#peak-equalizers)) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.
+At the most fundamental level, hearing aids just implement a bunch of equalization filters (see [Peak Equalizers](../lectures/lecture6#peak-equalizers)) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.
 
 ### Cochlear Implant Simulator
 
-Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](#making-resonant-lowpass-bandpass-and-highpass).
+Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](../lectures/lecture6#making-resonant-lowpass-bandpass-and-highpass).
 
 ### Noise Reduction Headset
 
-The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](#making-resonant-lowpass-bandpass-and-highpass) might be useful.
+The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](../lectures/lecture6#making-resonant-lowpass-bandpass-and-highpass) might be useful.
 
 ### Sonification System
 
@@ -98,94 +98,5 @@ DAFx is THE conference on digital audio effects: <https://www.dafx.de/>. The goa
 ### Any Other Idea...
 
 Feel free to work on anything else but talk to us first :).
-
-## Some Tips
-
-### Making Resonant Lowpass, Bandpass and Highpass
-
-This short tutorial demonstrates how to implement a series of filters that can be configured as resonant lowpass, bandpass, and highpasses.
-
-For this, you will first need to implement a biquad filter: [https://en.wikipedia.org/wiki/Digital_biquad_filter](https://en.wikipedia.org/wiki/Digital_biquad_filter) (direct form 2 is preferred). You will then have to format the coefficients of that filter using the [bilinear transform](https://en.wikipedia.org/wiki/Bilinear_transform) such that:
-
-```
-tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
-with {
-  c   = 1/tan(w1*0.5/SR);
-  csq = c*c;
-  d   = a0 + a1 * c + csq;
-  b0d = (b0 + b1 * c + b2 * csq)/d;
-  b1d = 2 * (b0 - b2 * csq)/d;
-  b2d = (b0 - b1 * c + b2 * csq)/d;
-  a1d = 2 * (a0 - csq)/d;
-  a2d = (a0 - a1*c + csq)/d;
-};
-```
-
-where `tf2` is a direct form 2 biquad and SR the sampling rate.
-
-Finally, you'll have to format the coefficients of the `tf2s` filter such that:
-
-```
-resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
-with {
-     wc = 2*PI*fc;
-     a1 = 1/Q;
-     a0 = 1;
-     b2 = 0;
-     b1 = 0;
-     b0 = gain;
-};
-```
-
-(for the resonant lowpass)
-
-```
-resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
-with {
-     wc = 2*PI*fc;
-     a1 = 1/Q;
-     a0 = 1;
-     b2 = 0;
-     b1 = gain;
-     b0 = 0;
-};
-```
-
-(for the resonant bandpass)
-
-```
-resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
-```
-
-(for the resonant highpass).
-
-Please, note that Q controls the bandwidth of the filter such that: `Q = fc/BW`.
-
-Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).
-
-### Peak Equalizers
-
-Peak equalizers are yet another kind of filters allowing to reduce or increase some bands in the spectrum of a sound. A peak equalizer can take the following form:
-
-```
-peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
-  T = 1.0/SR;
-  Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
-  a1 = PI*Bw;
-  b1 = g*a1;
-  g = db2linear(abs(Lfx));
-  if(Lfx>0) {
-    b1s = b1;
-    a1s = a1;
-  }
-  else {
-    b1s = a1;
-    a1s = b1;
-  }
-  wx = 2*PI*fx;
-};
-```
-
-where the definition of `tf2s` (direct-form 2 biquadratic filter operating the bilinear transform) can be found in [Towards Resonant Filter](#towards-resonant-filters). `Lfx` controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). `fx` is the center frequency, `B` the bandwidth in Hz.
 
 
