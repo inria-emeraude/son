@@ -160,6 +160,9 @@ Write a small tune/song looping through at least 5 notes and play it with the `c
 
 **Solution:**
 
+Posted after class...
+
+<!--
 In `crazy-sine.ino`:
 
 ```
@@ -191,6 +194,7 @@ void loop() {
   delay(500);
 }
 ```
+-->
 
 ### Basic Additive Synthesis
 
@@ -210,6 +214,9 @@ but the problem with that option is that memory will be allocated twice for the 
 
 **Solution:**
 
+Posted after class...
+
+<!--
 In `Sine.cpp`:
 
 ```
@@ -219,6 +226,7 @@ float Sine::tick(){
   return (sineTable.tick(index)+sineTable.tick(index2))*gain*0.5;
 }
 ```
+-->
 
 ### Stereo Echo
 
@@ -236,6 +244,9 @@ float currentSampleR = echo1.tick(sineSample)*0.5;
 
 In `MyDsp.h`:
 
+Posted after class...
+
+<!--
 ```
   Sine sine;
   Echo echo0, echo1;
@@ -272,3 +283,4 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   ...
 }
 ```
+-->

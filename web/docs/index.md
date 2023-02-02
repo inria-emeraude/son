@@ -20,9 +20,10 @@ Students are provided with plenty of fully-operational starter code/projects so 
 * Course GitHub Repository: <https://github.com/inria-emeraude/son>
 * Teensy Audio Library: <https://www.pjrc.com/teensy/td_libs_Audio.html>
 * The SON kit for a group of two students:
+
 <center>
-<img src="img/son-kit.jpg"  width="30%"> 
-</p><figcaption>One Teensy with its companion audio shield, two buttons, two potentiometers, one breadboard, and a couple of resistors and jumper cables (do not loose these components!).
+<img src="img/son-kit.jpg"  width="70%">
+</p><figcaption>A pair of headphones, one Teensy 4.0 with its companion audio shield, two buttons, two potentiometers, one breadboard, and a couple of resistors and jumper cables (do not loose these components!).
 </figcaption>
 </center>
 
