@@ -150,9 +150,6 @@ Modify the [crazy-saw example](https://github.com/grame-cncm/embaudio/tree/maste
 
 **Solution:**
 
-After the lab...
-
-<!--
 In `MyDsp.h`:
 
 ```
@@ -201,7 +198,6 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   sawtooth.setFrequency(freq*(1 + LFO.tick()*0.1));
   float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
 ```
--->
 
 ### Towards the DX7
 
@@ -209,9 +205,6 @@ The DX7 carried out frequency modulation over a total of six oscillators that co
 
 **Solution:**
 
-After the lab...
-
-<!--
 (non-exhaustive)
 
 In `Fm.cpp`:
@@ -228,7 +221,6 @@ float Fm::tick(){
   return sineTable.tick(cIndex)*gain;
 }
 ```
--->
 
 ### Smoothing
 
@@ -242,9 +234,6 @@ Modify the [crazy-saw](https://github.com/grame-cncm/embaudio/tree/master/exampl
 
 **Solution:**
 
-After the lab...
-
-<!--
 In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
 
 ```
@@ -263,7 +252,6 @@ float Phasor::tick(){
   return currentSample;
 }
 ```
--->
 
 ### Smoothing Potentiometer Values
 
