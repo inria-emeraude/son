@@ -1,3 +1,3 @@
 # Lecture 7: Introduction to Faust
 
-TODO
+[Slides du cours](misc/slides-orlarey.pdf)
