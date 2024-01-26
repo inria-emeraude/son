@@ -19,6 +19,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 
 * Course GitHub Repository: <https://github.com/inria-emeraude/son>
 * Teensy Audio Library: <https://www.pjrc.com/teensy/td_libs_Audio.html>
+* !New 2023! A soldering room (next to radiocom room)
 * The SON kit for a group of two students:
 
 <center>
