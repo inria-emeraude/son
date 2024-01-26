@@ -158,6 +158,7 @@ Write a small tune/song looping through at least 5 notes and play it with the `c
 
 **Hint:** For that, you'll probably have to replace the `myDsp.setFreq(random(50,1000));` line of of `crazy-sine.ino` by something else.
 
+<!--
 **Solution:**
 
 In `crazy-sine.ino`:
@@ -191,6 +192,7 @@ void loop() {
   delay(500);
 }
 ```
+-->
 
 ### Basic Additive Synthesis
 
@@ -208,6 +210,7 @@ but the problem with that option is that memory will be allocated twice for the 
 
 **Hint:** Beware of clipping! Adding two sine waves together even though they don't have the same frequency will likely produce a signal whose range exceeds {-1;1}: you should take that into account for your final product. 
 
+<!--
 **Solution:**
 
 In `Sine.cpp`:
@@ -219,6 +222,7 @@ float Sine::tick(){
   return (sineTable.tick(index)+sineTable.tick(index2))*gain*0.5;
 }
 ```
+-->
 
 ### Stereo Echo
 
@@ -232,6 +236,7 @@ float currentSampleR = echo1.tick(sineSample)*0.5;
 
 **Hint:** Beware of memory allocation again! Make sure that the maxim delay of your echo (on the 2 parameters of the class constructor) doesn't exceed 10000 for now for both instances of the echo. 
 
+<!--
 **Solution:**
 
 In `MyDsp.h`:
@@ -272,3 +277,4 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   ...
 }
 ```
+-->

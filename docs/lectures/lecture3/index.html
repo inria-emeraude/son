@@ -12,13 +12,10 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../../extra.css" rel="stylesheet">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -275,8 +272,12 @@ for(int i=0; i&lt;size; i++){
 <p>where <script type="math/tex">d</script> is the MIDI number.</p>
 <p>Write a small tune/song looping through at least 5 notes and play it with the <code>crazy-sine</code> program on your Teensy.</p>
 <p><strong>Hint:</strong> For that, you'll probably have to replace the <code>myDsp.setFreq(random(50,1000));</code> line of of <code>crazy-sine.ino</code> by something else.</p>
-<p><strong>Solution:</strong></p>
-<p>In <code>crazy-sine.ino</code>:</p>
+<!--
+**Solution:**
+
+In `crazy-sine.ino`:
+
+
 <pre><code>#include &lt;Audio.h&gt;
 #include &quot;MyDsp.h&quot;
 
@@ -305,6 +306,9 @@ void loop() {
   delay(500);
 }
 </code></pre>
+
+-->
+
 <h3 id="basic-additive-synthesis">Basic Additive Synthesis</h3>
 <p>One of the most basic kind of sound synthesis is "additive synthesis." In consists of adding multiple sine wave oscillators together to "sculpt" the timbre of a sound. Both the frequency and the gain of each individual oscillator can then be used to change the properties of the synthesized sound. </p>
 <p>A simple additive synthesizer could be implemented from the <code>crazy-sine</code> example by declaring multiple instances of <code>sine</code>. E.g.:</p>
@@ -315,14 +319,21 @@ void loop() {
 <script type="math/tex; mode=display">x(t) = sin(2 \pi f t) + sin(2 \pi (1.5f) t)</script>
 </p>
 <p><strong>Hint:</strong> Beware of clipping! Adding two sine waves together even though they don't have the same frequency will likely produce a signal whose range exceeds {-1;1}: you should take that into account for your final product. </p>
-<p><strong>Solution:</strong></p>
-<p>In <code>Sine.cpp</code>:</p>
+<!--
+**Solution:**
+
+In `Sine.cpp`:
+
+
 <pre><code>float Sine::tick(){
   int index = phasor.tick()*SINE_TABLE_SIZE;
   int index2 = (int) (index*1.5)%SINE_TABLE_SIZE;
   return (sineTable.tick(index)+sineTable.tick(index2))*gain*0.5;
 }
 </code></pre>
+
+-->
+
 <h3 id="stereo-echo">Stereo Echo</h3>
 <p>Reusing the result of the previous exercise, create a second instance of <code>echo</code> (connected to the same instance of <code>sine</code>) <em>with different parameters from the first one</em> that will be connected to the second channel of the output (i.e., the first instance should be connected to the left channel and the second one to the right channel). The final algorithm should look like this:</p>
 <pre><code>float sineSample = sine.tick();
@@ -330,13 +341,21 @@ float currentSampleL = echo0.tick(sineSample)*0.5;
 float currentSampleR = echo1.tick(sineSample)*0.5;
 </code></pre>
 <p><strong>Hint:</strong> Beware of memory allocation again! Make sure that the maxim delay of your echo (on the 2 parameters of the class constructor) doesn't exceed 10000 for now for both instances of the echo. </p>
-<p><strong>Solution:</strong></p>
-<p>In <code>MyDsp.h</code>:</p>
+<!--
+**Solution:**
+
+In `MyDsp.h`:
+
+
 <pre><code>  Sine sine;
   Echo echo0, echo1;
 };
 </code></pre>
-<p>In <code>MyDsp.cpp</code>:</p>
+
+
+In `MyDsp.cpp`:
+
+
 <pre><code>MyDsp::MyDsp() :
 AudioStream(AUDIO_OUTPUTS, new audio_block_t*[AUDIO_OUTPUTS]),
 sine(AUDIO_SAMPLE_RATE_EXACT),
@@ -363,7 +382,9 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
 
   ...
 }
-</code></pre></div>
+</code></pre>
+
+--></div>
             </div>
         </div>
 
@@ -371,13 +392,15 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

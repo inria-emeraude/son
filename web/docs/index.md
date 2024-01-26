@@ -33,31 +33,32 @@ Students are provided with plenty of fully-operational starter code/projects so 
 
 ## Course Overview
 
-* **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/lecture1.md)** -- *07/02/2023 14h00-16h00*
-* **Lecture 2: [Audio Signal Processing Fundamentals](lectures/lecture2.md)** -- *08/02/2023 08h00-10h00*
-* **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/lecture3.md)** -- *08/02/2023 10h00-12h00*
-* **Lab** -- *08/02/2023 14h00-16h00*
-* **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/lecture4.md)** -- *08/02/2023 16h00-18h00*
-* **Lecture 5: [Audio Processing Basics I](lectures/lecture5.md)** -- *09/02/2023 08h00-10h00*
-* **Lab** -- *9/02/2023 10h00-12h00*
-* **Lecture 6: [Audio Processing Basics II](lectures/lecture6.md)** -- *10/02/2023 08h00-10h00*
-* **Lecture 7: Introduction to Faust (Yann Orlarey)** -- *10/02/2023 10h00-12h00*
-* **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/lecture8.md)** -- *10/02/2023 14h00-16h00*
-* **Final Projects Brainstorm** -- *10/02/2023 16h00-18h00*
-* **Final Projects Kickoff** -- *20/02/2023 08h00-10h00*
-* **Independent work on Projects** -- *20/02/2023 - 01/03/2023*
+* **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/lecture1.md)** -- *06/02/2024 14h00-16h00*
+* **Lecture 2: [Audio Signal Processing Fundamentals](lectures/lecture2.md)** -- *07/02/2024 08h00-10h00*
+* **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/lecture3.md)** -- *07/02/2024 10h00-12h00*
+* **Lab** -- *08/02/2024 08h00-10h00*
+* **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/lecture4.md)** -- *08/02/2024 10h00-12h00*
+* **Lecture 5: [Audio Processing Basics I](lectures/lecture5.md)** -- *09/02/2024 08h00-10h00*
+* **Lab** -- *9/02/2024 10h00-12h00*
+* **Lecture 6: [Audio Processing Basics II](lectures/lecture6.md)** -- *09/02/2024 14h00-16h00*
+* **Lecture 7: Introduction to Faust (Yann Orlarey)** -- *09/02/2024 16h00-18h00*
+* **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/lecture8.md)** -- *12/02/2024 08h00-10h00*
+* **Independent work on Projects** -- *12/02/2024 - 22/02/2024*
 
 | | G1 | G2 | G3 | G4 |
 |---|---|---|---|---|
-| **TP1** | 21/02/2023 -- 14h00-18h00 -- TP Info D | 21/02/2023 -- 14h00-18h00 -- TP Info E | 20/02/2023 -- 14h00-18h00 -- TP Info D | 20/02/2023 -- 14h00-18h00 -- TP Info E |
-| **TP2** | 22/02/2023 -- 08h00-12h00 -- TP Info C | 22/02/2023 -- 08h00-12h00 -- TP Info E | 22/02/2023 -- 08h00-12h00 -- TP Info D | 22/02/2023 -- 08h00-12h00 -- TP Info B |
-| **TP3** | 22/02/2023 -- 14h00-18h00 -- TP Info E | 22/02/2023 -- 14h00-18h00 -- TP Info D | 22/02/2023 -- 14h00-18h00 -- TP Info C | 22/02/2023 -- 14h00-18h00 -- TP Info B |
-| **TP4** | 23/02/2023 -- 08h00-12h00 -- TP Info C | 23/02/2023 -- 08h00-12h00 -- TP Info D | 23/02/2023 -- 08h00-12h00 -- TP Info E | 23/02/2023 -- 08h00-12h00 -- TP Info B |
-| **TP5** | 24/02/2023 -- 08h00-12h00 -- TP Info E | 24/02/2023 -- 08h00-12h00 -- TP Info B | 24/02/2023 -- 08h00-12h00 -- TP Info C | 24/02/2023 -- 08h00-12h00 -- TP Info D |
-| **TP6** | 24/02/2023 -- 14h00-18h00 -- TP Info D | 24/02/2023 -- 14h00-18h00 -- TP Info E | 24/02/2023 -- 14h00-18h00 -- TP Info B | 24/02/2023 -- 14h00-18h00 -- TP Info C |
-| **TP7** | 28/02/2023 -- 14h00-18h00 -- TP Info D | 28/02/2023 -- 14h00-18h00 -- TP Info C | 27/02/2023 -- 14h00-18h00 -- ?? | 27/02/2023 -- 14h00-18h00 -- ?? |
-| **TP8** | 01/03/2023 -- 08h00-12h00 -- TP Info C | 01/03/2023 -- 08h00-12h00 -- TP Info D | 01/03/2023 -- 08h00-12h00 -- TP Info E | 01/03/2023 -- 08h00-12h00 -- TP Info B |
+| **TP1** | 12/02/2024 -- 14h00-18h00 -- TP Info C | 12/02/2024 -- 14h00-18h00 -- TP Info D | 12/02/2024 -- 14h00-18h00 -- TP Info E | 12/02/2024 -- 14h00-18h00 -- TP Info B |
+| **TP2** | 14/02/2024 -- 08h00-12h00 -- TP Info E | 14/02/2024 -- 08h00-12h00 -- TP Info D | 14/02/2024 -- 08h00-12h00 -- TP Info C | 14/02/2024 -- 08h00-12h00 -- TP Info B |
+| **TP3** | 14/02/2024 -- 14h00-18h00 -- TP Info B | 14/02/2024 -- 14h00-18h00 -- TP Info C | 14/02/2024 -- 14h00-18h00 -- TP Info D | 14/02/2024 -- 14h00-18h00 -- TP Info E |
+| **TP4** | 15/02/2024 -- 08h00-12h00 -- TP Info C | 15/02/2024 -- 08h00-12h00 -- TP Info C | 15/02/2024 -- 08h00-12h00 -- TP Info E | 15/02/2024 -- 08h00-12h00 -- TP Info D |
+| **TP5** | 16/02/2024 -- 08h00-10h00 -- TP Info D | 16/02/2024 -- 08h00-10h00 -- TP Info E | 16/02/2024 -- 10h00-12h00 -- TP Info B | 16/02/2024 -- 10h00-12h00 -- TP Info C |
+| **TP6** | 16/02/2024 -- 14h00-18h00 -- TP Info D | 16/02/2024 -- 14h00-18h00 -- TP Info E | 16/02/2024 -- 14h00-18h00 -- TP Info B | 16/02/2024 -- 14h00-18h00 -- TP Info C |
+| **MLS** | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE |
+| **TP7** | 19/02/2024 -- 14h00-18h00 -- TP Info C | 19/02/2024 -- 14h00-18h00 -- TP Info D | 19/02/2024 -- 14h00-18h00 -- TP Info E | 19/02/2024 -- 14h00-18h00 -- TP Info B |
+| **TP8** | 21/02/2024 -- 08h00-12h00 -- TP Info B | 21/02/2024 -- 08h00-12h00 -- TP Info E | 21/02/2024 -- 08h00-12h00 -- TP Info C | 21/02/2024 -- 08h00-12h00 -- TP Info D |
 
-* **Final Presentations** -- *03/03/2023 (All Day)*
+* **Final Presentations (G1 + G2)** -- *21/02/2024 14h00-18h00*
+* **Final Presentations (G3 + G4)** -- *22/02/2024 08h00-12h00*
+* **Kits Return and Final Feedback** -- *23/02/2024 10h00-12h00*
 
 

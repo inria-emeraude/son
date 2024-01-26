@@ -12,13 +12,10 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../../extra.css" rel="stylesheet">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -192,7 +189,7 @@
 <p>The audio codec connects to Teensy using 7 signals (Yellow signal in pin map above) which are used by two protocols: I2C and I2S. This is a traditional configuration for audio codecs: the I2C (or I²C: Inter-Integrated Circuit) protocol is used to configure the codec (i.e., sample rate, input and output pins, etc.) and the I2S (or I²S: Inter-IC Sound) is used to transfer samples bit by bit in both direction (i.e., from and to the teensy). The I2C pins SDA and SCL are used to control the chip and adjust parameters. Audio data uses I2S signals, TX (to headphones and/or line out) and RX (from line in or mic), and 3 clocks, LRCLK (44.1 kHz), BCLK (1.41 MHz) and MCLK (11.29 MHz). All 3 clocks are created by Teensy which means that the SGTL5000 operates in "slave mode."</p>
 <p>The schematics of the audio shield board, rev. D,  can bee seen <a href="https://www.pjrc.com/store/teensy3_audio.html">here</a> and the schematic of the Teensy 4.0 can be seen at the end of this page: <a href="https://www.pjrc.com/store/teensy40.html">https://www.pjrc.com/store/teensy40.html</a>. Of course, as they are both made by PJRC, they are designed to be compatible.</p>
 <p>The USB connector of the Teensy can support many serial communication from the host computer to the Teensy: (i.e., JTAG for flashing/programming, Serial UART, midi, mouse, etc. see <code>Tools -&gt; USB Type</code> menu in arduino IDE). In this course, the USB connector is used to program the device (i.e., download binary code into flash memory) and ascii communication between the host and the Teensy (i.e., using UART/Serial communicatino protocol). In linux machines, when the teensy USB cable is connected, the serial port will appear as <code>/dev/ttyACM0</code>.</p>
-<p>The Teensy 4.0 has 2 Mbyte of flash memory intended for storing your code. 1Mbyte of memory is available for execution (i.e., for variables and data storing during execution). Half of this memory (RAM1) is accessed as tightly coupled memory for maximum performance. The other half (RAM2) is optimized for access by DMA. Normally large arrays &amp; data buffers are placed in RAM2, to save the ultra-fast RAM1 for normal variables. The mapping of variables to memories is indicated at the variables declaration by compiler directive (such as <code>DMAMEM</code> for variable in RAM2 or <code>FASTRUN</code> for variable in RAM1, see <a href="https://www.pjrc.com/store/teensy40.html">here</a>.</p>
+<p>The Teensy 4.0 has 2 Mbyte of flash memory intended for storing your code. 1Mbyte of memory is available for execution (i.e., for variables and data storing during execution). Half of this memory (RAM1) is accessed as tightly coupled memory for maximum performance. The other half (RAM2) is optimized for access by DMA. Normally large arrays &amp; data buffers are placed in RAM2, to save the ultra-fast RAM1 for normal variables. The mapping of variables to memories is indicated at the variables declaration by compiler directive (such as <code>DMAMEM</code> for variable in RAM2 or <code>FASTRUN</code> for variable in RAM1, see <a href="https://www.pjrc.com/store/teensy40.html">here</a>).</p>
 <h2 id="the-teensy-development-framework-teensyduino">The Teensy Development Framework: <code>teensyduino</code></h2>
 <p>The Teensy can be programmed in many ways:</p>
 <ul>
@@ -233,13 +230,15 @@ void loop() {
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

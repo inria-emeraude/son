@@ -12,13 +12,10 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../../extra.css" rel="stylesheet">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -295,7 +292,7 @@ void loop() {
 </code></pre>
 <p>(Assuming that a <code>setGain</code> method has been implemented, which is not the case in the previous example. It shouldn't be too hard though ;) )</p>
 <h3 id="exercise-looping-between-notes-by-pressing-a-button">Exercise: Looping Between Notes by Pressing a Button</h3>
-<p>Expand the "note looper" that <a href="lecture3.md/#looping-through-a-small-tune">you implemented as part of lecture 3</a> so that new notes are triggered when a button is pressed (as opposed to be triggered automatically). Every time the button is pressed, a new note is produced. This means that you'll have to turn your push button into a switch using software techniques... Finally, make sure that gain is controllable using a rotary potentiometer.</p>
+<p>Expand the "note looper" that <a href="../lecture3/#looping-through-a-small-tune">you implemented as part of lecture 3</a> so that new notes are triggered when a button is pressed (as opposed to be triggered automatically). Every time the button is pressed, a new note is produced. This means that you'll have to turn your push button into a switch using software techniques... Finally, make sure that gain is controllable using a rotary potentiometer.</p>
 <p><strong>Solution:</strong></p>
 <p>Posted after class...</p>
 <!--
@@ -396,13 +393,15 @@ audioShield.enable();
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
