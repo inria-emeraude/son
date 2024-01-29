@@ -30,7 +30,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 
 ## Requirements
 
-* Installing Teensyduino as explained in [Lecture 1](lectures/lecture1).
+* Installing Teensyduino as explained in [Lecture 1](lectures/lecture1.md).
 
 ## Course Overview
 
@@ -39,10 +39,10 @@ Students are provided with plenty of fully-operational starter code/projects so 
 * **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/lecture3.md)** -- *07/02/2024 10h00-12h00*
 * **Lab** -- *08/02/2024 08h00-10h00*
 * **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/lecture4.md)** -- *08/02/2024 10h00-12h00*
-* **Lecture 5: [Audio Processing Basics I](lectures/lecture5.md)** -- *09/02/2024 08h00-10h00*
-* **Lab** -- *9/02/2024 10h00-12h00*
-* **Lecture 6: [Audio Processing Basics II](lectures/lecture6.md)** -- *09/02/2024 14h00-16h00*
-* **Lecture 7: Introduction to Faust (Yann Orlarey)** -- *09/02/2024 16h00-18h00*
+* **Lecture 5: Introduction to Faust (Yann Orlarey)** -- *09/02/2024 08h00-10h00*
+* **Lecture 6: [Audio Processing Basics I](lectures/lecture6.md)** -- *9/02/2024 10h00-12h00*
+* **Lab** -- *09/02/2024 14h00-16h00*
+* **Lecture 7: [Audio Processing Basics II](lectures/lecture7.md)** -- *09/02/2024 16h00-18h00*
 * **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/lecture8.md)** -- *12/02/2024 08h00-10h00*
 * **Independent work on Projects** -- *12/02/2024 - 22/02/2024*
 

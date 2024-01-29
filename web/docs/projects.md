@@ -41,15 +41,15 @@ Pitch-Shifting consists in transposing (up or down) the sound of an input source
 
 ### Hearing Aid
 
-At the most fundamental level, hearing aids just implement a bunch of equalization filters (see [Peak Equalizers](../lectures/lecture6#peak-equalizers)) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.
+At the most fundamental level, hearing aids just implement a bunch of equalization filters (see [Peak Equalizers](../lectures/lecture7#peak-equalizers)) increasing the volume of some bands in the spectrum of a sound (the ones that an individual can't hear well anymore). The goal of this project is to implement an hearing aid prototype based on the Teensy. If time allows it, you should try to measure the audiogram of someone with hearing loss to test your system in a real-world context.
 
 ### Cochlear Implant Simulator
 
-Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](../lectures/lecture6#making-resonant-lowpass-bandpass-and-highpass).
+Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](../lectures/lecture7#making-resonant-lowpass-bandpass-and-highpass).
 
 ### Noise Reduction Headset
 
-The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](../lectures/lecture6#making-resonant-lowpass-bandpass-and-highpass) might be useful.
+The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](../lectures/lecture7#making-resonant-lowpass-bandpass-and-highpass) might be useful.
 
 ### Sonification System
 

@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://inria-emeraude.github.io/son/lectures/lecture7/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title> 7: Introduction to Faust  - SON @ INSA Lyon</title>
+        <title> 7: Audio Processing Basics II  - SON @ INSA Lyon</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -55,15 +55,15 @@
 </li>
                                     
 <li>
-    <a href="../lecture5/" class="dropdown-item"> 5: Audio Processing Basics I </a>
+    <a href="../lecture5/" class="dropdown-item"> 5: Introduction to Faust </a>
 </li>
                                     
 <li>
-    <a href="../lecture6/" class="dropdown-item"> 6: Audio Processing Basics II </a>
+    <a href="../lecture6/" class="dropdown-item"> 6: Audio Processing Basics I </a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active"> 7: Introduction to Faust </a>
+    <a href="./" class="dropdown-item active"> 7: Audio Processing Basics II </a>
 </li>
                                     
 <li>
@@ -113,8 +113,40 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lecture-7-introduction-to-faust" class="nav-link">Lecture 7: Introduction to Faust</a>
+            <li class="nav-item" data-level="1"><a href="#lecture-7-audio-processing-basics-ii" class="nav-link">Lecture 7: Audio Processing Basics II</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#harmonic-distortion-rock-on" class="nav-link">Harmonic Distortion: Rock On!</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#echo" class="nav-link">Echo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#comb" class="nav-link">Comb</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#physical-modeling-the-simple-case-of-the-karplus-strong" class="nav-link">Physical Modeling: the Simple Case of the Karplus Strong</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#exercises" class="nav-link">Exercises</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#making-resonant-lowpass-bandpass-and-highpass" class="nav-link">Making Resonant Lowpass, Bandpass and Highpass</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#peak-equalizers" class="nav-link">Peak Equalizers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#browsing-through-the-teensy-audio-library-examples" class="nav-link">Browsing Through the Teensy Audio Library Examples</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -122,8 +154,190 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lecture-7-introduction-to-faust">Lecture 7: Introduction to Faust</h1>
-<p><a href="misc/slides-orlarey.pdf">Slides du cours</a></p></div>
+<h1 id="lecture-7-audio-processing-basics-ii">Lecture 7: Audio Processing Basics II</h1>
+<h2 id="harmonic-distortion-rock-on">Harmonic Distortion: Rock On!</h2>
+<p>Distortion is one of the most common electric guitar effect. It consists of over driving a signal by increasing its gain to "square" the extremities of its waveform. This results in the creation of lots of harmonics, producing very "rich" sounds. Overdrive is easily achievable with an analog electronic circuit and "sharp edges" in the waveform are rounded thanks to the tolerance of the electronic components. In the digital world, things are slightly more complicated since clipping will happen resulting in a very dirty sound with potentially lots of aliasing. One way to solve this problem is to use a "cubic function" which will round the edges of the signal above a certain amplitude:</p>
+<p>
+<script type="math/tex; mode=display">
+f(x) = 
+\begin{cases}
+\frac{-2}{3}, \; \; x \leq -1\\
+x - \frac{x^3}{3}, \; \; -1 < x < 1\\
+\frac{2}{3}, \; \; x \geq -1
+\end{cases}
+</script>
+</p>
+<p><a href="https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Distortion.cpp"><code>Distortion.cpp</code></a> implements a cubic distortion as:</p>
+<pre><code>float Distortion::cubic(float x){
+  return x - x*x*x/3;
+}
+
+float Distortion::tick(float input){
+  float output = input*pow(10.0,2*drive) + offset;
+  output = fmax(-1,fmin(1,output));
+  output = cubic(output);
+  return output*gain;
+}
+</code></pre>
+<p>The range of <code>drive</code> is {0;1} which means that the value of <code>input</code> can be multiplied by a number as great as 100 here. <code>offset</code> is a common parameter which just adds a positive or negative DC offset to the signal. If this parameter is used, it is recommended to add a DC blocking filter after the distortion. </p>
+<p>Distortion is created here by clipping the signal using the <code>fmin</code> and <code>fmax</code> functions. Finally, the cubic polynomial is used to round the edges of the waveform of the signal as explained above. </p>
+<p>The <a href="https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/distortion"><code>distortion</code></a> example program for the Teensy demonstrates the use of <code>Distortion.cpp</code>.</p>
+<p>Distortion is a very trendy field of research in audio technology these days especially using "virtual analog" algorithms which consists of modeling the electronic circuit of distortion on a computer.</p>
+<h2 id="echo">Echo</h2>
+<p>An echo is a very common audio effect which is used a lot to add some density and depth to a sound. It is based on a feedback loop and a delay and can be expressed as:</p>
+<p>
+<script type="math/tex; mode=display">y(n) = x(n) + g.y(n - M)</script>
+</p>
+<p>where <script type="math/tex">g</script> is the feedback between 0 and 1 and <script type="math/tex">M</script> the delay as a number of samples.</p>
+<p>It can be seen as a simple physical model of what happens in the real world when echo is produced: the delay represents the time it takes for an acoustical wave to go from point A to point B at the speed of sound and <script type="math/tex">g</script> can control the amount of absorption created by the air and the reflecting material.</p>
+<p><a href="https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Echo.cpp"><code>Echo.cpp</code></a> implements an echo as:</p>
+<pre><code>float Echo::tick(float input){
+  float output = input + delBuffer[readIndex]*feedback;
+  delBuffer[writeIndex] = output;
+  readIndex = (readIndex+1)%del;
+  writeIndex = (writeIndex+1)%del;
+  return output;
+}
+</code></pre>
+<p>Here, <code>delBuffer</code> is used as a "ring buffer": incoming samples are stored and the read and write indices loop around to buffer to write incoming samples and read previous ones. Note that memory is allocated in the constructor of the class for <code>delBuffer</code> based on the value of <code>maxDel</code>, the maximum size of the delay.</p>
+<p>The <a href="https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/echo"><code>echo</code></a> example program for the Teensy demonstrates the use of <code>Echo.cpp</code>.</p>
+<h2 id="comb">Comb</h2>
+<p>A comb filter is a filter whose frequency response looks like a "comb." Comb filters can be implemented with feed-forward filters (Finite Impulse Response -- FIR) or feedback filters (Infinite Impulse Response -- IIR). In fact, the <a href="#echo">Echo</a> algorithm can be used as a comb filter if the delay is very short:</p>
+<p>
+<script type="math/tex; mode=display">y(n) = x(n)-g.y(n-M)</script>
+</p>
+<p>where <script type="math/tex">M</script> is the length of the delay and <script type="math/tex">g</script> feedback coefficient. </p>
+<p><a href="https://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filter_Amplitude.html">Julius Smith's website</a> presents the frequency response of such filter and the mathematical rationals behind it. </p>
+<p>From an acoustical standpoint, a feedback comb filter will introduce resonances at specific point in the spectrum of the sound. The position and the spacing of these resonances is determined by the value of <script type="math/tex">M</script>. <script type="math/tex">g</script>, on the other hand, will determine the amplitude and sharpness of these resonances. </p>
+<p>The <a href="https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/comb"><code>comb</code></a> example program for the Teensy demonstrates the use of <code>Echo.cpp</code> as a comb filter. The "Mode" button can be used to change the value of the delay.</p>
+<h2 id="physical-modeling-the-simple-case-of-the-karplus-strong">Physical Modeling: the Simple Case of the Karplus Strong</h2>
+<p>Physical modeling is one of the most advanced sound synthesis technique and a very active field of research. It consists of using physics/mathematical models of musical instruments or vibrating structures to synthesize sound. Various physical modeling techniques are used in the field of audio synthesis:</p>
+<ul>
+<li>Mass/Interaction (MI),</li>
+<li>Finite Difference Scheme (FDS),</li>
+<li>Signal models (e.g., waveguides, modal systems, etc.). </li>
+</ul>
+<p>While MI and FDS model the vibrational behavior of a system (i.e., using partial differential equation in the case of FDS), signal models model an object as a combination of signal processors. In this section, we will only look at this type of model the other ones being out of the scope of this class.</p>
+<p>An extremely primitive string model can be implemented using a delay line and a loop. The delay line models the time it takes for vibration in the string to go from one extremity to the other, and the loop models the reflections at the boundaries of the string. In other words, we can literally just reuse the echo algorithm for this. This primitive string model is called the "Karplus-Strong" algorithm:</p>
+<figure>
+<img src="img/karplus.svg" class="mx-auto d-block" width="60%">
+<figcaption><center>Karplus-Strong Algorithm (Source: <a href="https://en.wikipedia.org/wiki/Karplus%E2%80%93Strong_string_synthesis#/media/File:Karplus-strong-schematic.svg">Wikipedia</a>)</center></figcaption>
+</figure>
+
+<p>The Karplus-Strong algorithm is typically implemented as:</p>
+<p>
+<script type="math/tex; mode=display">y(n) = x(n) + \alpha\frac{y(n-L) + y(n-L-1)}{2}</script>
+</p>
+<p>where:</p>
+<ul>
+<li>
+<script type="math/tex">x(n)</script> is the input signal (typically an dirac or a noise burst),</li>
+<li>
+<script type="math/tex">\alpha</script> is the feedback coefficient (or dispersion coefficient, in that case),</li>
+<li>
+<script type="math/tex">L</script> is the length of the delay and hence, the length of the string.</li>
+</ul>
+<p>
+<script type="math/tex">\frac{y(n-L) + y(n-L-1)}{2}</script> can be seen as a one zero filter implementing a lowpass. It models the fact that high frequencies are absorbed faster than low frequencies at the extremities of a string. </p>
+<p>The length of the delay <script type="math/tex">L</script> can be controlled as a frequency using the following formula: <script type="math/tex">L = fs/f</script> where <script type="math/tex">f</script> is the desired frequency.</p>
+<p>At the very least, the system must be excited by a dirac (i.e., a simple impulse going from 1 to 0). The quality of the generated sound can be significantly improved if a noise impulse is used though. </p>
+<p><a href="https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/KS.cpp"><code>KS.cpp</code></a> implements a basic Karplus-Strong algorithm:</p>
+<pre><code>float KS::tick(){
+  float excitation;
+  if(trig){
+    excitation = 1.0;
+    trig = false;
+  }
+  else{
+    excitation = 0.0;
+  }
+  float output = excitation + oneZero(delBuffer[readIndex])*feedback;
+  delBuffer[writeIndex] = output;
+  readIndex = (readIndex+1)%del;
+  writeIndex = (writeIndex+1)%del;
+  return output;
+}
+</code></pre>
+<p>with:</p>
+<pre><code>float KS::oneZero(float x){
+  float output = (x + zeroDel)*0.5; 
+  zeroDel = output;
+  return output;
+}
+</code></pre>
+<p>The examples folder of the course repository hosts <a href="https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/ks">a simple Teensy program</a> illustrating the use of <code>KS.cpp</code>.</p>
+<p>Note that this algorithm could be improved in many ways. In particular, the fact that the delay length is currently expressed as an integer can result in frequency mismatches at high frequencies. In other words, our current string is out of tune. This could be fixed using <a href="https://ccrma.stanford.edu/~jos/Interpolation/Welcome.html">fractional delay</a>.</p>
+<p>In practice, the Karplus-Strong algorithm is not a physical model per se and is just a simplification of the <a href="https://ccrma.stanford.edu/~jos/pasp/Digital_Waveguide_Models.html">ideal string wave equation</a>. More advanced signal models can be implemented using waveguides.</p>
+<p>Waveguide physical modeling has been extensively used in modern synthesizers to synthesize the sound of acoustic instruments. Julius O. Smith (Stanford professor) is the father of waveguide physical modeling. </p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="making-resonant-lowpass-bandpass-and-highpass">Making Resonant Lowpass, Bandpass and Highpass</h3>
+<p>This short tutorial demonstrates how to implement a series of filters that can be configured as resonant lowpass, bandpass, and highpasses.</p>
+<p>For this, you will first need to implement a biquad filter: <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a> (direct form 2 is preferred). You will then have to format the coefficients of that filter using the <a href="https://en.wikipedia.org/wiki/Bilinear_transform">bilinear transform</a> such that:</p>
+<pre><code>tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
+with {
+  c   = 1/tan(w1*0.5/SR);
+  csq = c*c;
+  d   = a0 + a1 * c + csq;
+  b0d = (b0 + b1 * c + b2 * csq)/d;
+  b1d = 2 * (b0 - b2 * csq)/d;
+  b2d = (b0 - b1 * c + b2 * csq)/d;
+  a1d = 2 * (a0 - csq)/d;
+  a2d = (a0 - a1*c + csq)/d;
+};
+</code></pre>
+<p>where <code>tf2</code> is a direct form 2 biquad and SR the sampling rate.</p>
+<p>Finally, you'll have to format the coefficients of the <code>tf2s</code> filter such that:</p>
+<pre><code>resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+with {
+     wc = 2*PI*fc;
+     a1 = 1/Q;
+     a0 = 1;
+     b2 = 0;
+     b1 = 0;
+     b0 = gain;
+};
+</code></pre>
+<p>(for the resonant lowpass)</p>
+<pre><code>resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+with {
+     wc = 2*PI*fc;
+     a1 = 1/Q;
+     a0 = 1;
+     b2 = 0;
+     b1 = gain;
+     b0 = 0;
+};
+</code></pre>
+<p>(for the resonant bandpass)</p>
+<pre><code>resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
+</code></pre>
+<p>(for the resonant highpass).</p>
+<p>Please, note that Q controls the bandwidth of the filter such that: <code>Q = fc/BW</code>.</p>
+<p>Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).</p>
+<p>Test your filter by changing dynamically the cutoff frequency of the filter using a potentiometer, for example.</p>
+<h3 id="peak-equalizers">Peak Equalizers</h3>
+<p>Peak equalizers are yet another kind of filters allowing to reduce or increase some bands in the spectrum of a sound. A peak equalizer can take the following form:</p>
+<pre><code>peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
+  T = 1.0/SR;
+  Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
+  a1 = PI*Bw;
+  b1 = g*a1;
+  g = db2linear(abs(Lfx));
+  if(Lfx&gt;0) {
+    b1s = b1;
+    a1s = a1;
+  }
+  else {
+    b1s = a1;
+    a1s = b1;
+  }
+  wx = 2*PI*fx;
+};
+</code></pre>
+<p>where the definition of <code>tf2s</code> (direct-form 2 biquadratic filter operating the bilinear transform) can be found in <a href="#towards-resonant-filters">Towards Resonant Filter</a>. <code>Lfx</code> controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). <code>fx</code> is the center frequency, <code>B</code> the bandwidth in Hz.</p>
+<p>Implement this filter and test it the same way as you did for the resonant lowpass/bandpass/highpass.</p>
+<h3 id="browsing-through-the-teensy-audio-library-examples">Browsing Through the Teensy Audio Library Examples</h3>
+<p>The Teensy audio library comes with a series of example programs which are pre-installed with Teensyduino in <code>File/Examples/Teensy/Audio</code> (in the Teensyduino interface). Browse through the examples to get a sense of what;s out there.</p></div>
             </div>
         </div>
 
