@@ -54,7 +54,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 | **TP4** | 15/02/2024 -- 08h00-12h00 -- TP Info C | 15/02/2024 -- 08h00-12h00 -- TP Info C | 15/02/2024 -- 08h00-12h00 -- TP Info E | 15/02/2024 -- 08h00-12h00 -- TP Info D |
 | **MLS** | 16/02/2024 -- 08h00-10h00 -- TP Info D | 16/02/2024 -- 08h00-10h00 -- TP Info E | 16/02/2024 -- 10h00-12h00 -- TP Info B | 16/02/2024 -- 10h00-12h00 -- TP Info C |
 | **TP5** | 16/02/2024 -- 14h00-18h00 -- TP Info D | 16/02/2024 -- 14h00-18h00 -- TP Info E | 16/02/2024 -- 14h00-18h00 -- TP Info B | 16/02/2024 -- 14h00-18h00 -- TP Info C |
-| **ML6** | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE |
+| **TP6** | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE | 19/02/2024 -- 08h00-10h00 -- CHAPPE |
 | **TP7** | 19/02/2024 -- 14h00-18h00 -- TP Info C | 19/02/2024 -- 14h00-18h00 -- TP Info D | 19/02/2024 -- 14h00-18h00 -- TP Info E | 19/02/2024 -- 14h00-18h00 -- TP Info B |
 | **TP8** | 21/02/2024 -- 08h00-12h00 -- TP Info B | 21/02/2024 -- 08h00-12h00 -- TP Info E | 21/02/2024 -- 08h00-12h00 -- TP Info C | 21/02/2024 -- 08h00-12h00 -- TP Info D |
 
