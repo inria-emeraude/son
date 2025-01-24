@@ -73,17 +73,13 @@ In this course, we will be using the [Arduino IDE with Teensyduino](https://www.
 
 ### Installing `teensyduino`
 
-`Teensyduino` can be installed on Macintosh, Linux or Windows systems. We recommend that you install it on your own machine, however it is also installed on TC machines.
+`Teensyduino` can be installed on Macintosh, Linux or Windows systems. 
 
 The installation procedure can be found on the PJRC website (note that it slightly varies between platforms): <https://www.pjrc.com/teensy/td_download.html>
 
 After this, clone the SON GitHub repository: <https://github.com/inria-emeraude/son>
 
 Finally, copy the `examples/teensy/libraries/mydsp` (which contains a basic audio DSP library prepared for this course) folder from the course repo in `$ARDUINOPATH/libraries`
-
-### Getting Started on TC Machines
-
-Arduino is installed in `/opt/arduino-1.8.19` on TC machines. Launching Arduino is done simply by typing the command `arduino` in a command line shell. However, the `mydsp` library must be made available to the Arduino software. For that, you have to select a directory for additional Arduino library, for instance `/home/mylogin/Arduino` and indicate it to arduino by writing the directory path in `file->preference->sketchbook location`. Then copy the `mydsp` directory in the `/home/mylogin/Arduino` folder.
 
 ### Hello World
 

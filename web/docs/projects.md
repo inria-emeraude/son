@@ -47,10 +47,6 @@ At the most fundamental level, hearing aids just implement a bunch of equalizati
 
 Cochlear implants (<https://en.wikipedia.org/wiki/Cochlear_implant>) allow many people who were condemned to be deaf their entire life to now hear some sound and even speech if they're well trained. This paper: <https://embaudio.grame.fr/cochlear.pdf> describes precisely how a cochlear implant simulator can be implemented using DSP. The goal of this project is to create a sound processing box simulating the sound of a cochlear implant. For that, you will probably need some of the filters described [here](../lectures/lecture7#making-resonant-lowpass-bandpass-and-highpass).
 
-### Noise Reduction Headset
-
-The goal of this project is to implement a headset processing surrounding sound in real-time to improve intelligibility in loud industrial environments. Say you're working in a factory and one of your colleagues is talking to you even though a machine next to you is making a lot of sound, how do you process the input to enhance the intelligibility of your colleague? Some of the filters described [here](../lectures/lecture7#making-resonant-lowpass-bandpass-and-highpass) might be useful.
-
 ### Sonification System
 
 Data sonification is a trending method for analyzing data in real-time. The brain stethoscope (<https://youtu.be/pnGzVW_7cfM>) is a good example of that. Choose a sensor technology and develop a sonification technology around it.

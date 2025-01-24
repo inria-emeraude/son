@@ -126,10 +126,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="3"><a href="#getting-started-on-tc-machines" class="nav-link">Getting Started on TC Machines</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             <li class="nav-item" data-bs-level="3"><a href="#hello-world" class="nav-link">Hello World</a>
               <ul class="nav flex-column">
               </ul>
@@ -204,12 +200,10 @@
 </ul>
 <p>In this course, we will be using the <a href="https://www.pjrc.com/teensy/td_download.html">Arduino IDE with Teensyduino</a> (but feel free to use any environment). In general, programming the Teensy amounts to compile an application to an executable (<code>main.elf</code> usually) and then download the application on the Teensy which is connected through its USB interface to your PC.</p>
 <h3 id="installing-teensyduino">Installing <code>teensyduino</code></h3>
-<p><code>Teensyduino</code> can be installed on Macintosh, Linux or Windows systems. We recommend that you install it on your own machine, however it is also installed on TC machines.</p>
+<p><code>Teensyduino</code> can be installed on Macintosh, Linux or Windows systems. </p>
 <p>The installation procedure can be found on the PJRC website (note that it slightly varies between platforms): <a href="https://www.pjrc.com/teensy/td_download.html">https://www.pjrc.com/teensy/td_download.html</a></p>
 <p>After this, clone the SON GitHub repository: <a href="https://github.com/inria-emeraude/son">https://github.com/inria-emeraude/son</a></p>
 <p>Finally, copy the <code>examples/teensy/libraries/mydsp</code> (which contains a basic audio DSP library prepared for this course) folder from the course repo in <code>$ARDUINOPATH/libraries</code></p>
-<h3 id="getting-started-on-tc-machines">Getting Started on TC Machines</h3>
-<p>Arduino is installed in <code>/opt/arduino-1.8.19</code> on TC machines. Launching Arduino is done simply by typing the command <code>arduino</code> in a command line shell. However, the <code>mydsp</code> library must be made available to the Arduino software. For that, you have to select a directory for additional Arduino library, for instance <code>/home/mylogin/Arduino</code> and indicate it to arduino by writing the directory path in <code>file-&gt;preference-&gt;sketchbook location</code>. Then copy the <code>mydsp</code> directory in the <code>/home/mylogin/Arduino</code> folder.</p>
 <h3 id="hello-world">Hello World</h3>
 <p>Write the following program in the programming interface:</p>
 <pre><code>void setup() {

@@ -46,7 +46,7 @@ Embedded systems such as the Teensy can achieve much lower latencies than regula
 
 ## First Audio Program on the Teensy: `crazy-sine`
 
-The [course repository](https://github.com/grame-cncm/embaudio) hosts an example containing a program synthesizing a sine wave on the Teensy and controlling its frequency: [crazy-sine](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-sine). This program contains all the building blocks of a real-time audio program including... the audio callback which can be found in [`AudioDsp.cpp`](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-sine/MyDsp.cpp)! The audio callback is implemented in this class in the `update` method and take the following shape:
+The [course repository](https://github.com/inria-emeraude/son) hosts an example containing a program synthesizing a sine wave on the Teensy and controlling its frequency: [crazy-sine](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine). This program contains all the building blocks of a real-time audio program including... the audio callback which can be found in [`AudioDsp.cpp`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine/MyDsp.cpp)! The audio callback is implemented in this class in the `update` method and take the following shape:
 
 ```
 #define MULT_16 32767
@@ -69,7 +69,7 @@ void MyDsp::update(void) {
 }
 ```
 
-The `update` method is called every time a new audio buffer is needed by the system. A new audio buffer `audioBlock` containing `AUDIO_OUTPUTS` channels is first created. For every audio channel, memory is allocated and a full block of samples is computed. Individual samples resulting from computing a sine wave through an echo (`echo` and `sine` are defined in the [`lib` folder](https://github.com/grame-cncm/embaudio20/tree/master/examples/lib) and implement an echo and a sine wave oscillator, respectively) are stored in `currentSample`. `currentSample` is a floating point number whose range is {-1;1}. This is a standard in the world of digital audio, hence, a signal actually ranging between {-1;1} will correspond to the "loudest" sound that can be played on a given system. `max(-1,min(1,currentSample));` ensures that `currentSample` doesn't exceed this range.
+The `update` method is called every time a new audio buffer is needed by the system. A new audio buffer `audioBlock` containing `AUDIO_OUTPUTS` channels is first created. For every audio channel, memory is allocated and a full block of samples is computed. Individual samples resulting from computing a sine wave through an echo (`echo` and `sine` are defined in the [`libraries` folder](https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src) and implement an echo and a sine wave oscillator, respectively) are stored in `currentSample`. `currentSample` is a floating point number whose range is {-1;1}. This is a standard in the world of digital audio, hence, a signal actually ranging between {-1;1} will correspond to the "loudest" sound that can be played on a given system. `max(-1,min(1,currentSample));` ensures that `currentSample` doesn't exceed this range.
 
 `AUDIO_BLOCK_SAMPLES` corresponds to the block size (256 samples by default on the Teensy, but this value can potentially be adjusted). The values contained in `currentSample` (between -1 and 1) must be converted to 16 bits signed integers (to ensure compatibility with the rest of the Teensy audio library). For that, we just have to multiply `currentSample` by \(2^{16-1}\) (if we were looking at unsigned integers, which can happen on some system, we would multiply `currentSample` by \(2^{16}\)).
 
@@ -101,7 +101,7 @@ float currentSample = A*std::sin(2*PI*f*t);
 
 however sine oscillators are rarely implemented as such since calling the `std::sin` function at every sample can be quite computationally expensive. For that reason, it is better to pre-compute the sine wave and store it in a wave table before computation starts. That kind of algorithm is then called a "wave table oscillator."
 
-[Sine.cpp](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Sine.cpp), which is used in `crazy-sine` is a good example of that. It uses [SineTable.cpp](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/SineTable.cpp) which pre-computes a sine table:
+[Sine.cpp](https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/Sine.cpp), which is used in `crazy-sine` is a good example of that. It uses [SineTable.cpp](https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/SineTable.cpp) which pre-computes a sine table:
 
 ```
 table = new float[size];
@@ -158,6 +158,7 @@ Write a small tune/song looping through at least 5 notes and play it with the `c
 
 **Hint:** For that, you'll probably have to replace the `myDsp.setFreq(random(50,1000));` line of of `crazy-sine.ino` by something else.
 
+<!--
 **Solution:**
 
 In `crazy-sine.ino`:
@@ -191,6 +192,7 @@ void loop() {
   delay(500);
 }
 ```
+-->
 
 ### Basic Additive Synthesis
 
@@ -208,6 +210,8 @@ but the problem with that option is that memory will be allocated twice for the 
 
 **Hint:** Beware of clipping! Adding two sine waves together even though they don't have the same frequency will likely produce a signal whose range exceeds {-1;1}: you should take that into account for your final product. 
 
+<!--
+
 **Solution:**
 
 In `Sine.cpp`:
@@ -219,6 +223,7 @@ float Sine::tick(){
   return (sineTable.tick(index)+sineTable.tick(index2))*gain*0.5;
 }
 ```
+-->
 
 ### Stereo Echo
 
@@ -232,6 +237,7 @@ float currentSampleR = echo1.tick(sineSample)*0.5;
 
 **Hint:** Beware of memory allocation again! Make sure that the maxim delay of your echo (on the 2 parameters of the class constructor) doesn't exceed 10000 for now for both instances of the echo. 
 
+<!--
 **Solution:**
 
 In `MyDsp.h`:
@@ -272,3 +278,4 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   ...
 }
 ```
+-->

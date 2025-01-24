@@ -2,22 +2,22 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.0"
    width="870"
    height="350"
    id="svg2242"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="2op FM.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="fm.svg"
    inkscape:export-filename="P:\@Wikipedia\@Commons\@Synth\@Synthesis\@FM synthesis\2op FM.png"
    inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-ydpi="90"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <metadata
      id="metadata2864">
     <rdf:RDF>
@@ -26,7 +26,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -45,19 +44,27 @@
      showgrid="true"
      inkscape:snap-grids="false"
      inkscape:zoom="1"
-     inkscape:cx="379.13363"
-     inkscape:cy="258.55842"
+     inkscape:cx="398"
+     inkscape:cy="213.5"
      inkscape:window-x="193"
-     inkscape:window-y="45"
+     inkscape:window-y="26"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer4">
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
        id="grid3011"
        empspacing="5"
        visible="true"
        enabled="true"
-       snapvisiblegridlinesonly="true" />
+       snapvisiblegridlinesonly="true"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1"
+       units="px" />
   </sodipodi:namedview>
   <defs
      id="defs2244">
@@ -165,6 +172,13 @@
      id="layer1"
      inkscape:label="Modulator"
      transform="translate(-28.720568,37.441572)">
+    <rect
+       style="fill:#ffffff;stroke:#ffffff"
+       id="rect1"
+       width="868"
+       height="348"
+       x="29.720568"
+       y="-36.44157" />
     <polygon
        transform="matrix(3.6265089,0,0,3.6265089,-79.710431,-144.06766)"
        points="75.0807,40.8955 75.0807,75.014 40.9622,75.014 40.9622,40.8955 40.9622,40.8955 "
@@ -319,80 +333,80 @@
      style="display:inline">
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Unicode MS;-inkscape-font-specification:Arial Unicode MS"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Arial Unicode MS';-inkscape-font-specification:'Arial Unicode MS';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="187.12109"
        y="340"
-       id="text3167"
-       sodipodi:linespacing="100%"><tspan
+       id="text3167"><tspan
          sodipodi:role="line"
          id="tspan3169"
          x="187.12109"
-         y="340">Modulator</tspan></text>
+         y="340"
+         style="font-size:36px;line-height:1">Modulator</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Unicode MS;-inkscape-font-specification:Arial Unicode MS"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Arial Unicode MS';-inkscape-font-specification:'Arial Unicode MS';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="642"
        y="340"
-       id="text3943"
-       sodipodi:linespacing="100%"><tspan
+       id="text3943"><tspan
          sodipodi:role="line"
          id="tspan3945"
          x="642"
-         y="340">Carrier</tspan></text>
+         y="340"
+         style="font-size:36px;line-height:1">Carrier</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold Italic"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman Bold Italic';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="409.96484"
        y="155"
-       id="text5172"
-       sodipodi:linespacing="100%"><tspan
+       id="text5172"><tspan
          sodipodi:role="line"
          id="tspan5186"
          x="409.96484"
-         y="155">β</tspan></text>
+         y="155"
+         style="font-size:36px;line-height:1">β</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold Italic"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman Bold Italic';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="100"
        y="144"
-       id="text5188"
-       sodipodi:linespacing="100%"><tspan
+       id="text5188"><tspan
          sodipodi:role="line"
          id="tspan5190"
          x="100"
-         y="144">f</tspan></text>
+         y="144"
+         style="font-size:36px;line-height:1">f</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold Italic"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman Bold Italic';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="550"
        y="143"
-       id="text5192"
-       sodipodi:linespacing="100%"><tspan
+       id="text5192"><tspan
          sodipodi:role="line"
          id="tspan5194"
          x="550"
-         y="143">f</tspan></text>
+         y="143"
+         style="font-size:36px;line-height:1">f</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Italic"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman Italic';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="120.00781"
        y="154"
-       id="text5196"
-       sodipodi:linespacing="100%"><tspan
+       id="text5196"><tspan
          sodipodi:role="line"
          id="tspan5206"
          x="120.00781"
-         y="154">M</tspan></text>
+         y="154"
+         style="font-size:24px;line-height:1">M</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Italic"
-       x="568.01563"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman Italic';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="568.01562"
        y="152"
-       id="text5200"
-       sodipodi:linespacing="100%"><tspan
+       id="text5200"><tspan
          sodipodi:role="line"
          id="tspan5208"
-         x="568.01563"
-         y="152">C</tspan></text>
+         x="568.01562"
+         y="152"
+         style="font-size:24px;line-height:1">C</tspan></text>
   </g>
 </svg>
