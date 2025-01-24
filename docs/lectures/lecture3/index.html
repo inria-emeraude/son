@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,13 @@
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title> 3: Digital Audio Systems Architectures and Audio Callback  - SON @ INSA Lyon</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/rainbow.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <link href="../../extra.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
@@ -23,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../..">SON @ INSA Lyon</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -31,8 +35,8 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Lectures <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lectures</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -44,7 +48,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+    <a href="./" class="dropdown-item active" aria-current="page"> 3: Digital Audio Systems Architectures and Audio Callback </a>
 </li>
                                     
 <li>
@@ -68,17 +72,17 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../projects/" class="nav-link">Projects</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -99,50 +103,50 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lecture-3-digital-audio-systems-architectures-and-audio-callback" class="nav-link">Lecture 3: Digital Audio Systems Architectures and Audio Callback</a>
+            <li class="nav-item" data-bs-level="1"><a href="#lecture-3-digital-audio-systems-architectures-and-audio-callback" class="nav-link">Lecture 3: Digital Audio Systems Architectures and Audio Callback</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#basic-architecture-of-a-digital-audio-system" class="nav-link">Basic Architecture of a Digital Audio System</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#architecture-of-embedded-audio-systems-such-as-the-teensy" class="nav-link">Architecture of Embedded Audio Systems Such as the Teensy</a>
+            <li class="nav-item" data-bs-level="2"><a href="#basic-architecture-of-a-digital-audio-system" class="nav-link">Basic Architecture of a Digital Audio System</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#concept-of-audio-blocks-buffers-audio-rate-and-control-rate" class="nav-link">Concept of Audio Blocks (Buffers), Audio Rate, and Control Rate</a>
+            <li class="nav-item" data-bs-level="2"><a href="#architecture-of-embedded-audio-systems-such-as-the-teensy" class="nav-link">Architecture of Embedded Audio Systems Such as the Teensy</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#first-audio-program-on-the-teensy-crazy-sine" class="nav-link">First Audio Program on the Teensy: crazy-sine</a>
+            <li class="nav-item" data-bs-level="2"><a href="#concept-of-audio-blocks-buffers-audio-rate-and-control-rate" class="nav-link">Concept of Audio Blocks (Buffers), Audio Rate, and Control Rate</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#c-sine-wave-oscillator" class="nav-link">C++ Sine Wave Oscillator</a>
+            <li class="nav-item" data-bs-level="2"><a href="#first-audio-program-on-the-teensy-crazy-sine" class="nav-link">First Audio Program on the Teensy: crazy-sine</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#exercises" class="nav-link">Exercises</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="3"><a href="#looping-through-a-small-tune-making-a-music-box" class="nav-link">Looping Through a Small Tune: Making a Music Box</a>
+            <li class="nav-item" data-bs-level="2"><a href="#c-sine-wave-oscillator" class="nav-link">C++ Sine Wave Oscillator</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="3"><a href="#basic-additive-synthesis" class="nav-link">Basic Additive Synthesis</a>
+            <li class="nav-item" data-bs-level="2"><a href="#exercises" class="nav-link">Exercises</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="3"><a href="#looping-through-a-small-tune-making-a-music-box" class="nav-link">Looping Through a Small Tune: Making a Music Box</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="3"><a href="#stereo-echo" class="nav-link">Stereo Echo</a>
+            <li class="nav-item" data-bs-level="3"><a href="#basic-additive-synthesis" class="nav-link">Basic Additive Synthesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#stereo-echo" class="nav-link">Stereo Echo</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -368,8 +372,7 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="../../js/jquery-3.6.0.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
@@ -383,7 +386,7 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -403,7 +406,7 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

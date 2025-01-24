@@ -14,7 +14,7 @@ nav:
   - Code: "https://github.com/inria-emeraude/son"
     
 theme: 
-  name: yeti
+  name: darkly
   navigation_depth: 4
 
 site_dir: ../docs

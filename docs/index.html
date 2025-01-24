@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,13 @@
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>SON @ INSA Lyon</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/rainbow.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <link href="extra.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
@@ -23,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand" href=".">SON @ INSA Lyon</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -31,8 +35,8 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Lectures <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lectures</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -68,17 +72,17 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="projects/" class="nav-link">Projects</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -89,32 +93,32 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#son-3tc-audio-project-insa-lyon" class="nav-link">SON: 3TC Audio Project @ INSA Lyon</a>
+            <li class="nav-item" data-bs-level="1"><a href="#son-3tc-audio-project-insa-lyon" class="nav-link">SON: 3TC Audio Project @ INSA Lyon</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#instructors" class="nav-link">Instructors</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
+            <li class="nav-item" data-bs-level="2"><a href="#instructors" class="nav-link">Instructors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#requirements" class="nav-link">Requirements</a>
+            <li class="nav-item" data-bs-level="2"><a href="#resources" class="nav-link">Resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#course-overview" class="nav-link">Course Overview</a>
+            <li class="nav-item" data-bs-level="2"><a href="#requirements" class="nav-link">Requirements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#course-overview" class="nav-link">Course Overview</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -133,14 +137,16 @@
 <p>Students are provided with plenty of fully-operational starter code/projects so that they have "something that works" right from the beginning.</p>
 <h2 id="instructors">Instructors</h2>
 <ul>
-<li><a href="https://ccrma.stanford.edu/~rmichon">Romain Michon</a> (Inria)</li>
+<li><a href="http://perso.citi-lab.fr/rmichon/">Romain Michon</a> (Inria)</li>
 <li><a href="http://perso.citi.insa-lyon.fr/trisset/">Tanguy Risset</a> (INSA Lyon)</li>
+<li>Thomas Rushton (Inria)</li>
+<li>Benjamin Quiédeville (Inria/GRAME)</li>
 </ul>
 <h2 id="resources">Resources</h2>
 <ul>
 <li>Course GitHub Repository: <a href="https://github.com/inria-emeraude/son">https://github.com/inria-emeraude/son</a></li>
 <li>Teensy Audio Library: <a href="https://www.pjrc.com/teensy/td_libs_Audio.html">https://www.pjrc.com/teensy/td_libs_Audio.html</a></li>
-<li>!New 2023! A soldering room (next to radiocom room)</li>
+<li>A soldering room (next to radiocom room)</li>
 <li>The SON kit for a group of two students:</li>
 </ul>
 <p><center>
@@ -154,17 +160,17 @@
 </ul>
 <h2 id="course-overview">Course Overview</h2>
 <ul>
-<li><strong>Lecture 1: <a href="lectures/lecture1/">Course Introduction and Programming Environment Setup</a></strong> -- <em>06/02/2024 14h00-16h00</em></li>
-<li><strong>Lecture 2: <a href="lectures/lecture2/">Audio Signal Processing Fundamentals</a></strong> -- <em>07/02/2024 08h00-10h00</em></li>
-<li><strong>Lecture 3: <a href="lectures/lecture3/">Digital Audio Systems Architectures and Audio Callback</a></strong> -- <em>07/02/2024 10h00-12h00</em></li>
-<li><strong>Lab</strong> -- <em>08/02/2024 08h00-10h00</em></li>
-<li><strong>Lecture 4: <a href="lectures/lecture4/">Hardware Control and Audio Codec Configuration</a></strong> -- <em>08/02/2024 10h00-12h00</em></li>
-<li><strong>Lecture 5: Introduction to Faust (Yann Orlarey)</strong> -- <em>09/02/2024 08h00-10h00</em></li>
-<li><strong>Lecture 6: <a href="lectures/lecture6/">Audio Processing Basics I</a></strong> -- <em>9/02/2024 10h00-12h00</em></li>
-<li><strong>Lab</strong> -- <em>09/02/2024 14h00-16h00</em></li>
-<li><strong>Lecture 7: <a href="lectures/lecture7/">Audio Processing Basics II</a></strong> -- <em>09/02/2024 16h00-18h00</em></li>
-<li><strong>Lecture 8: <a href="lectures/lecture8/">Faust on the Teensy and Advanced Control</a></strong> -- <em>12/02/2024 08h00-10h00</em></li>
-<li><strong>Independent work on Projects</strong> -- <em>12/02/2024 - 22/02/2024</em></li>
+<li><strong>Lecture 1: <a href="lectures/lecture1/">Course Introduction and Programming Environment Setup</a></strong> -- <em>10/02/2025 14h00-16h00</em></li>
+<li><strong>Lecture 2: <a href="lectures/lecture2/">Audio Signal Processing Fundamentals</a></strong> -- <em>10/02/2025 16h00-18h00</em></li>
+<li><strong>Lecture 3: <a href="lectures/lecture3/">Digital Audio Systems Architectures and Audio Callback</a></strong> -- <em>12/02/2025 08h00-10h00</em></li>
+<li><strong>Lab</strong> -- <em>12/02/2025 10h00-12h00</em></li>
+<li><strong>Lecture 4: <a href="lectures/lecture4/">Hardware Control and Audio Codec Configuration</a></strong> -- <em>12/02/2025 14h00-16h00</em></li>
+<li><strong>Lecture 5: Introduction to Faust (Yann Orlarey)</strong> -- <em>12/02/2025 16h00-18h00</em></li>
+<li><strong>Lecture 6: <a href="lectures/lecture6/">Audio Processing Basics I</a></strong> -- <em>13/02/2025 08h00-10h00</em></li>
+<li><strong>Lab</strong> -- <em>13/02/2025 10h00-12h00</em></li>
+<li><strong>Lecture 7: <a href="lectures/lecture7/">Audio Processing Basics II</a></strong> -- <em>14/02/2025 08h00-10h00</em></li>
+<li><strong>Lecture 8: <a href="lectures/lecture8/">Faust on the Teensy and Advanced Control</a></strong> -- <em>14/02/2025 10h00-12h00</em></li>
+<li><strong>Independent work on Projects</strong> -- <em>18/02/2025 - 28/02/2025</em></li>
 </ul>
 <table>
 <thead>
@@ -179,73 +185,142 @@
 <tbody>
 <tr>
 <td><strong>TP1</strong></td>
-<td>12/02/2024 -- 14h00-18h00 -- TP Info C</td>
-<td>12/02/2024 -- 14h00-18h00 -- TP Info D</td>
-<td>12/02/2024 -- 14h00-18h00 -- TP Info E</td>
-<td>12/02/2024 -- 14h00-18h00 -- TP Info B</td>
+<td>18/02/2025 -- 14h00-16h00 -- TD C</td>
+<td>18/02/2025 -- 14h00-16h00 -- TD D</td>
+<td>18/02/2025 -- 14h00-16h00 -- TD E</td>
+<td>18/02/2025 -- 14h00-16h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP2</strong></td>
-<td>14/02/2024 -- 08h00-12h00 -- TP Info E</td>
-<td>14/02/2024 -- 08h00-12h00 -- TP Info D</td>
-<td>14/02/2024 -- 08h00-12h00 -- TP Info C</td>
-<td>14/02/2024 -- 08h00-12h00 -- TP Info B</td>
+<td>19/02/2025 -- 08h00-10h00 -- TD E</td>
+<td>19/02/2025 -- 08h00-10h00 -- TD D</td>
+<td>19/02/2025 -- 08h00-10h00 -- TD C</td>
+<td>19/02/2025 -- 08h00-10h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP3</strong></td>
-<td>14/02/2024 -- 14h00-18h00 -- TP Info B</td>
-<td>14/02/2024 -- 14h00-18h00 -- TP Info C</td>
-<td>14/02/2024 -- 14h00-18h00 -- TP Info D</td>
-<td>14/02/2024 -- 14h00-18h00 -- TP Info E</td>
+<td>19/02/2025 -- 10h00-12h00 -- TD E</td>
+<td>19/02/2025 -- 10h00-12h00 -- TD D</td>
+<td>19/02/2025 -- 10h00-12h00 -- TD C</td>
+<td>19/02/2025 -- 10h00-12h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP4</strong></td>
-<td>15/02/2024 -- 08h00-12h00 -- TP Info C</td>
-<td>15/02/2024 -- 08h00-12h00 -- TP Info C</td>
-<td>15/02/2024 -- 08h00-12h00 -- TP Info E</td>
-<td>15/02/2024 -- 08h00-12h00 -- TP Info D</td>
-</tr>
-<tr>
-<td><strong>MLS</strong></td>
-<td>16/02/2024 -- 08h00-10h00 -- TP Info D</td>
-<td>16/02/2024 -- 10h00-12h00 -- TP Info E</td>
-<td>16/02/2024 -- 08h00-10h00 -- TP Info B</td>
-<td>16/02/2024 -- 10h00-12h00 -- TP Info C</td>
+<td>19/02/2025 -- 14h00-16h00 -- TD F</td>
+<td>19/02/2025 -- 14h00-16h00 -- TD E</td>
+<td>19/02/2025 -- 14h00-16h00 -- TD D</td>
+<td>19/02/2025 -- 14h00-16h00 -- TD C</td>
 </tr>
 <tr>
 <td><strong>TP5</strong></td>
-<td>16/02/2024 -- 14h00-18h00 -- TP Info D</td>
-<td>16/02/2024 -- 14h00-18h00 -- TP Info E</td>
-<td>16/02/2024 -- 14h00-18h00 -- TP Info B</td>
-<td>16/02/2024 -- 14h00-18h00 -- TP Info C</td>
+<td>19/02/2025 -- 16h00-18h00 -- TD F</td>
+<td>19/02/2025 -- 16h00-18h00 -- TD E</td>
+<td>19/02/2025 -- 16h00-18h00 -- TD D</td>
+<td>16/02/2025 -- 16h00-18h00 -- TD C</td>
 </tr>
 <tr>
 <td><strong>TP6</strong></td>
-<td>19/02/2024 -- 08h00-10h00 -- TP Info B</td>
-<td>19/02/2024 -- 08h00-10h00 -- TP Info C</td>
-<td>19/02/2024 -- 08h00-10h00 -- TP Info D</td>
-<td>19/02/2024 -- 08h00-10h00 -- TP Info E</td>
+<td>20/02/2025 -- 08h00-10h00 -- TD F</td>
+<td>20/02/2025 -- 08h00-10h00 -- TD C</td>
+<td>20/02/2025 -- 08h00-10h00 -- TD D</td>
+<td>20/02/2025 -- 08h00-10h00 -- TD E</td>
 </tr>
 <tr>
 <td><strong>TP7</strong></td>
-<td>19/02/2024 -- 14h00-18h00 -- TP Info C</td>
-<td>19/02/2024 -- 14h00-18h00 -- TP Info D</td>
-<td>19/02/2024 -- 14h00-18h00 -- TP Info E</td>
-<td>19/02/2024 -- 14h00-18h00 -- TP Info B</td>
+<td>20/02/2025 -- 10h00-12h00 -- TD F</td>
+<td>20/02/2025 -- 10h00-12h00 -- TD C</td>
+<td>20/02/2025 -- 10h00-12h00 -- TD D</td>
+<td>20/02/2025 -- 10h00-12h00 -- TD E</td>
 </tr>
 <tr>
 <td><strong>TP8</strong></td>
-<td>21/02/2024 -- 08h00-12h00 -- TP Info B</td>
-<td>21/02/2024 -- 08h00-12h00 -- TP Info E</td>
-<td>21/02/2024 -- 08h00-12h00 -- TP Info C</td>
-<td>21/02/2024 -- 08h00-12h00 -- TP Info D</td>
+<td>21/02/2025 -- 08h00-10h00 -- TD D</td>
+<td>21/02/2025 -- 08h00-10h00 -- TD F</td>
+<td>21/02/2025 -- 08h00-10h00 -- TD E</td>
+<td>21/02/2025 -- 08h00-10h00 -- TD C</td>
+</tr>
+<tr>
+<td><strong>TP9</strong></td>
+<td>21/02/2025 -- 10h00-12h00 -- TD D</td>
+<td>21/02/2025 -- 10h00-12h00 -- TD E</td>
+<td>21/02/2025 -- 10h00-12h00 -- TD F</td>
+<td>21/02/2025 -- 10h00-12h00 -- TD C</td>
+</tr>
+<tr>
+<td><strong>TP10</strong></td>
+<td>21/02/2025 -- 16h00-18h00 -- TD F</td>
+<td>21/02/2025 -- 16h00-18h00 -- TD C</td>
+<td>21/02/2025 -- 16h00-18h00 -- TD D</td>
+<td>21/02/2025 -- 16h00-18h00 -- TD E</td>
+</tr>
+<tr>
+<td><strong>MLS/TP11</strong></td>
+<td>24/02/2025 -- 08h00-10h00 -- TD F</td>
+<td>24/02/2025 -- 08h00-10h00 -- TD C</td>
+<td>24/02/2025 -- 08h00-10h00 -- TD D</td>
+<td>24/02/2025 -- 08h00-10h00 -- TD E</td>
+</tr>
+<tr>
+<td><strong>MLS/TP12</strong></td>
+<td>24/02/2025 -- 16h00-18h00 -- TD C</td>
+<td>24/02/2025 -- 16h00-18h00 -- TD F</td>
+<td>24/02/2025 -- 14h00-16h00 -- TD D</td>
+<td>24/02/2025 -- 10h00-12h00 -- TD E</td>
+</tr>
+<tr>
+<td><strong>TP13</strong></td>
+<td>25/02/2025 -- 14h00-16h00 -- TD D</td>
+<td>25/02/2025 -- 14h00-16h00 -- TD C</td>
+<td>25/02/2025 -- 14h00-16h00 -- TD E</td>
+<td>24/02/2025 -- 14h00-16h00 -- TD E</td>
+</tr>
+<tr>
+<td><strong>TP14</strong></td>
+<td>26/02/2025 -- 08h00-10h00 -- TD E</td>
+<td>26/02/2025 -- 08h00-10h00 -- TD D</td>
+<td>26/02/2025 -- 08h00-10h00 -- TD C</td>
+<td>26/02/2025 -- 08h00-10h00 -- TD F</td>
+</tr>
+<tr>
+<td><strong>TP15</strong></td>
+<td>26/02/2025 -- 10h00-12h00 -- TD E</td>
+<td>26/02/2025 -- 10h00-12h00 -- TD D</td>
+<td>26/02/2025 -- 10h00-12h00 -- TD C</td>
+<td>26/02/2025 -- 10h00-12h00 -- TD F</td>
+</tr>
+<tr>
+<td><strong>TP16</strong></td>
+<td>26/02/2025 -- 14h00-16h00 -- TD D</td>
+<td>26/02/2025 -- 14h00-16h00 -- TD C</td>
+<td>26/02/2025 -- 14h00-16h00 -- TD F</td>
+<td>26/02/2025 -- 14h00-16h00 -- TD E</td>
+</tr>
+<tr>
+<td><strong>TP17</strong></td>
+<td>26/02/2025 -- 14h00-16h00 -- TD D</td>
+<td>26/02/2025 -- 14h00-16h00 -- TD C</td>
+<td>26/02/2025 -- 14h00-16h00 -- TD F</td>
+<td>26/02/2025 -- 14h00-16h00 -- TD E</td>
+</tr>
+<tr>
+<td><strong>TP18</strong></td>
+<td>26/02/2025 -- 16h00-18h00 -- TD D</td>
+<td>26/02/2025 -- 16h00-18h00 -- TD F</td>
+<td>26/02/2025 -- 16h00-18h00 -- TD E</td>
+<td>26/02/2025 -- 16h00-18h00 -- TD C</td>
+</tr>
+<tr>
+<td><strong>TP19</strong></td>
+<td>27/02/2025 -- 08h00-10h00 -- TD F</td>
+<td>27/02/2025 -- 08h00-10h00 -- TD C</td>
+<td>27/02/2025 -- 08h00-10h00 -- TD E</td>
+<td>27/02/2025 -- 08h00-10h00 -- TD D</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><strong>Final Presentations (G1 + G2)</strong> -- <em>21/02/2024 14h00-18h00</em></li>
-<li><strong>Final Presentations (G3 + G4)</strong> -- <em>22/02/2024 08h00-12h00</em></li>
-<li><strong>Kits Return and Final Feedback</strong> -- <em>23/02/2024 10h00-12h00</em></li>
+<li><strong>Final Presentations (G1 + G2)</strong> -- <em>28/02/2025 08h00-12h00</em></li>
+<li><strong>Final Presentations (G3 + G4)</strong> -- <em>28/02/2025 14h00-18h00</em></li>
 </ul></div>
             </div>
         </div>
@@ -254,8 +329,7 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
@@ -269,7 +343,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -289,7 +363,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">
@@ -329,6 +403,6 @@
 </html>
 
 <!--
-MkDocs version : 1.5.3
-Build Date UTC : 2024-02-19 06:53:18.733770+00:00
+MkDocs version : 1.6.1
+Build Date UTC : 2025-01-24 15:33:57.430097+00:00
 -->
