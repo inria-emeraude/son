@@ -252,7 +252,7 @@ for(int i=0; i&lt;size; i++){
 </code></pre>
 <p>The size of the table plays an important role on the quality of the generated sound. The greater the size, the more accurate/pure the sine wave. A low resolution sine wave will produce more distortion. In <code>Sine.cpp</code>, the sine wave table has a size of <script type="math/tex">2^{14}</script> which presents a good compromise between sound quality and memory.</p>
 <p>It is important to keep in mind that when working with embedded systems memory is also an important factor to take into account. </p>
-<p>The sine table is then read with a "phasor." A phasor produces a ramp signal which is reset at a certain frequency. It can also be seen as a sawtooth wave. <a href="https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Phasor.cpp">Phasor.cpp</a> is used for that purpose and its <code>tick</code> method is defined as:</p>
+<p>The sine table is then read with a "phasor." A phasor produces a ramp signal which is reset at a certain frequency. It can also be seen as a sawtooth wave. <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/Phasor.cpp">Phasor.cpp</a> is used for that purpose and its <code>tick</code> method is defined as:</p>
 <pre><code>float Phasor::tick(){
   float currentSample = phasor;
   phasor += phasorDelta;

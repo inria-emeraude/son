@@ -12,7 +12,7 @@ Projects will be evaluated through:
 
 * A poster (pdf) presenting your project;
 * Your code submitted on Moodle;
-* A demo of your project which will be featured during a demo session taking place on 03/03/2023. During this session, students will use the poster of their project directly on their computer as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
+* A demo of your project which will be featured during a demo session taking place on 28/02/2025. During this session, students will use the poster of their project directly on their computer as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
 
 The quality and the presentation of the poster and of the webpage will be taken into account towards your final grade.
 
@@ -77,7 +77,7 @@ Make a speaker processing its audio input in real time to add audio effects, imp
 
 ### Musical Instrument
 
-The goal of this project is to make musical instrument based on a Teensy. The domain of New Interfaces for Musical Expression (NIME): <https://www.nime.org/> has been booming in recent years and hundreds of musical instruments have been created. Feel free to get more inspiration here: <https://ccrma.stanford.edu/courses/250a-winter-2022>!
+The goal of this project is to make musical instrument based on a Teensy. The domain of New Interfaces for Musical Expression (NIME): <https://www.nime.org/> has been booming in recent years and hundreds of musical instruments have been created. Feel free to get more inspiration here: <https://ccrma.stanford.edu/courses/250a-spring-2023>!
 
 ### MIDI-Controlled Polyphonic Synthesizer
 

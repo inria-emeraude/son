@@ -122,7 +122,7 @@ The size of the table plays an important role on the quality of the generated so
 
 It is important to keep in mind that when working with embedded systems memory is also an important factor to take into account. 
 
-The sine table is then read with a "phasor." A phasor produces a ramp signal which is reset at a certain frequency. It can also be seen as a sawtooth wave. [Phasor.cpp](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Phasor.cpp) is used for that purpose and its `tick` method is defined as:
+The sine table is then read with a "phasor." A phasor produces a ramp signal which is reset at a certain frequency. It can also be seen as a sawtooth wave. [Phasor.cpp](https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/Phasor.cpp) is used for that purpose and its `tick` method is defined as:
 
 ```
 float Phasor::tick(){

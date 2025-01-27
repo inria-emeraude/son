@@ -1,6 +1,6 @@
 # Lecture 6: Audio Processing Basics I
 
-This lecture and [the following one](lecture6.md) present a selection of audio processing and synthesis algorithms. It is in no way comprehensive: the goal is just to give you a sense of what's out there.
+This lecture and [the following one](lecture7.md) present a selection of audio processing and synthesis algorithms. It is in no way comprehensive: the goal is just to give you a sense of what's out there.
 
 All these algorithms have been extensively used during the second half of the twentieth century by musicians and artists, especially within the computer music community.
 
@@ -8,7 +8,7 @@ All these algorithms have been extensively used during the second half of the tw
 
 White noise is a specific kind of signal in which there's an infinite number of harmonics all having the same level. In other words, the spectrum of white noise looks completely flat. 
 
-White noise is produced by generating random numbers between -1 and 1. [`Noise.cpp`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Noise.cpp) demonstrates how this can be done in C++ using the `rand()` function:
+White noise is produced by generating random numbers between -1 and 1. [`Noise.cpp`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/Noise.cpp) demonstrates how this can be done in C++ using the `rand()` function:
 
 ```
 Noise::Noise() :
@@ -30,9 +30,9 @@ Wave Shape synthesis is one of the most basic sound synthesis technique. It cons
 * [triangle wave](https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg),
 * [sawtooth wave](https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg).
 
-The [`crazy-sine`](https://github.com/grame-cncm/embaudio20/tree/master/examples/crazy-sine) example can be considered as "wave shape synthesis" in that regard.
+The [`crazy-sine`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine) example can be considered as "wave shape synthesis" in that regard.
 
-The [`crazy-saw`](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-saw) example is very similar to `crazy-sine`, but it's based on a sawtooth wave instead. The sawtooth wave is created by using a `phasor` object. Just as a reminder, a phasor produces a signals tamping from 0 to 1 at a given frequency, it can therefore be seen as a sawtooth wave. Since the range of oscillators must be bounded between -1 and 1, we adjusts the output of the phasor such that:
+The [`crazy-saw`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) example is very similar to `crazy-sine`, but it's based on a sawtooth wave instead. The sawtooth wave is created by using a `phasor` object. Just as a reminder, a phasor produces a signals tamping from 0 to 1 at a given frequency, it can therefore be seen as a sawtooth wave. Since the range of oscillators must be bounded between -1 and 1, we adjusts the output of the phasor such that:
 
 ```
 float currentSample = sawtooth.tick()*2 - 1;
@@ -58,7 +58,7 @@ When the frequency of the modulator is low (bellow 20Hz), our ear is able to dis
 
 The mathematical proof of this can be found on [Julius Smith's website](https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Amplitude_Modulation_AM.html).
 
-[`Am.cpp`](https://github.com/grame-cncm/embaudio20/tree/master/examples/lib) implements a sinusoidal amplitude modulation synthesizer:
+[`Am.cpp`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/Am.cpp) implements a sinusoidal amplitude modulation synthesizer:
 
 ```
 float Am::tick(){
@@ -75,7 +75,7 @@ The amplitude parameter of the modulating oscillator is called the *index of mod
 
 In practice, the same result could be achieved using additive synthesis and three sine wave oscillators but AM allows us to save one oscillator. Also, AM is usually used an audio effect and modulation is applied to an input signal in that case instead of a sine wave. Sidebands will then be produced for each harmonic of the processed sound.
 
-The [`am` example](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Am.cpp) demonstrates a use case of an AM synthesizer. Use the `Rec` and `Mode` button to cycle through the parameters of the synth and change their value.
+The [`am` example](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/am) demonstrates a use case of an AM synthesizer. Use the `Rec` and `Mode` button to cycle through the parameters of the synth and change their value.
 
 ## Frequency Modulation (FM) Synthesis
 
@@ -94,7 +94,7 @@ where \(c\) denotes the carrier and \(m\), the modulator.
 
 As for AM, the frequency of the modulating oscillator is called the *frequency of modulation* and the amplitude of the modulating oscillator, the *index of modulation*. Unlike AM, the value of the index of modulation can exceed 1 which will increase the number of sidebands. FM is not limited to two sidebands and can have an infinite number of sidebands depending on the value of the index. The mathematical rational behind this can be found on [Julius Smith's website](https://ccrma.stanford.edu/~jos/mdft/FM_Spectra.html).
 
-[`fm.cpp`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/Fm.cpp) provides a simple example of how an FM synthesizer can be implemented:
+[`fm.cpp`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/Fm.cpp) provides a simple example of how an FM synthesizer can be implemented:
 
 ```
 float Fm::tick(){
@@ -108,7 +108,7 @@ float Fm::tick(){
 
 Note that as for the AM example, we're saving an extra sine wave table by using the same one for both oscillators.
 
-The examples folder of the course repository hosts [a simple Teensy program](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/fm) illustrating the use of FM. Use the `Rec` and `Mode` button to cycle through the parameters of the synth and change their value.
+The examples folder of the course repository hosts [a simple Teensy program](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/fm) illustrating the use of FM. Use the `Rec` and `Mode` button to cycle through the parameters of the synth and change their value.
 
 FM synthesis was discovered in the late 1960s by John Chowning at Stanford University in California. He's now considered as one of the funding fathers of music technology and computer music. FM completely revolutionized the world of music in the 1980s by allowing Yamaha to produce the first commercial digital synthesizers: the [DX7](https://en.wikipedia.org/wiki/Yamaha_DX7) which met a huge success. FM synthesis is the second most profitable patent that Stanford ever had.
 
@@ -124,7 +124,7 @@ One zero filters can either be used as a lowpass if the value of \(b_1\) is posi
 
 Note that the gain of the signal is amplified on the second half of the spectrum which needs to be taken into account if this filter is used to process audio (once again, the output signal must be bounded within {-1,1}). 
 
-[`OneZero.cpp`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/libraries/mydsp/src/OneZero.cpp) implements a one zero filter:
+[`OneZero.cpp`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/OneZero.cpp) implements a one zero filter:
 
 ```
 float OneZero::tick(float input){
@@ -136,7 +136,7 @@ float OneZero::tick(float input){
 
 Note that we multiply the output by 0.5 to normalize the output gain.
 
-The [`filtered-noise`](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/filtered-noise) example program for the Teensy demonstrates the use of `OneZero.cpp` by feeding [white noise](#white-noise) in it. The value of \(b_1\) can be changed by pressing the "Mode" button on the board, give it a try!
+The [`filtered-noise`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/filtered-noise) example program for the Teensy demonstrates the use of `OneZero.cpp` by feeding [white noise](#white-noise) in it. The value of \(b_1\) can be changed by pressing the "Mode" button on the board, give it a try!
 
 <!-- TODO: Potentially add a section on biquads here. -->
 
@@ -146,7 +146,7 @@ The [`filtered-noise`](https://github.com/grame-cncm/embaudio/tree/master/exampl
 
 An LFO is an oscillator whose frequency is below the human hearing range (20 Hz). LFOs are typically used to create vibrato. In that case, the frequency of the LFO is usually set to 6 Hz. 
 
-Modify the [crazy-saw example](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-saw) so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.
+Modify the [crazy-saw example](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.
 
 <!--
 
@@ -237,7 +237,7 @@ In most cases, DSP parameters are executed at control rate. Moreover, the resolu
 
 where \(s\) is the value of the pole and is typically set to 0.999 for optimal results.
 
-Modify the [crazy-saw](https://github.com/grame-cncm/embaudio/tree/master/examples/teensy/projects/crazy-saw) example by "smoothing" the value of the frequency parameter by implementing the filter above with \(s=0.999\). Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).
+Modify the [crazy-saw](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) example by "smoothing" the value of the frequency parameter by implementing the filter above with \(s=0.999\). Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).
 
 <!--
 **Solution:**
