@@ -166,7 +166,7 @@ process = os.sawtooth(freq)*gain*gate : fi.lowpass(3,cutoff) &lt;: _,_;
 <pre><code>faust FaustSynth.dsp
 </code></pre>
 <p>will output the C++ code corresponding to this file in the terminal. </p>
-<p>Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. <a href="https://github.com/grame-cncm/embaudio/blob/master/faust/faustMinimal.h"><code>faustMininal.h</code></a> is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:</p>
+<p>Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. <a href="https://github.com/grame-cncm/embaudio/blob/master/faust/faustMinimal.h"><code>faustMinimal.h</code></a> is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:</p>
 <pre><code>#include &lt;cmath&gt;
 #include &lt;cstring&gt;
 
@@ -184,7 +184,7 @@ process = os.sawtooth(freq)*gain*gate : fi.lowpass(3,cutoff) &lt;: _,_;
 </code></pre>
 <p>For instance, <code>MapUI</code> allows us to access the parameters of a Faust DSP object using the <code>setParamValue</code> method, etc.</p>
 <p>To generate a C++ file using this architecture, you can run:</p>
-<pre><code>faust -i -a faustMinial.h FaustSynth.dsp -o FaustSynth.h
+<pre><code>faust -i -a faustMinimal.h FaustSynth.dsp -o FaustSynth.h
 </code></pre>
 <p>which will produce a <a href="https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/projects/faust-synth/FaustSynth.h"><code>FaustSynth.h</code></a> file (feel free to click on it).</p>
 <p>The <code>-i</code> inlines all the included C++ <code>.h</code> files in the generated file.</p>

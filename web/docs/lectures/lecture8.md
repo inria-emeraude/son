@@ -23,7 +23,7 @@ faust FaustSynth.dsp
 
 will output the C++ code corresponding to this file in the terminal. 
 
-Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. [`faustMininal.h`](https://github.com/grame-cncm/embaudio/blob/master/faust/faustMinimal.h) is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:
+Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. [`faustMinimal.h`](https://github.com/grame-cncm/embaudio/blob/master/faust/faustMinimal.h) is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:
 
 ```
 #include <cmath>
@@ -47,7 +47,7 @@ For instance, `MapUI` allows us to access the parameters of a Faust DSP object u
 To generate a C++ file using this architecture, you can run:
 
 ```
-faust -i -a faustMinial.h FaustSynth.dsp -o FaustSynth.h
+faust -i -a faustMinimal.h FaustSynth.dsp -o FaustSynth.h
 ```
 
 which will produce a [`FaustSynth.h`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/projects/faust-synth/FaustSynth.h) file (feel free to click on it).
