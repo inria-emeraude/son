@@ -4,7 +4,7 @@
 
 **In order to run the examples in this lecture, you should install the Faust distribution on your system from the [Faust Git Repository](https://github.com/grame-cncm/faust).**
 
-At the most fundamental level, the Faust compiler is a command line tool translating a Faust DSP object into C++ code. For example, assuming that Faust is properly installed on your system, given the following simple Faust program implementing a filtered sawtooth wave oscillator ([`FaustSynth.dsp`](https://github.com/grame-cncm/embaudio/blob/master/faust/FaustSynth.dsp)):
+At the most fundamental level, the Faust compiler is a command line tool translating a Faust DSP object into C++ code. For example, assuming that Faust is properly installed on your system, given the following simple Faust program implementing a filtered sawtooth wave oscillator ([`FaustSynth.dsp`](https://github.com/inria-emeraude/son/blob/main/faust/FaustSynth.dsp)):
 
 ```
 import("stdfaust.lib");
@@ -23,7 +23,7 @@ faust FaustSynth.dsp
 
 will output the C++ code corresponding to this file in the terminal. 
 
-Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. [`faustMinimal.h`](https://github.com/grame-cncm/embaudio/blob/master/faust/faustMinimal.h) is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:
+Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. [`faustMinimal.h`](https://github.com/inria-emeraude/son/blob/main/faust/faustMinimal.h) is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:
 
 ```
 #include <cmath>
@@ -50,11 +50,11 @@ To generate a C++ file using this architecture, you can run:
 faust -i -a faustMinimal.h FaustSynth.dsp -o FaustSynth.h
 ```
 
-which will produce a [`FaustSynth.h`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/projects/faust-synth/FaustSynth.h) file (feel free to click on it).
+which will produce a [`FaustSynth.h`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/projects/faust-synth/FaustSynth.h) file (feel free to click on it).
 
 The `-i` inlines all the included C++ `.h` files in the generated file.
 
-The [`faust-synth`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/projects/faust-synth) Teensy example project demonstrates how `FaustSynth.h` can be used. First, it is included in [`MyDsp.cpp`](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/projects/faust-synth/MyDsp.cpp) and the following elements are declared in [the corresponding header file](https://github.com/grame-cncm/embaudio/blob/master/examples/teensy/projects/faust-synth/MyDsp.h):
+The [`faust-synth`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/faust-synth) Teensy example project demonstrates how `FaustSynth.h` can be used. First, it is included in [`MyDsp.cpp`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/projects/faust-synth/MyDsp.cpp) and the following elements are declared in [the corresponding header file](https://github.com/inria-emeraude/son/blob/main/examples/teensy/projects/faust-synth/MyDsp.h):
 
 ```
 private:
