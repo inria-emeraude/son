@@ -236,7 +236,7 @@ peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
 };
 ```
 
-where the definition of `tf2s` (direct-form 2 biquadratic filter operating the bilinear transform) can be found in [Towards Resonant Filter](#towards-resonant-filters). `Lfx` controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). `fx` is the center frequency, `B` the bandwidth in Hz.
+where the definition of `tf2s` (direct-form 2 biquadratic filter operating the bilinear transform) can be found above. `Lfx` controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). `fx` is the center frequency, `B` the bandwidth in Hz.
 
 Implement this filter and test it the same way as you did for the resonant lowpass/bandpass/highpass.
 
