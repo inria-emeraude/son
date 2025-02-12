@@ -220,6 +220,8 @@ float Sine::tick(){
 }
 ```
 
+Bonus solution: [`Additive.cpp`](lecture3/Additive.cpp) and [`Additive.h`](lecture3/Additive.h).
+
 ### Stereo Echo
 
 Reusing the result of the previous exercise, create a second instance of `echo` (connected to the same instance of `sine`) *with different parameters from the first one* that will be connected to the second channel of the output (i.e., the first instance should be connected to the left channel and the second one to the right channel). The final algorithm should look like this:

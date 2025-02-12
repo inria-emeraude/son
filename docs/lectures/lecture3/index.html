@@ -324,6 +324,7 @@ void loop() {
   return (sineTable.tick(index)+sineTable.tick(index2))*gain*0.5;
 }
 </code></pre>
+<p>Bonus solution: <a href="Additive.cpp"><code>Additive.cpp</code></a> and <a href="Additive.h"><code>Additive.h</code></a>.</p>
 <h3 id="stereo-echo">Stereo Echo</h3>
 <p>Reusing the result of the previous exercise, create a second instance of <code>echo</code> (connected to the same instance of <code>sine</code>) <em>with different parameters from the first one</em> that will be connected to the second channel of the output (i.e., the first instance should be connected to the left channel and the second one to the right channel). The final algorithm should look like this:</p>
 <pre><code>float sineSample = sine.tick();
