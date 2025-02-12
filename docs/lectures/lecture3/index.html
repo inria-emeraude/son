@@ -332,6 +332,11 @@ float currentSampleL = echo0.tick(sineSample)*0.5;
 float currentSampleR = echo1.tick(sineSample)*0.5;
 </code></pre>
 <p><strong>Hint:</strong> Beware of memory allocation again! Make sure that the maxim delay of your echo (on the 2 parameters of the class constructor) doesn't exceed 10000 for now for both instances of the echo. </p>
+<p><strong>Solution:</strong></p>
+<ul>
+<li>Basic solution: <a href="crazy_sine_stereo.zip"><code>crazy_sine_stereo.zip</code></a></li>
+<li>Solution with dynamic memory allocation: <a href="crazy_sine_stereo_dyn.zip"><code>crazy_sine_stereo_dyn.zip</code></a></li>
+</ul>
 <!--
 **Solution:**
 
