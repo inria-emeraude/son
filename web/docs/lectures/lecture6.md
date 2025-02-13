@@ -204,8 +204,6 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
 
 The DX7 carried out frequency modulation over a total of six oscillators that could be patched in [different ways](https://static.righto.com/images/dx7-alg/algorithms-w800.jpg). So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -> 2 -> 1.
 
-<!--
-
 **Solution:**
 
 (non-exhaustive)
@@ -224,7 +222,8 @@ float Fm::tick(){
   return sineTable.tick(cIndex)*gain;
 }
 ```
--->
+
+And more exhaustive solution is provided in [`fm3` here](lecture6/fm3.zip).
 
 ### Smoothing
 
@@ -236,7 +235,6 @@ where \(s\) is the value of the pole and is typically set to 0.999 for optimal r
 
 Modify the [crazy-saw](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) example by "smoothing" the value of the frequency parameter by implementing the filter above with \(s=0.999\). Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).
 
-<!--
 **Solution:**
 
 In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
@@ -257,7 +255,6 @@ float Phasor::tick(){
   return currentSample;
 }
 ```
--->
 
 ### Smoothing Potentiometer Values
 
