@@ -148,8 +148,6 @@ An LFO is an oscillator whose frequency is below the human hearing range (20 Hz)
 
 Modify the [crazy-saw example](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.
 
-<!--
-
 **Solution:**
 
 In `MyDsp.h`:
@@ -201,7 +199,6 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
 ```
 
--->
 
 ### Towards the DX7
 
