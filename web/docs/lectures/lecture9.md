@@ -1,4 +1,4 @@
-# Lecture 9: Some other usefull things to know
+# Lecture 9: Some Other Usefull Things to Know
 
 This page gathered information that are useful to many of you (but not all of you probably), depending on the topic of your project. Many of your realization are prototyped in existing examples in the arduino IDE.
 
