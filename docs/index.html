@@ -40,39 +40,39 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="lectures/lecture1/" class="dropdown-item"> 1: Programming Environment Setup </a>
+    <a href="lectures/setup/" class="dropdown-item"> 1: Programming Environment Setup </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture2/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
+    <a href="lectures/audio-dsp/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture3/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+    <a href="lectures/audio-sys/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture4/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
+    <a href="lectures/control/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture5/" class="dropdown-item"> 5: Introduction to Faust </a>
+    <a href="lectures/faust/" class="dropdown-item"> 5: Introduction to Faust </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture6/" class="dropdown-item"> 6: Audio Processing Basics I </a>
+    <a href="lectures/dsp1/" class="dropdown-item"> 6: Audio Processing Basics I </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture7/" class="dropdown-item"> 7: Audio Processing Basics II </a>
+    <a href="lectures/dsp2/" class="dropdown-item"> 7: Audio Processing Basics II </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture8/" class="dropdown-item"> 8: Faust on the Teensy and Advanced Control </a>
+    <a href="lectures/faust-teensy/" class="dropdown-item"> 8: Faust on the Teensy and Advanced Control </a>
 </li>
                                     
 <li>
-    <a href="lectures/lecture9/" class="dropdown-item"> 9: Some Other Usefull Things to Know </a>
+    <a href="lectures/useful/" class="dropdown-item"> Some Other Useful Things to Know </a>
 </li>
                                 </ul>
                             </li>
@@ -135,15 +135,15 @@
 
 <h1 id="son-3tc-audio-project-insa-lyon">SON: 3TC Audio Project @ INSA Lyon</h1>
 <p>In this project, students program an embedded system (the Teensy 4.0: <a href="https://www.pjrc.com/store/teensy40.html">https://www.pjrc.com/store/teensy40.html</a>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++). The idea is also to encourage students to develop a sense of independent work/entrepreneurship.</p>
-<p>The 3 weeks project period starts with a workshop on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.</p>
+<p>The 2 weeks project period starts with a workshop on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.</p>
 <p>After this period, various project ideas are suggested to students. Projects can focus more on DSP or on the "product/hardware" aspect. Students work in groups of 2 on projects.</p>
-<p>The project period culminates in a final presentation taking the form of a poster/demo session where each group of students has a booth and can present his project, etc.</p>
+<p>The project period culminates in a final presentation taking the form of a poster/demo session where each group of students has a booth and can present its project, etc.</p>
 <p>Students are provided with plenty of fully-operational starter code/projects so that they have "something that works" right from the beginning.</p>
 <h2 id="instructors">Instructors</h2>
 <ul>
 <li><a href="http://perso.citi-lab.fr/rmichon/">Romain Michon</a> (Inria)</li>
 <li><a href="http://perso.citi.insa-lyon.fr/trisset/">Tanguy Risset</a> (INSA Lyon)</li>
-<li>Thomas Rushton (Inria)</li>
+<li>Clemens Wegener (Inria)</li>
 <li>Benjamin Quiédeville (Inria/GRAME)</li>
 </ul>
 <h2 id="resources">Resources</h2>
@@ -153,28 +153,30 @@
 <li>A soldering room (next to radiocom room)</li>
 <li>The SON kit for a group of two students:</li>
 </ul>
-<p><center>
+<center>
 <img src="img/son-kit.jpg"  width="70%">
 </p><figcaption>A pair of headphones, one Teensy 4.0 with its companion audio shield, two buttons, two potentiometers, one breadboard, and a couple of resistors and jumper cables (do not loose these components!).
 </figcaption>
-</center></p>
+</center>
+
 <h2 id="requirements">Requirements</h2>
 <ul>
-<li>Installing Teensyduino as explained in <a href="lectures/lecture1/">Lecture 1</a>.</li>
+<li>Installing Teensyduino as explained in <a href="lectures/setup/">Lecture 1</a>.</li>
 </ul>
 <h2 id="course-overview">Course Overview</h2>
 <ul>
-<li><strong>Lecture 1: <a href="lectures/lecture1/">Course Introduction and Programming Environment Setup</a></strong> -- <em>10/02/2025 14h00-16h00</em></li>
-<li><strong>Lecture 2: <a href="lectures/lecture2/">Audio Signal Processing Fundamentals</a></strong> -- <em>10/02/2025 16h00-18h00</em></li>
-<li><strong>Lecture 3: <a href="lectures/lecture3/">Digital Audio Systems Architectures and Audio Callback</a></strong> -- <em>12/02/2025 08h00-10h00</em></li>
-<li><strong>Lab</strong> -- <em>12/02/2025 10h00-12h00</em></li>
-<li><strong>Lecture 4: <a href="lectures/lecture4/">Hardware Control and Audio Codec Configuration</a></strong> -- <em>12/02/2025 14h00-16h00</em></li>
-<li><strong>Lecture 5: Introduction to Faust (Yann Orlarey)</strong> -- <em>12/02/2025 16h00-18h00</em></li>
-<li><strong>Lecture 6: <a href="lectures/lecture6/">Audio Processing Basics I</a></strong> -- <em>13/02/2025 08h00-10h00</em></li>
-<li><strong>Lab</strong> -- <em>13/02/2025 10h00-12h00</em></li>
-<li><strong>Lecture 7: <a href="lectures/lecture7/">Audio Processing Basics II</a></strong> -- <em>14/02/2025 08h00-10h00</em></li>
-<li><strong>Lecture 8: <a href="lectures/lecture8/">Faust on the Teensy and Advanced Control</a></strong> -- <em>14/02/2025 10h00-12h00</em></li>
-<li><strong>Independent work on Projects</strong> -- <em>18/02/2025 - 28/02/2025</em></li>
+<li><strong>Lecture 1: <a href="lectures/setup/">Course Introduction and Programming Environment Setup</a></strong> -- <em>02/02/2026 08h00-10h00</em></li>
+<li><strong>Lecture 2: <a href="lectures/audio-dsp/">Audio Signal Processing Fundamentals</a></strong>  -- <em>02/02/2026 14h00-16h00</em></li>
+<li><strong>Lecture 3: <a href="lectures/audio-sys/">Digital Audio Systems Architectures and Audio Callback</a></strong> -- <em>02/02/2026 16h00-18h00</em> </li>
+<li><strong>Lecture 4: <a href="lectures/control/">Hardware Control and Audio Codec Configuration</a></strong> -- <em>04/02/2026 08h00-10h00</em></li>
+<li><strong>Lecture 5: <a href="lectures/faust/">Introduction to Faust</a></strong> -- <em>04/02/2026 10h00-12h00</em></li>
+<li><strong>Lecture 6: <a href="lectures/dsp1/">Audio Processing Basics I</a></strong> -- <em>05/02/2026 08h00-10h00</em> </li>
+<li><strong>Lab</strong> -- <em>05/02/2026 10h00-12h00</em></li>
+<li><strong>Lecture 7: <a href="lectures/dsp2/">Audio Processing Basics II</a></strong> -- <em>06/02/2026 08h00-10h00</em></li>
+<li><strong>Lecture 8: <a href="lectures/faust-teensy/">Faust on the Teensy and Advanced Control</a></strong> -- <em>06/02/2026 10h00-12h00</em></li>
+<li><strong>Project Validation Session</strong> -- <em>06/02/2026 16h00-18h00</em></li>
+<li><strong><a href="lectures/useful/">Some Other Useful Things to Know</a></strong></li>
+<li><strong>Independent work on Projects</strong> -- <em>09/02/2026 - 27/02/2026</em></li>
 </ul>
 <table>
 <thead>
@@ -189,135 +191,142 @@
 <tbody>
 <tr>
 <td><strong>TP1</strong></td>
-<td>18/02/2025 -- 14h00-16h00 -- TD C</td>
-<td>18/02/2025 -- 14h00-16h00 -- TD D</td>
-<td>18/02/2025 -- 14h00-16h00 -- TD E</td>
-<td>18/02/2025 -- 14h00-16h00 -- TD F</td>
+<td>09/02/2026 -- 08h00-10h00 -- TD C</td>
+<td>09/02/2026 -- 08h00-10h00 -- TD D</td>
+<td>09/02/2026 -- 08h00-10h00 -- TD E</td>
+<td>09/02/2026 -- 08h00-10h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP2</strong></td>
-<td>19/02/2025 -- 08h00-10h00 -- TD E</td>
-<td>19/02/2025 -- 08h00-10h00 -- TD D</td>
-<td>19/02/2025 -- 08h00-10h00 -- TD C</td>
-<td>19/02/2025 -- 08h00-10h00 -- TD F</td>
+<td>09/02/2026 -- 14h00-16h00 -- TD E</td>
+<td>09/02/2026 -- 14h00-16h00 -- TD C</td>
+<td>09/02/2026 -- 14h00-16h00 -- TD D</td>
+<td>09/02/2026 -- 14h00-16h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP3</strong></td>
-<td>19/02/2025 -- 10h00-12h00 -- TD E</td>
-<td>19/02/2025 -- 10h00-12h00 -- TD D</td>
-<td>19/02/2025 -- 10h00-12h00 -- TD C</td>
-<td>19/02/2025 -- 10h00-12h00 -- TD F</td>
+<td>09/02/2026 -- 16h00-18h00 -- TD E</td>
+<td>09/02/2026 -- 16h00-18h00 -- TD C</td>
+<td>09/02/2026 -- 16h00-18h00 -- TD D</td>
+<td>09/02/2026 -- 16h00-18h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP4</strong></td>
-<td>19/02/2025 -- 14h00-16h00 -- TD F</td>
-<td>19/02/2025 -- 14h00-16h00 -- TD E</td>
-<td>19/02/2025 -- 14h00-16h00 -- TD D</td>
-<td>19/02/2025 -- 14h00-16h00 -- TD C</td>
+<td>11/02/2026 -- 08h00-10h00 -- TD E</td>
+<td>11/02/2026 -- 08h00-10h00 -- TD C</td>
+<td>11/02/2026 -- 08h00-10h00 -- TD D</td>
+<td>11/02/2026 -- 08h00-10h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP5</strong></td>
-<td>19/02/2025 -- 16h00-18h00 -- TD F</td>
-<td>19/02/2025 -- 16h00-18h00 -- TD E</td>
-<td>19/02/2025 -- 16h00-18h00 -- TD D</td>
-<td>16/02/2025 -- 16h00-18h00 -- TD C</td>
+<td>11/02/2026 -- 10h00-12h00 -- TD E</td>
+<td>11/02/2026 -- 10h00-12h00 -- TD C</td>
+<td>11/02/2026 -- 10h00-12h00 -- TD D</td>
+<td>11/02/2026 -- 10h00-12h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP6</strong></td>
-<td>20/02/2025 -- 08h00-10h00 -- TD F</td>
-<td>20/02/2025 -- 08h00-10h00 -- TD C</td>
-<td>20/02/2025 -- 08h00-10h00 -- TD D</td>
-<td>20/02/2025 -- 08h00-10h00 -- TD E</td>
+<td>11/02/2026 -- 14h00-16h00 -- TD C</td>
+<td>11/02/2026 -- 14h00-16h00 -- TD D</td>
+<td>11/02/2026 -- 14h00-16h00 -- TD F</td>
+<td>11/02/2026 -- 14h00-16h00 -- TD E</td>
 </tr>
 <tr>
 <td><strong>TP7</strong></td>
-<td>20/02/2025 -- 10h00-12h00 -- TD F</td>
-<td>20/02/2025 -- 10h00-12h00 -- TD C</td>
-<td>20/02/2025 -- 10h00-12h00 -- TD D</td>
-<td>20/02/2025 -- 10h00-12h00 -- TD E</td>
+<td>11/02/2026 -- 16h00-18h00 -- TD C</td>
+<td>11/02/2026 -- 16h00-18h00 -- TD D</td>
+<td>11/02/2026 -- 16h00-18h00 -- TD F</td>
+<td>11/02/2026 -- 16h00-18h00 -- TD E</td>
 </tr>
 <tr>
 <td><strong>TP8</strong></td>
-<td>21/02/2025 -- 08h00-10h00 -- TD D</td>
-<td>21/02/2025 -- 08h00-10h00 -- TD F</td>
-<td>21/02/2025 -- 08h00-10h00 -- TD E</td>
-<td>21/02/2025 -- 08h00-10h00 -- TD C</td>
+<td>12/02/2026 -- 08h00-10h00 -- TD F</td>
+<td>12/02/2026 -- 08h00-10h00 -- TD E</td>
+<td>12/02/2026 -- 08h00-10h00 -- TD D</td>
+<td>12/02/2026 -- 08h00-10h00 -- TD C</td>
 </tr>
 <tr>
 <td><strong>TP9</strong></td>
-<td>21/02/2025 -- 10h00-12h00 -- TD D</td>
-<td>21/02/2025 -- 10h00-12h00 -- TD E</td>
-<td>21/02/2025 -- 10h00-12h00 -- TD F</td>
-<td>21/02/2025 -- 10h00-12h00 -- TD C</td>
+<td>13/02/2026 -- 08h00-10h00 -- TD C</td>
+<td>13/02/2026 -- 08h00-10h00 -- TD F</td>
+<td>13/02/2026 -- 08h00-10h00 -- TD E</td>
+<td>13/02/2026 -- 08h00-10h00 -- TD D</td>
 </tr>
 <tr>
 <td><strong>TP10</strong></td>
-<td>21/02/2025 -- 16h00-18h00 -- TD F</td>
-<td>21/02/2025 -- 16h00-18h00 -- TD C</td>
-<td>21/02/2025 -- 16h00-18h00 -- TD D</td>
-<td>21/02/2025 -- 16h00-18h00 -- TD E</td>
+<td>13/02/2026 -- 10h00-12h00 -- TD C</td>
+<td>13/02/2026 -- 10h00-12h00 -- TD F</td>
+<td>13/02/2026 -- 10h00-12h00 -- TD E</td>
+<td>13/02/2026 -- 10h00-12h00 -- TD D</td>
 </tr>
 <tr>
 <td><strong>MLS/TP11</strong></td>
-<td>24/02/2025 -- 08h00-10h00 -- TD F</td>
-<td>24/02/2025 -- 08h00-10h00 -- TD C</td>
-<td>24/02/2025 -- 08h00-10h00 -- TD D</td>
-<td>24/02/2025 -- 08h00-10h00 -- TD E</td>
+<td>13/02/2026 -- 14h00-16h00 -- TD E</td>
+<td>13/02/2026 -- 14h00-16h00 -- TD C</td>
+<td>13/02/2026 -- 14h00-16h00 -- TD D</td>
+<td>13/02/2026 -- 14h00-16h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>MLS/TP12</strong></td>
-<td>24/02/2025 -- 16h00-18h00 -- TD C</td>
-<td>24/02/2025 -- 16h00-18h00 -- TD F</td>
-<td>24/02/2025 -- 14h00-16h00 -- TD D</td>
-<td>24/02/2025 -- 10h00-12h00 -- TD E</td>
+<td>13/02/2026 -- 16h00-18h00 -- TD E</td>
+<td>13/02/2026 -- 16h00-18h00 -- TD C</td>
+<td>13/02/2026 -- 16h00-18h00 -- TD D</td>
+<td>13/02/2026 -- 16h00-18h00 -- TD F</td>
 </tr>
 <tr>
 <td><strong>TP13</strong></td>
-<td>25/02/2025 -- 14h00-16h00 -- TD D</td>
-<td>25/02/2025 -- 14h00-16h00 -- TD C</td>
-<td>25/02/2025 -- 14h00-16h00 -- TD E</td>
-<td>24/02/2025 -- 14h00-16h00 -- TD E</td>
+<td>23/02/2026 -- 08h00-10h00 -- TD E</td>
+<td>23/02/2026 -- 08h00-10h00 -- TD D</td>
+<td>23/02/2026 -- 08h00-10h00 -- TD F</td>
+<td>23/02/2026 -- 08h00-10h00 -- TD C</td>
 </tr>
 <tr>
 <td><strong>TP14</strong></td>
-<td>26/02/2025 -- 08h00-10h00 -- TD E</td>
-<td>26/02/2025 -- 08h00-10h00 -- TD D</td>
-<td>26/02/2025 -- 08h00-10h00 -- TD C</td>
-<td>26/02/2025 -- 08h00-10h00 -- TD F</td>
+<td>24/02/2026 -- 14h00-16h00 -- TD F</td>
+<td>24/02/2026 -- 14h00-16h00 -- TD C</td>
+<td>24/02/2026 -- 14h00-16h00 -- TD E</td>
+<td>24/02/2026 -- 14h00-16h00 -- TD D</td>
 </tr>
 <tr>
 <td><strong>TP15</strong></td>
-<td>26/02/2025 -- 10h00-12h00 -- TD E</td>
-<td>26/02/2025 -- 10h00-12h00 -- TD D</td>
-<td>26/02/2025 -- 10h00-12h00 -- TD C</td>
-<td>26/02/2025 -- 10h00-12h00 -- TD F</td>
+<td>25/02/2026 -- 08h00-10h00 -- TD TODO</td>
+<td>25/02/2026 -- 08h00-10h00 -- TD TODO</td>
+<td>25/02/2026 -- 08h00-10h00 -- TD TODO</td>
+<td>25/02/2026 -- 08h00-10h00 -- TD TODO</td>
 </tr>
 <tr>
 <td><strong>TP16</strong></td>
-<td>26/02/2025 -- 14h00-16h00 -- TD D</td>
-<td>26/02/2025 -- 14h00-16h00 -- TD C</td>
-<td>26/02/2025 -- 14h00-16h00 -- TD F</td>
-<td>26/02/2025 -- 14h00-16h00 -- TD E</td>
+<td>25/02/2026 -- 10h00-12h00 -- TD TODO</td>
+<td>25/02/2026 -- 10h00-12h00 -- TD TODO</td>
+<td>25/02/2026 -- 10h00-12h00 -- TD TODO</td>
+<td>25/02/2026 -- 10h00-12h00 -- TD TODO</td>
 </tr>
 <tr>
 <td><strong>TP17</strong></td>
-<td>26/02/2025 -- 16h00-18h00 -- TD D</td>
-<td>26/02/2025 -- 16h00-18h00 -- TD F</td>
-<td>26/02/2025 -- 16h00-18h00 -- TD E</td>
-<td>26/02/2025 -- 16h00-18h00 -- TD C</td>
+<td>25/02/2026 -- 14h00-16h00 -- TD TODO</td>
+<td>25/02/2026 -- 14h00-16h00 -- TD TODO</td>
+<td>25/02/2026 -- 14h00-16h00 -- TD TODO</td>
+<td>25/02/2026 -- 14h00-16h00 -- TD TODO</td>
 </tr>
 <tr>
 <td><strong>TP18</strong></td>
-<td>27/02/2025 -- 08h00-10h00 -- TD F</td>
-<td>27/02/2025 -- 08h00-10h00 -- TD C</td>
-<td>27/02/2025 -- 08h00-10h00 -- TD E</td>
-<td>27/02/2025 -- 08h00-10h00 -- TD D</td>
+<td>25/02/2026 -- 16h00-18h00 -- TD TODO</td>
+<td>25/02/2026 -- 16h00-18h00 -- TD TODO</td>
+<td>25/02/2026 -- 16h00-18h00 -- TD TODO</td>
+<td>25/02/2026 -- 16h00-18h00 -- TD TODO</td>
+</tr>
+<tr>
+<td><strong>TP19</strong></td>
+<td>26/02/2026 -- 08h00-10h00 -- TD TODO</td>
+<td>26/02/2026 -- 08h00-10h00 -- TD TODO</td>
+<td>26/02/2026 -- 08h00-10h00 -- TD TODO</td>
+<td>26/02/2026 -- 08h00-10h00 -- TD TODO</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><strong>Final Presentations (G1 + G2)</strong> -- <em>28/02/2025 08h00-12h00</em></li>
-<li><strong>Final Presentations (G3 + G4)</strong> -- <em>28/02/2025 14h00-18h00</em></li>
+<li><strong>Final Presentations (G1 + G2)</strong> -- <em>27/02/2026 08h00-12h00</em></li>
+<li><strong>Final Presentations (G3 + G4)</strong> -- <em>27/02/2025 14h00-18h00</em></li>
 </ul></div>
             </div>
         </div>
@@ -401,5 +410,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-02-25 11:14:25.867436+00:00
+Build Date UTC : 2026-01-08 15:01:44.191376+00:00
 -->

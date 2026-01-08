@@ -2,50 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://inria-emeraude.github.io/son/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
          <loc>https://inria-emeraude.github.io/son/projects/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture1/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/audio-dsp/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture2/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/audio-sys/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture3/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/control/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture4/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/dsp1/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture5/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/dsp2/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture6/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/faust-teensy/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture7/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/faust/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture8/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/setup/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
     <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/lecture9/</loc>
-         <lastmod>2025-02-25</lastmod>
-    </url>
-    <url>
-         <loc>https://inria-emeraude.github.io/son/lectures/project/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <loc>https://inria-emeraude.github.io/son/lectures/useful/</loc>
+         <lastmod>2026-01-08</lastmod>
     </url>
 </urlset>

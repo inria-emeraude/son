@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://inria-emeraude.github.io/son/lectures/dsp1/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title> 6: Audio Processing Basics I  - SON @ INSA Lyon</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/rainbow.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">SON @ INSA Lyon</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lectures</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../setup/" class="dropdown-item"> 1: Programming Environment Setup </a>
+</li>
+                                    
+<li>
+    <a href="../audio-dsp/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
+</li>
+                                    
+<li>
+    <a href="../audio-sys/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+</li>
+                                    
+<li>
+    <a href="../control/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
+</li>
+                                    
+<li>
+    <a href="../faust/" class="dropdown-item"> 5: Introduction to Faust </a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page"> 6: Audio Processing Basics I </a>
+</li>
+                                    
+<li>
+    <a href="../dsp2/" class="dropdown-item"> 7: Audio Processing Basics II </a>
+</li>
+                                    
+<li>
+    <a href="../faust-teensy/" class="dropdown-item"> 8: Faust on the Teensy and Advanced Control </a>
+</li>
+                                    
+<li>
+    <a href="../useful/" class="dropdown-item"> Some Other Useful Things to Know </a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../projects/" class="nav-link">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../faust/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../dsp2/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#audio-processing-basics-i" class="nav-link">Audio Processing Basics I</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#white-noise" class="nav-link">White Noise</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#wave-shape-synthesis" class="nav-link">Wave Shape Synthesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#amplitude-modulation-am-synthesis" class="nav-link">Amplitude Modulation (AM) Synthesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#frequency-modulation-fm-synthesis" class="nav-link">Frequency Modulation (FM) Synthesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#simple-filter-one-zero" class="nav-link">Simple Filter: One Zero</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#exercises" class="nav-link">Exercises</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="3"><a href="#lfo-low-frequency-oscillator" class="nav-link">LFO: Low Frequency Oscillator</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#towards-the-dx7" class="nav-link">Towards the DX7</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#smoothing" class="nav-link">Smoothing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#smoothing-potentiometer-values" class="nav-link">Smoothing Potentiometer Values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="audio-processing-basics-i">Audio Processing Basics I</h1>
+<p>This lecture and <a href="../dsp2/">the following one</a> present a selection of audio processing and synthesis algorithms. It is in no way comprehensive: the goal is just to give you a sense of what's out there.</p>
+<p>All these algorithms have been extensively used during the second half of the twentieth century by musicians and artists, especially within the computer music community.</p>
+<h2 id="white-noise">White Noise</h2>
+<p>White noise is a specific kind of signal in which there's an infinite number of harmonics all having the same level. In other words, the spectrum of white noise looks completely flat. </p>
+<p>White noise is produced by generating random numbers between -1 and 1. <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/libraries/mydsp/src/Noise.cpp"><code>Noise.cpp</code></a> demonstrates how this can be done in C++ using the <code>rand()</code> function:</p>
+<pre><code>Noise::Noise() :
+randDiv(1.0/RAND_MAX){}
+
+float Noise::tick(){
+  return rand()*randDiv*2 - 1;
+}
+</code></pre>
+<p>The <a href="#simple-filter-one-zero">Simple Filter: One Zero</a> section presents a use example of white noise.</p>
+<h2 id="wave-shape-synthesis">Wave Shape Synthesis</h2>
+<p>Wave Shape synthesis is one of the most basic sound synthesis technique. It consists of using oscillators producing waveforms of different shapes to generate sound. The most standard wave shapes are:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg">sine wave</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg">square wave</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg">triangle wave</a>,</li>
+<li><a href="https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg">sawtooth wave</a>.</li>
+</ul>
+<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-sine"><code>crazy-sine</code></a> example can be considered as "wave shape synthesis" in that regard.</p>
+<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw"><code>crazy-saw</code></a> example is very similar to <code>crazy-sine</code>, but it's based on a sawtooth wave instead. The sawtooth wave is created by using a <code>phasor</code> object. Just as a reminder, a phasor produces a signals tamping from 0 to 1 at a given frequency, it can therefore be seen as a sawtooth wave. Since the range of oscillators must be bounded between -1 and 1, we adjusts the output of the phasor such that:</p>
+<pre><code>float currentSample = sawtooth.tick()*2 - 1;
+</code></pre>
+<p>Feel free to try the <code>crazy-saw</code> example at this point.</p>
+<h2 id="amplitude-modulation-am-synthesis">Amplitude Modulation (AM) Synthesis</h2>
+<p>Amplitude modulation synthesis consists of modulating the amplitude of a signal with another one. Sine waves are typically used for that:</p>
+<figure>
+<img src="img/am.png" class="mx-auto d-block" width="90%">
+<figcaption><center>Amplitude Modulation (Source: <a href="https://en.wikipedia.org/wiki/Amplitude_modulation#/media/File:Illustration_of_Amplitude_Modulation.png">Wikipedia</a>)</center></figcaption>
+</figure>
+
+<p>When the frequency of the modulator is low (bellow 20Hz), our ear is able to distinguish each independent "beat," creating a tremolo effect. However, above 20Hz two side bands (if sine waves are used) start appearing following this rule:</p>
+<figure>
+<img src="img/am-spectrum.svg" class="mx-auto d-block" width="80%">
+<figcaption><center>Amplitude Modulation Spectrum (Source: <a href="https://en.wikipedia.org/wiki/Amplitude_modulation#/media/File:AM_spectrum.svg">Wikipedia</a>)</center></figcaption>
+</figure>
+
+<p>The mathematical proof of this can be found on <a href="https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Amplitude_Modulation_AM.html">Julius Smith's website</a>.</p>
+<p><a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/Am.cpp"><code>Am.cpp</code></a> implements a sinusoidal amplitude modulation synthesizer:</p>
+<pre><code>float Am::tick(){
+  int cIndex = cPhasor.tick()*SINE_TABLE_SIZE;
+  int mIndex = mPhasor.tick()*SINE_TABLE_SIZE;
+  float posMod = sineTable.tick(mIndex)*0.5 + 0.5;
+  return sineTable.tick(cIndex)*(1 - posMod*modIndex)*gain;
+}
+</code></pre>
+<p>Note that phasors are used instead of "complete" sine wave oscillators to save the memory of an extra sine wave table. The range of the modulating oscillator is adjusted to be {0,1} instead of {-1,1}.</p>
+<p>The amplitude parameter of the modulating oscillator is called the <em>index of modulation</em> and its frequency, the <em>frequency of modulation</em>.</p>
+<p>In practice, the same result could be achieved using additive synthesis and three sine wave oscillators but AM allows us to save one oscillator. Also, AM is usually used an audio effect and modulation is applied to an input signal in that case instead of a sine wave. Sidebands will then be produced for each harmonic of the processed sound.</p>
+<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/am"><code>am</code> example</a> demonstrates a use case of an AM synthesizer. Use the <code>Rec</code> and <code>Mode</code> button to cycle through the parameters of the synth and change their value.</p>
+<h2 id="frequency-modulation-fm-synthesis">Frequency Modulation (FM) Synthesis</h2>
+<p>Frequency modulation synthesis consists of modulating the frequency of an oscillator with another one:</p>
+<figure>
+<img src="img/fm.svg" class="mx-auto d-block" width="90%">
+<figcaption><center>Frequency Modulation (Source: <a href="https://en.wikipedia.org/wiki/Frequency_modulation_synthesis">Wikipedia</a>)</center></figcaption>
+</figure>
+
+<p>which mathematically can be expressed as:</p>
+<p>
+<script type="math/tex; mode=display">x(t) = A_c\sin[\omega_ct + \phi_c + A_m\sin(\omega_mt + \phi_m)]</script>
+</p>
+<p>where <script type="math/tex">c</script> denotes the carrier and <script type="math/tex">m</script>, the modulator.</p>
+<p>As for AM, the frequency of the modulating oscillator is called the <em>frequency of modulation</em> and the amplitude of the modulating oscillator, the <em>index of modulation</em>. Unlike AM, the value of the index of modulation can exceed 1 which will increase the number of sidebands. FM is not limited to two sidebands and can have an infinite number of sidebands depending on the value of the index. The mathematical rational behind this can be found on <a href="https://ccrma.stanford.edu/~jos/mdft/FM_Spectra.html">Julius Smith's website</a>.</p>
+<p><a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/Fm.cpp"><code>fm.cpp</code></a> provides a simple example of how an FM synthesizer can be implemented:</p>
+<pre><code>float Fm::tick(){
+  int mIndex = mPhasor.tick()*SINE_TABLE_SIZE;
+  float modulator = sineTable.tick(mIndex);
+  cPhasor.setFrequency(cFreq + modulator*modIndex);
+  int cIndex = cPhasor.tick()*SINE_TABLE_SIZE;
+  return sineTable.tick(cIndex)*gain;
+}
+</code></pre>
+<p>Note that as for the AM example, we're saving an extra sine wave table by using the same one for both oscillators.</p>
+<p>The examples folder of the course repository hosts <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/fm">a simple Teensy program</a> illustrating the use of FM. Use the <code>Rec</code> and <code>Mode</code> button to cycle through the parameters of the synth and change their value.</p>
+<p>FM synthesis was discovered in the late 1960s by John Chowning at Stanford University in California. He's now considered as one of the funding fathers of music technology and computer music. FM completely revolutionized the world of music in the 1980s by allowing Yamaha to produce the first commercial digital synthesizers: the <a href="https://en.wikipedia.org/wiki/Yamaha_DX7">DX7</a> which met a huge success. FM synthesis is the second most profitable patent that Stanford ever had.</p>
+<h2 id="simple-filter-one-zero">Simple Filter: One Zero</h2>
+<p>Filters are heavily used in the field of audio processing. In fact, designing filters is a whole field by itself. They are at the basis of many audio effects such as Wah guitar pedals, etc. From an algorithmic standpoint, the most basic filter is what we call a "one zero" filter which means that its transfer function only has numerators and no denominators. The differential equation of a one zero filter can be expressed as:</p>
+<p>
+<script type="math/tex; mode=display">y(n) = b_0x(n) + b_1x(n-1)</script>
+</p>
+<p>where <script type="math/tex">b_1</script> is "the zero" of the filter (also called <em>feed forward coefficient</em>), <script type="math/tex">b_0</script> can be discarded as it is equal to 1 in most cases.</p>
+<p>One zero filters can either be used as a lowpass if the value of <script type="math/tex">b_1</script> is positive or as a highpass if <script type="math/tex">b_1</script> is negative. The frequency response of the filter which is be obtained with <script type="math/tex">H(e^{j \omega T}) = b_0 + b_1e^{-j \omega T}</script> can be visualized on <a href="https://ccrma.stanford.edu/~jos/filters/One_Zero.html">Julius Smith's website</a>.</p>
+<p>Note that the gain of the signal is amplified on the second half of the spectrum which needs to be taken into account if this filter is used to process audio (once again, the output signal must be bounded within {-1,1}). </p>
+<p><a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/OneZero.cpp"><code>OneZero.cpp</code></a> implements a one zero filter:</p>
+<pre><code>float OneZero::tick(float input){
+  float output = input + del*b1;
+  del = input;
+  return output*0.5;
+}
+</code></pre>
+<p>Note that we multiply the output by 0.5 to normalize the output gain.</p>
+<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/filtered-noise"><code>filtered-noise</code></a> example program for the Teensy demonstrates the use of <code>OneZero.cpp</code> by feeding <a href="#white-noise">white noise</a> in it. The value of <script type="math/tex">b_1</script> can be changed by pressing the "Mode" button on the board, give it a try!</p>
+<!-- TODO: Potentially add a section on biquads here. -->
+
+<h2 id="exercises">Exercises</h2>
+<h3 id="lfo-low-frequency-oscillator">LFO: Low Frequency Oscillator</h3>
+<p>An LFO is an oscillator whose frequency is below the human hearing range (20 Hz). LFOs are typically used to create vibrato. In that case, the frequency of the LFO is usually set to 6 Hz. </p>
+<p>Modify the <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw">crazy-saw example</a> so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.</p>
+<p><strong>Solution:</strong></p>
+<p>In <code>MyDsp.h</code>:</p>
+<pre><code>#include &quot;Sine.h&quot;
+
+...
+
+private:
+  float freq;
+  Phasor sawtooth;
+  Echo echo;
+  Sine LFO;
+};
+</code></pre>
+<p>In <code>MyDsp.cpp</code>:</p>
+<pre><code>MyDsp::MyDsp() :
+...
+freq(440),
+sawtooth(AUDIO_SAMPLE_RATE_EXACT),
+echo(AUDIO_SAMPLE_RATE_EXACT,10000),
+LFO(AUDIO_SAMPLE_RATE_EXACT)
+{
+
+...
+
+  // setting up DSP objects
+  echo.setDel(10000);
+  echo.setFeedback(0.5);
+  LFO.setFrequency(6);
+}
+
+...
+
+// set sine wave frequency
+void MyDsp::setFreq(float f){
+  freq = f;
+}
+
+...
+
+for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
+  // DSP
+  sawtooth.setFrequency(freq*(1 + LFO.tick()*0.1));
+  float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
+</code></pre>
+<h3 id="towards-the-dx7">Towards the DX7</h3>
+<p>The DX7 carried out frequency modulation over a total of six oscillators that could be patched in <a href="https://static.righto.com/images/dx7-alg/algorithms-w800.jpg">different ways</a>. So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -&gt; 2 -&gt; 1.</p>
+<p><strong>Solution:</strong></p>
+<p>(non-exhaustive)</p>
+<p>In <code>Fm.cpp</code>:</p>
+<pre><code>float Fm::tick(){
+  int m0Index = m0Phasor.tick()*SINE_TABLE_SIZE;
+  float modulator0 = sineTable.tick(m0Index);
+  modulator1.setFrequency(m1Freq + modulator0*mod0Index);
+  int m1Index = m1Phasor.tick()*SINE_TABLE_SIZE;
+  float modulator1 = sineTable.tick(m1Index);
+  cPhasor.setFrequency(cFreq + modulator1*mod1Index);
+  int cIndex = cPhasor.tick()*SINE_TABLE_SIZE;
+  return sineTable.tick(cIndex)*gain;
+}
+</code></pre>
+<p>And more exhaustive solution is provided in <a href="fm3.zip"><code>fm3</code> here</a>.</p>
+<h3 id="smoothing">Smoothing</h3>
+<p>In most cases, DSP parameters are executed at control rate. Moreover, the resolution of the value used to configure parameters is much lower than that of audio samples since it might come from a Graphical User Interface (GUI), a low resolution sensor ADC (e.g., arduino), etc. For all these reasons, changing the value of a DSP parameter will often result in a "click"/discontinuity. A common way to prevent this from happening is to interpolate between the values of the parameter using a "leaky integrator." In signal processing, this can be easily implemented using a normalized one pole lowpass filter:</p>
+<p>
+<script type="math/tex; mode=display">y(n) = (1-s)x(n) + sy(n-1)</script>
+</p>
+<p>where <script type="math/tex">s</script> is the value of the pole and is typically set to 0.999 for optimal results.</p>
+<p>Modify the <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw">crazy-saw</a> example by "smoothing" the value of the frequency parameter by implementing the filter above with <script type="math/tex">s=0.999</script>. Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).</p>
+<p><strong>Solution:</strong></p>
+<p>In addition to <code>Smooth.cpp</code> and <code>Smooth.h</code>, in <code>Phasor.h</code>:</p>
+<pre><code>  int samplingRate;
+  Smooth smooth;
+};
+</code></pre>
+<p>and <code>Phasor.cpp</code>:</p>
+<pre><code>float Phasor::tick(){
+  float currentSample = phasor;
+  phasor += smooth.tick(phasorDelta);
+  phasor = phasor - std::floor(phasor);
+  return currentSample;
+}
+</code></pre>
+<h3 id="smoothing-potentiometer-values">Smoothing Potentiometer Values</h3>
+<p>Try to use the smoothing function that you implemented in the previous step to smooth sensor values coming from a potential potentiometer controlling some parameter of one of the Teensy examples. The main idea is to get rid of sound artifacts when making abrupt changes in potentiometers.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
