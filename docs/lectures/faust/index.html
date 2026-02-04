@@ -120,19 +120,7 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#introduction-to-faust" class="nav-link">Introduction to Faust</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#useful-resources" class="nav-link">Useful Resources</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#sawtooth-synth" class="nav-link">Sawtooth Synth</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#panner" class="nav-link">Panner</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#oscillator-from-scratch" class="nav-link">Oscillator From Scratch</a>
+            <li class="nav-item" data-bs-level="2"><a href="#additional-useful-resources" class="nav-link">Additional Useful Resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -144,45 +132,14 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="introduction-to-faust">Introduction to Faust</h1>
-<h2 id="useful-resources">Useful Resources</h2>
+<p>Yann's slides: <a href="https://effractionmusicale.fr/insa2026">https://effractionmusicale.fr/insa2026</a></p>
+<h2 id="additional-useful-resources">Additional Useful Resources</h2>
 <ul>
 <li>Faust Website: <a href="https://faust.grame.fr">https://faust.grame.fr</a></li>
 <li>Faust Documentation: <a href="https://faustdoc.grame.fr">https://faustdoc.grame.fr</a></li>
 <li>Faust Libraries Documentation: <a href="https://faustlibraries.grame.fr">https://faustlibraries.grame.fr</a></li>
 <li>Faust Online IDE: <a href="https://faustide.grame.fr">https://faustide.grame.fr</a></li>
-</ul>
-<p>All programs below can be executed in the Faust Online IDE, give them a try ;).</p>
-<h2 id="sawtooth-synth">Sawtooth Synth</h2>
-<pre><code>import(&quot;stdfaust.lib&quot;);
-f = hslider(&quot;freq&quot;,400,50,2000,0.01);
-g = hslider(&quot;gain&quot;,1,0,1,0.01);
-t = button(&quot;gate&quot;);
-envelope = t : en.adsr(0.1,0.01,0.8,0.5);
-process = os.sawtooth(f)*g*envelope &lt;: _,_;
-effect = dm.zita_light;
-</code></pre>
-<h2 id="panner">Panner</h2>
-<pre><code>import(&quot;stdfaust.lib&quot;);
-g = hslider(&quot;gain&quot;,1,0,1,0.01) : si.smoo;
-pan(p) = _ &lt;: _*(1-psqrt),_*psqrt
-with{
-    psqrt = p : sqrt;
-};
-process = pan(g);
-</code></pre>
-<h2 id="oscillator-from-scratch">Oscillator From Scratch</h2>
-<pre><code>import(&quot;stdfaust.lib&quot;);
-saw(f) = (A~B)/p*2-1
-with{
-    p = ma.SR/f;
-    A = _;
-    B = (_+1)%p;
-};
-sine(f) = (saw(f)*0.5 + 0.5)*2*ma.PI : sin;
-freq = hslider(&quot;freq[acc: 0 0 -10 0 10]&quot;,400,50,2000,0.01) : si.smoo;
-s = checkbox(&quot;switch&quot;);
-process = sine(freq)*(s==0) + saw(freq)*(s==1);
-</code></pre></div>
+</ul></div>
             </div>
         </div>
 
