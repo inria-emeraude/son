@@ -224,9 +224,10 @@ float Fm::tick(){
   return sineTable.tick(cIndex)*gain;
 }
 ```
--->
 
 And more exhaustive solution is provided in [`fm3` here](dsp1/fm3.zip).
+
+-->
 
 ### Smoothing
 

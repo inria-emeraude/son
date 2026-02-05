@@ -345,9 +345,11 @@ In `Fm.cpp`:
 }
 </code></pre>
 
+
+And more exhaustive solution is provided in [`fm3` here](dsp1/fm3.zip).
+
 -->
 
-<p>And more exhaustive solution is provided in <a href="fm3.zip"><code>fm3</code> here</a>.</p>
 <h3 id="smoothing">Smoothing</h3>
 <p>In most cases, DSP parameters are executed at control rate. Moreover, the resolution of the value used to configure parameters is much lower than that of audio samples since it might come from a Graphical User Interface (GUI), a low resolution sensor ADC (e.g., arduino), etc. For all these reasons, changing the value of a DSP parameter will often result in a "click"/discontinuity. A common way to prevent this from happening is to interpolate between the values of the parameter using a "leaky integrator." In signal processing, this can be easily implemented using a normalized one pole lowpass filter:</p>
 <p>
