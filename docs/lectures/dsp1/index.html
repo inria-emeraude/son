@@ -268,8 +268,12 @@ float Noise::tick(){
 <h3 id="lfo-low-frequency-oscillator">LFO: Low Frequency Oscillator</h3>
 <p>An LFO is an oscillator whose frequency is below the human hearing range (20 Hz). LFOs are typically used to create vibrato. In that case, the frequency of the LFO is usually set to 6 Hz. </p>
 <p>Modify the <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw">crazy-saw example</a> so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.</p>
-<p><strong>Solution:</strong></p>
-<p>In <code>MyDsp.h</code>:</p>
+<!--
+**Solution:**
+
+In `MyDsp.h`:
+
+
 <pre><code>#include &quot;Sine.h&quot;
 
 ...
@@ -281,7 +285,11 @@ private:
   Sine LFO;
 };
 </code></pre>
-<p>In <code>MyDsp.cpp</code>:</p>
+
+
+In `MyDsp.cpp`:
+
+
 <pre><code>MyDsp::MyDsp() :
 ...
 freq(440),
@@ -312,11 +320,19 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
   sawtooth.setFrequency(freq*(1 + LFO.tick()*0.1));
   float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
 </code></pre>
+
+-->
+
 <h3 id="towards-the-dx7">Towards the DX7</h3>
 <p>The DX7 carried out frequency modulation over a total of six oscillators that could be patched in <a href="https://static.righto.com/images/dx7-alg/algorithms-w800.jpg">different ways</a>. So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -&gt; 2 -&gt; 1.</p>
-<p><strong>Solution:</strong></p>
-<p>(non-exhaustive)</p>
-<p>In <code>Fm.cpp</code>:</p>
+<!--
+**Solution:**
+
+(non-exhaustive)
+
+In `Fm.cpp`:
+
+
 <pre><code>float Fm::tick(){
   int m0Index = m0Phasor.tick()*SINE_TABLE_SIZE;
   float modulator0 = sineTable.tick(m0Index);
@@ -328,6 +344,9 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
   return sineTable.tick(cIndex)*gain;
 }
 </code></pre>
+
+-->
+
 <p>And more exhaustive solution is provided in <a href="fm3.zip"><code>fm3</code> here</a>.</p>
 <h3 id="smoothing">Smoothing</h3>
 <p>In most cases, DSP parameters are executed at control rate. Moreover, the resolution of the value used to configure parameters is much lower than that of audio samples since it might come from a Graphical User Interface (GUI), a low resolution sensor ADC (e.g., arduino), etc. For all these reasons, changing the value of a DSP parameter will often result in a "click"/discontinuity. A common way to prevent this from happening is to interpolate between the values of the parameter using a "leaky integrator." In signal processing, this can be easily implemented using a normalized one pole lowpass filter:</p>
@@ -336,7 +355,8 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
 </p>
 <p>where <script type="math/tex">s</script> is the value of the pole and is typically set to 0.999 for optimal results.</p>
 <p>Modify the <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw">crazy-saw</a> example by "smoothing" the value of the frequency parameter by implementing the filter above with <script type="math/tex">s=0.999</script>. Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).</p>
-<p><strong>Solution:</strong></p>
+<p>&lt;!--
+<strong>Solution:</strong></p>
 <p>In addition to <code>Smooth.cpp</code> and <code>Smooth.h</code>, in <code>Phasor.h</code>:</p>
 <pre><code>  int samplingRate;
   Smooth smooth;
@@ -350,6 +370,7 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
   return currentSample;
 }
 </code></pre>
+<p>-&gt;&gt;</p>
 <h3 id="smoothing-potentiometer-values">Smoothing Potentiometer Values</h3>
 <p>Try to use the smoothing function that you implemented in the previous step to smooth sensor values coming from a potential potentiometer controlling some parameter of one of the Teensy examples. The main idea is to get rid of sound artifacts when making abrupt changes in potentiometers.</p></div>
             </div>
