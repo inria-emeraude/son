@@ -259,7 +259,7 @@ float Phasor::tick(){
   return currentSample;
 }
 ```
-->>
+-->
 
 ### Smoothing Potentiometer Values
 
