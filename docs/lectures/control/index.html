@@ -301,8 +301,12 @@ void loop() {
 <p>(Assuming that a <code>setGain</code> method has been implemented, which is not the case in the previous example. It shouldn't be too hard though ;) )</p>
 <h3 id="exercise-looping-between-notes-by-pressing-a-button">Exercise: Looping Between Notes by Pressing a Button</h3>
 <p>Expand the "note looper" that <a href="../audio-sys/#looping-through-a-small-tune">you implemented as part of the audio system course</a> so that new notes are triggered when a button is pressed (as opposed to be triggered automatically). Every time the button is pressed, a new note is produced. This means that you'll have to turn your push button into a switch using software techniques... Finally, make sure that gain is controllable using a rotary potentiometer.</p>
-<p><strong>Solution:</strong></p>
-<p>In <code>crazy-sine.ino</code>:</p>
+<!--
+**Solution:**
+
+In `crazy-sine.ino`:
+
+
 <pre><code>#include &lt;Audio.h&gt;
 #include &quot;MyDsp.h&quot;
 
@@ -348,6 +352,9 @@ void loop() {
   }
 }
 </code></pre>
+
+-->
+
 <h2 id="audio-codec-configuration">Audio Codec Configuration</h2>
 <h2 id="audio-codec">Audio Codec</h2>
 <p>An audio codec is a hardware component providing an ADC and a DAC for audio purposes. Hence, it typically has analog audio inputs and outputs (stereo, in general) and digital audio inputs and outputs. Most audio codecs support standard audio sampling rate (i.e., 44.1, 48kHz, etc.) and bit depth (i.e., 16, 24 bits, etc.). Some high-end audio codecs also support higher sampling rates (e.g., 96, 192 kHz, etc.) and bit depth (32 bits, mostly) as well as more than a stereo interface (e.g., 4x4, 8x8, etc.). The price range of audio codecs can vary significantly impacting the quality of the components, i.e., audio is usually extremely sensitive to the quality of the hardware components of a system. </p>
