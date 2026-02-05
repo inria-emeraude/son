@@ -172,7 +172,7 @@
 <p>All these algorithms have been extensively used during the second half of the twentieth century by musicians and artists, especially within the computer music community.</p>
 <h2 id="white-noise">White Noise</h2>
 <p>White noise is a specific kind of signal in which there's an infinite number of harmonics all having the same level. In other words, the spectrum of white noise looks completely flat. </p>
-<p>White noise is produced by generating random numbers between -1 and 1. <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/libraries/mydsp/src/Noise.cpp"><code>Noise.cpp</code></a> demonstrates how this can be done in C++ using the <code>rand()</code> function:</p>
+<p>White noise is produced by generating random numbers between -1 and 1. <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/Noise.cpp"><code>Noise.cpp</code></a> demonstrates how this can be done in C++ using the <code>rand()</code> function:</p>
 <pre><code>Noise::Noise() :
 randDiv(1.0/RAND_MAX){}
 
@@ -189,8 +189,8 @@ float Noise::tick(){
 <li><a href="https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg">triangle wave</a>,</li>
 <li><a href="https://en.wikipedia.org/wiki/Square_wave#/media/File:Waveforms.svg">sawtooth wave</a>.</li>
 </ul>
-<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-sine"><code>crazy-sine</code></a> example can be considered as "wave shape synthesis" in that regard.</p>
-<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw"><code>crazy-saw</code></a> example is very similar to <code>crazy-sine</code>, but it's based on a sawtooth wave instead. The sawtooth wave is created by using a <code>phasor</code> object. Just as a reminder, a phasor produces a signals tamping from 0 to 1 at a given frequency, it can therefore be seen as a sawtooth wave. Since the range of oscillators must be bounded between -1 and 1, we adjusts the output of the phasor such that:</p>
+<p>The <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine"><code>crazy-sine</code></a> example can be considered as "wave shape synthesis" in that regard.</p>
+<p>The <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw"><code>crazy-saw</code></a> example is very similar to <code>crazy-sine</code>, but it's based on a sawtooth wave instead. The sawtooth wave is created by using a <code>phasor</code> object. Just as a reminder, a phasor produces a signals tamping from 0 to 1 at a given frequency, it can therefore be seen as a sawtooth wave. Since the range of oscillators must be bounded between -1 and 1, we adjusts the output of the phasor such that:</p>
 <pre><code>float currentSample = sawtooth.tick()*2 - 1;
 </code></pre>
 <p>Feel free to try the <code>crazy-saw</code> example at this point.</p>
@@ -208,7 +208,7 @@ float Noise::tick(){
 </figure>
 
 <p>The mathematical proof of this can be found on <a href="https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Amplitude_Modulation_AM.html">Julius Smith's website</a>.</p>
-<p><a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/Am.cpp"><code>Am.cpp</code></a> implements a sinusoidal amplitude modulation synthesizer:</p>
+<p><a href="https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/Am.cpp"><code>Am.cpp</code></a> implements a sinusoidal amplitude modulation synthesizer:</p>
 <pre><code>float Am::tick(){
   int cIndex = cPhasor.tick()*SINE_TABLE_SIZE;
   int mIndex = mPhasor.tick()*SINE_TABLE_SIZE;
@@ -219,7 +219,7 @@ float Noise::tick(){
 <p>Note that phasors are used instead of "complete" sine wave oscillators to save the memory of an extra sine wave table. The range of the modulating oscillator is adjusted to be {0,1} instead of {-1,1}.</p>
 <p>The amplitude parameter of the modulating oscillator is called the <em>index of modulation</em> and its frequency, the <em>frequency of modulation</em>.</p>
 <p>In practice, the same result could be achieved using additive synthesis and three sine wave oscillators but AM allows us to save one oscillator. Also, AM is usually used an audio effect and modulation is applied to an input signal in that case instead of a sine wave. Sidebands will then be produced for each harmonic of the processed sound.</p>
-<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/am"><code>am</code> example</a> demonstrates a use case of an AM synthesizer. Use the <code>Rec</code> and <code>Mode</code> button to cycle through the parameters of the synth and change their value.</p>
+<p>The <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/am"><code>am</code> example</a> demonstrates a use case of an AM synthesizer. Use the <code>Rec</code> and <code>Mode</code> button to cycle through the parameters of the synth and change their value.</p>
 <h2 id="frequency-modulation-fm-synthesis">Frequency Modulation (FM) Synthesis</h2>
 <p>Frequency modulation synthesis consists of modulating the frequency of an oscillator with another one:</p>
 <figure>
@@ -233,7 +233,7 @@ float Noise::tick(){
 </p>
 <p>where <script type="math/tex">c</script> denotes the carrier and <script type="math/tex">m</script>, the modulator.</p>
 <p>As for AM, the frequency of the modulating oscillator is called the <em>frequency of modulation</em> and the amplitude of the modulating oscillator, the <em>index of modulation</em>. Unlike AM, the value of the index of modulation can exceed 1 which will increase the number of sidebands. FM is not limited to two sidebands and can have an infinite number of sidebands depending on the value of the index. The mathematical rational behind this can be found on <a href="https://ccrma.stanford.edu/~jos/mdft/FM_Spectra.html">Julius Smith's website</a>.</p>
-<p><a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/Fm.cpp"><code>fm.cpp</code></a> provides a simple example of how an FM synthesizer can be implemented:</p>
+<p><a href="https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/Fm.cpp"><code>fm.cpp</code></a> provides a simple example of how an FM synthesizer can be implemented:</p>
 <pre><code>float Fm::tick(){
   int mIndex = mPhasor.tick()*SINE_TABLE_SIZE;
   float modulator = sineTable.tick(mIndex);
@@ -243,7 +243,7 @@ float Noise::tick(){
 }
 </code></pre>
 <p>Note that as for the AM example, we're saving an extra sine wave table by using the same one for both oscillators.</p>
-<p>The examples folder of the course repository hosts <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/fm">a simple Teensy program</a> illustrating the use of FM. Use the <code>Rec</code> and <code>Mode</code> button to cycle through the parameters of the synth and change their value.</p>
+<p>The examples folder of the course repository hosts <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/fm">a simple Teensy program</a> illustrating the use of FM. Use the <code>Rec</code> and <code>Mode</code> button to cycle through the parameters of the synth and change their value.</p>
 <p>FM synthesis was discovered in the late 1960s by John Chowning at Stanford University in California. He's now considered as one of the funding fathers of music technology and computer music. FM completely revolutionized the world of music in the 1980s by allowing Yamaha to produce the first commercial digital synthesizers: the <a href="https://en.wikipedia.org/wiki/Yamaha_DX7">DX7</a> which met a huge success. FM synthesis is the second most profitable patent that Stanford ever had.</p>
 <h2 id="simple-filter-one-zero">Simple Filter: One Zero</h2>
 <p>Filters are heavily used in the field of audio processing. In fact, designing filters is a whole field by itself. They are at the basis of many audio effects such as Wah guitar pedals, etc. From an algorithmic standpoint, the most basic filter is what we call a "one zero" filter which means that its transfer function only has numerators and no denominators. The differential equation of a one zero filter can be expressed as:</p>
@@ -253,7 +253,7 @@ float Noise::tick(){
 <p>where <script type="math/tex">b_1</script> is "the zero" of the filter (also called <em>feed forward coefficient</em>), <script type="math/tex">b_0</script> can be discarded as it is equal to 1 in most cases.</p>
 <p>One zero filters can either be used as a lowpass if the value of <script type="math/tex">b_1</script> is positive or as a highpass if <script type="math/tex">b_1</script> is negative. The frequency response of the filter which is be obtained with <script type="math/tex">H(e^{j \omega T}) = b_0 + b_1e^{-j \omega T}</script> can be visualized on <a href="https://ccrma.stanford.edu/~jos/filters/One_Zero.html">Julius Smith's website</a>.</p>
 <p>Note that the gain of the signal is amplified on the second half of the spectrum which needs to be taken into account if this filter is used to process audio (once again, the output signal must be bounded within {-1,1}). </p>
-<p><a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/OneZero.cpp"><code>OneZero.cpp</code></a> implements a one zero filter:</p>
+<p><a href="https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/OneZero.cpp"><code>OneZero.cpp</code></a> implements a one zero filter:</p>
 <pre><code>float OneZero::tick(float input){
   float output = input + del*b1;
   del = input;
@@ -261,19 +261,15 @@ float Noise::tick(){
 }
 </code></pre>
 <p>Note that we multiply the output by 0.5 to normalize the output gain.</p>
-<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/filtered-noise"><code>filtered-noise</code></a> example program for the Teensy demonstrates the use of <code>OneZero.cpp</code> by feeding <a href="#white-noise">white noise</a> in it. The value of <script type="math/tex">b_1</script> can be changed by pressing the "Mode" button on the board, give it a try!</p>
+<p>The <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/filtered-noise"><code>filtered-noise</code></a> example program for the Teensy demonstrates the use of <code>OneZero.cpp</code> by feeding <a href="#white-noise">white noise</a> in it. The value of <script type="math/tex">b_1</script> can be changed by pressing the "Mode" button on the board, give it a try!</p>
 <!-- TODO: Potentially add a section on biquads here. -->
 
 <h2 id="exercises">Exercises</h2>
 <h3 id="lfo-low-frequency-oscillator">LFO: Low Frequency Oscillator</h3>
 <p>An LFO is an oscillator whose frequency is below the human hearing range (20 Hz). LFOs are typically used to create vibrato. In that case, the frequency of the LFO is usually set to 6 Hz. </p>
-<p>Modify the <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw">crazy-saw example</a> so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.</p>
-<!--
-**Solution:**
-
-In `MyDsp.h`:
-
-
+<p>Modify the <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw">crazy-saw example</a> so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.</p>
+<p><strong>Solution:</strong></p>
+<p>In <code>MyDsp.h</code>:</p>
 <pre><code>#include &quot;Sine.h&quot;
 
 ...
@@ -285,11 +281,7 @@ private:
   Sine LFO;
 };
 </code></pre>
-
-
-In `MyDsp.cpp`:
-
-
+<p>In <code>MyDsp.cpp</code>:</p>
 <pre><code>MyDsp::MyDsp() :
 ...
 freq(440),
@@ -320,19 +312,11 @@ for (int i = 0; i &lt; AUDIO_BLOCK_SAMPLES; i++) {
   sawtooth.setFrequency(freq*(1 + LFO.tick()*0.1));
   float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
 </code></pre>
-
--->
-
 <h3 id="towards-the-dx7">Towards the DX7</h3>
 <p>The DX7 carried out frequency modulation over a total of six oscillators that could be patched in <a href="https://static.righto.com/images/dx7-alg/algorithms-w800.jpg">different ways</a>. So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -&gt; 2 -&gt; 1.</p>
-<!--
-**Solution:**
-
-(non-exhaustive)
-
-In `Fm.cpp`:
-
-
+<p><strong>Solution:</strong></p>
+<p>(non-exhaustive)</p>
+<p>In <code>Fm.cpp</code>:</p>
 <pre><code>float Fm::tick(){
   int m0Index = m0Phasor.tick()*SINE_TABLE_SIZE;
   float modulator0 = sineTable.tick(m0Index);
@@ -344,34 +328,21 @@ In `Fm.cpp`:
   return sineTable.tick(cIndex)*gain;
 }
 </code></pre>
-
-
-And more exhaustive solution is provided in [`fm3` here](dsp1/fm3.zip).
-
--->
-
+<p>And more exhaustive solution is provided in <a href="fm3.zip"><code>fm3</code> here</a>.</p>
 <h3 id="smoothing">Smoothing</h3>
 <p>In most cases, DSP parameters are executed at control rate. Moreover, the resolution of the value used to configure parameters is much lower than that of audio samples since it might come from a Graphical User Interface (GUI), a low resolution sensor ADC (e.g., arduino), etc. For all these reasons, changing the value of a DSP parameter will often result in a "click"/discontinuity. A common way to prevent this from happening is to interpolate between the values of the parameter using a "leaky integrator." In signal processing, this can be easily implemented using a normalized one pole lowpass filter:</p>
 <p>
 <script type="math/tex; mode=display">y(n) = (1-s)x(n) + sy(n-1)</script>
 </p>
 <p>where <script type="math/tex">s</script> is the value of the pole and is typically set to 0.999 for optimal results.</p>
-<p>Modify the <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-saw">crazy-saw</a> example by "smoothing" the value of the frequency parameter by implementing the filter above with <script type="math/tex">s=0.999</script>. Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).</p>
-<!--
-**Solution:**
-
-In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
-
-
+<p>Modify the <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw">crazy-saw</a> example by "smoothing" the value of the frequency parameter by implementing the filter above with <script type="math/tex">s=0.999</script>. Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).</p>
+<p><strong>Solution:</strong></p>
+<p>In addition to <code>Smooth.cpp</code> and <code>Smooth.h</code>, in <code>Phasor.h</code>:</p>
 <pre><code>  int samplingRate;
   Smooth smooth;
 };
 </code></pre>
-
-
-and `Phasor.cpp`:
-
-
+<p>and <code>Phasor.cpp</code>:</p>
 <pre><code>float Phasor::tick(){
   float currentSample = phasor;
   phasor += smooth.tick(phasorDelta);
@@ -379,9 +350,6 @@ and `Phasor.cpp`:
   return currentSample;
 }
 </code></pre>
-
--->
-
 <h3 id="smoothing-potentiometer-values">Smoothing Potentiometer Values</h3>
 <p>Try to use the smoothing function that you implemented in the previous step to smooth sensor values coming from a potential potentiometer controlling some parameter of one of the Teensy examples. The main idea is to get rid of sound artifacts when making abrupt changes in potentiometers.</p></div>
             </div>

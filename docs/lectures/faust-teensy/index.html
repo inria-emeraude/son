@@ -158,7 +158,7 @@
 <h1 id="faust-on-the-teensy-and-advanced-control">Faust on the Teensy and Advanced Control</h1>
 <h2 id="generating-and-using-a-faust-c-object">Generating and Using a Faust C++ Object</h2>
 <p><strong>In order to run the examples in this lecture, you should install the Faust distribution on your system from the <a href="https://github.com/grame-cncm/faust">Faust Git Repository</a>.</strong></p>
-<p>At the most fundamental level, the Faust compiler is a command line tool translating a Faust DSP object into C++ code. For example, assuming that Faust is properly installed on your system, given the following simple Faust program implementing a filtered sawtooth wave oscillator (<a href="https://github.com/inria-emeraude/son-ens/blob/main/faust/FaustSynth.dsp"><code>FaustSynth.dsp</code></a>):</p>
+<p>At the most fundamental level, the Faust compiler is a command line tool translating a Faust DSP object into C++ code. For example, assuming that Faust is properly installed on your system, given the following simple Faust program implementing a filtered sawtooth wave oscillator (<a href="https://github.com/inria-emeraude/son/blob/main/faust/FaustSynth.dsp"><code>FaustSynth.dsp</code></a>):</p>
 <pre><code>import(&quot;stdfaust.lib&quot;);
 freq = nentry(&quot;freq&quot;,200,50,1000,0.01);
 gain = nentry(&quot;gain&quot;,0.5,0,1,0.01) : si.smoo;
@@ -170,7 +170,7 @@ process = os.sawtooth(freq)*gain*gate : fi.lowpass(3,cutoff) &lt;: _,_;
 <pre><code>faust FaustSynth.dsp
 </code></pre>
 <p>will output the C++ code corresponding to this file in the terminal. </p>
-<p>Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. <a href="https://github.com/inria-emeraude/son-ens/blob/main/faust/faustMinimal.h"><code>faustMinimal.h</code></a> is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:</p>
+<p>Faust comes with a system of C++ wrapper (called architectures in the Faust ecosystem) which can be used to customize the generated C++ code. <a href="https://github.com/inria-emeraude/son/blob/main/faust/faustMinimal.h"><code>faustMinimal.h</code></a> is a minimal architecture file including some C++ objects that can be used to facilitate interactions with the generated DSP:</p>
 <pre><code>#include &lt;cmath&gt;
 #include &lt;cstring&gt;
 
@@ -190,9 +190,9 @@ process = os.sawtooth(freq)*gain*gate : fi.lowpass(3,cutoff) &lt;: _,_;
 <p>To generate a C++ file using this architecture, you can run:</p>
 <pre><code>faust -i -a faustMinimal.h FaustSynth.dsp -o FaustSynth.h
 </code></pre>
-<p>which will produce a <a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/projects/faust-synth/FaustSynth.h"><code>FaustSynth.h</code></a> file (feel free to click on it).</p>
+<p>which will produce a <a href="https://github.com/inria-emeraude/son/blob/main/examples/teensy/projects/faust-synth/FaustSynth.h"><code>FaustSynth.h</code></a> file (feel free to click on it).</p>
 <p>The <code>-i</code> inlines all the included C++ <code>.h</code> files in the generated file.</p>
-<p>The <a href="https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/faust-synth"><code>faust-synth</code></a> Teensy example project demonstrates how <code>FaustSynth.h</code> can be used. First, it is included in <a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/projects/faust-synth/MyDsp.cpp"><code>MyDsp.cpp</code></a> and the following elements are declared in <a href="https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/projects/faust-synth/MyDsp.h">the corresponding header file</a>:</p>
+<p>The <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/faust-synth"><code>faust-synth</code></a> Teensy example project demonstrates how <code>FaustSynth.h</code> can be used. First, it is included in <a href="https://github.com/inria-emeraude/son/blob/main/examples/teensy/projects/faust-synth/MyDsp.cpp"><code>MyDsp.cpp</code></a> and the following elements are declared in <a href="https://github.com/inria-emeraude/son/blob/main/examples/teensy/projects/faust-synth/MyDsp.h">the corresponding header file</a>:</p>
 <pre><code>private:
   MapUI* fUI;
   dsp* fDSP;

@@ -13,7 +13,7 @@ x - \frac{x^3}{3}, \; \; -1 < x < 1\\
 \end{cases}
 \] 
 
-[`Distortion.cpp`](https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/Distortion.cpp) implements a cubic distortion as:
+[`Distortion.cpp`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/Distortion.cpp) implements a cubic distortion as:
 
 ```
 float Distortion::cubic(float x){
@@ -32,7 +32,7 @@ The range of `drive` is {0;1} which means that the value of `input` can be multi
 
 Distortion is created here by clipping the signal using the `fmin` and `fmax` functions. Finally, the cubic polynomial is used to round the edges of the waveform of the signal as explained above. 
 
-The [`distortion`](https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/distortion) example program for the Teensy demonstrates the use of `Distortion.cpp`.
+The [`distortion`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/distortion) example program for the Teensy demonstrates the use of `Distortion.cpp`.
 
 Distortion is a very trendy field of research in audio technology these days especially using "virtual analog" algorithms which consists of modeling the electronic circuit of distortion on a computer.
 
@@ -46,7 +46,7 @@ where \(g\) is the feedback between 0 and 1 and \(M\) the delay as a number of s
 
 It can be seen as a simple physical model of what happens in the real world when echo is produced: the delay represents the time it takes for an acoustical wave to go from point A to point B at the speed of sound and \(g\) can control the amount of absorption created by the air and the reflecting material.
 
-[`Echo.cpp`](https://github.com/inria-emeraude/son-ens/blob/main/examples/teensy/libraries/mydsp/src/Echo.cpp) implements an echo as:
+[`Echo.cpp`](https://github.com/inria-emeraude/son/blob/main/examples/teensy/libraries/mydsp/src/Echo.cpp) implements an echo as:
 
 ```
 float Echo::tick(float input){
@@ -60,7 +60,7 @@ float Echo::tick(float input){
 
 Here, `delBuffer` is used as a "ring buffer": incoming samples are stored and the read and write indices loop around to buffer to write incoming samples and read previous ones. Note that memory is allocated in the constructor of the class for `delBuffer` based on the value of `maxDel`, the maximum size of the delay.
 
-The [`echo`](https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/echo) example program for the Teensy demonstrates the use of `Echo.cpp`.
+The [`echo`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/echo) example program for the Teensy demonstrates the use of `Echo.cpp`.
 
 ## Comb
 
@@ -74,7 +74,7 @@ where \(M\) is the length of the delay and \(g\) feedback coefficient.
 
 From an acoustical standpoint, a feedback comb filter will introduce resonances at specific point in the spectrum of the sound. The position and the spacing of these resonances is determined by the value of \(M\). \(g\), on the other hand, will determine the amplitude and sharpness of these resonances. 
 
-The [`comb`](https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/comb) example program for the Teensy demonstrates the use of `Echo.cpp` as a comb filter. The "Mode" button can be used to change the value of the delay.
+The [`comb`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/comb) example program for the Teensy demonstrates the use of `Echo.cpp` as a comb filter. The "Mode" button can be used to change the value of the delay.
 
 ## Physical Modeling: the Simple Case of the Karplus Strong
 
@@ -109,7 +109,7 @@ The length of the delay \(L\) can be controlled as a frequency using the followi
 
 At the very least, the system must be excited by a dirac (i.e., a simple impulse going from 1 to 0). The quality of the generated sound can be significantly improved if a noise impulse is used though. 
 
-[`KS.cpp`](https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/ks) implements a basic Karplus-Strong algorithm:
+[`KS.cpp`](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/ks) implements a basic Karplus-Strong algorithm:
 
 ```
 float KS::tick(){
@@ -139,7 +139,7 @@ float KS::oneZero(float x){
 }
 ```
 
-The examples folder of the course repository hosts [a simple Teensy program](https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/ks) illustrating the use of `KS.cpp`.
+The examples folder of the course repository hosts [a simple Teensy program](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/ks) illustrating the use of `KS.cpp`.
 
 Note that this algorithm could be improved in many ways. In particular, the fact that the delay length is currently expressed as an integer can result in frequency mismatches at high frequencies. In other words, our current string is out of tune. This could be fixed using [fractional delay](https://ccrma.stanford.edu/~jos/Interpolation/Welcome.html).
 

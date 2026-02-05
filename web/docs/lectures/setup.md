@@ -84,7 +84,7 @@ On Linux, make sure to execute all the steps:
 - Select Teensy 4.0 as board (Tools -> boards)
 - Copy (as sudo) the Linux Udev Rule file (from [here](<https://www.pjrc.com/teensy/00-teensy.rules>)) to /dev/udev/rules/
 
-After this, clone the SON GitHub repository: <https://github.com/inria-emeraude/son-ens> 
+After this, clone the SON GitHub repository: <https://github.com/inria-emeraude/son> 
 
 Finally, copy the `examples/teensy/libraries/mydsp` (which contains a basic audio DSP library prepared for this course) folder from the course repo in `$ARDUINOPATH/libraries` where `$ARDUINO` can be seen in ``File->Preferences->Scketchbook location``
 
@@ -111,7 +111,7 @@ Open the serial debugger by clicking on the loop on the top right corner of the 
 
 ### Running an Audio Program
 
-The course repository comes with a series of example audio programs "making sound" on the Teensy. Open ``examples/teensy/projects/crazy-sine`  from your clone of <https://github.com/inria-emeraude/son-ens> in the Arduino IDE and run this program on your Teensy.
+The course repository comes with a series of example audio programs "making sound" on the Teensy. Open ``examples/teensy/projects/crazy-sine`  from your clone of <https://github.com/inria-emeraude/son> in the Arduino IDE and run this program on your Teensy.
 
 Plug your headphones to the 3.5mm Jack connector on the Audio shield and you should hear a "beautiful" music.
 
