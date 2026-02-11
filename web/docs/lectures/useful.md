@@ -13,7 +13,13 @@ An example explaining how to use the SD-card reader  can be found in `file -> ex
 Be careful to use the WAV file provided by teensy (https://www.pjrc.com/teensy/td_libs_AudioDataFiles.html) because some arbitraty WAV file may be not compatible with the on the AudioPlaySdWav player.
 
 ## Streaming Sound from through USB
-TODO
+Open the PassThroughUSB example in the IDE: file -> example -> Audio -> Hardware Testing -> PassThroughUSB
+
+Select Audio for USB Type: Tools -> USB Type -> Audio
+
+Run the example and play a sound file on your PC, the audio source comes from your PC.
+
+Do not forget to set the USB type to serial if you are not using the USB streaming any more.
 
 ## microphone: how to solder it
 If your microphone has no JACK input port, you have to solder it. Microphone are stereo but the teensy input microphone is mono. The soldering of the JACK microphone is quite touchy. please get in touch with Teachers.
