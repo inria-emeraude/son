@@ -11,8 +11,8 @@ Final projects constitute the heart of this course: students are 100% evaluated 
 Projects will be evaluated through:
 
 * A poster (pdf) presenting your project;
-* A demo video;
-* A demo of your project which will be featured during a demo session taking place on 28/02/2025. During this session, students will use the poster of their project directly on their computer as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
+* A demo video: 1:30 mins max, the format is completely open, it should be fun to watch;
+* A demo of your project which will be featured during a demo session taking place on 27/02/2026. During this session, students will use the poster of their project directly on their computer as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
 
 The quality and the presentation of the poster and of the webpage will be taken into account towards your final grade.
 
