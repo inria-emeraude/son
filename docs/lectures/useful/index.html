@@ -76,8 +76,18 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="../../projects/" class="nav-link">Projects</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Projects</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../projects/instructions/" class="dropdown-item"> Instructions </a>
+</li>
+                                    
+<li>
+    <a href="../../projects/2026/" class="dropdown-item"> 2026 Projects </a>
+</li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="https://github.com/inria-emeraude/son" class="nav-link">Code</a>
@@ -96,7 +106,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../projects/" class="nav-link">
+                                <a rel="next" href="../../projects/instructions/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -174,7 +184,10 @@
 <p>An example explaining how to use the SD-card reader  can be found in <code>file -&gt; examples -&gt; Audio -&gt;&gt; WaveFilePlayer</code> </p>
 <p>Be careful to use the WAV file provided by teensy (https://www.pjrc.com/teensy/td_libs_AudioDataFiles.html) because some arbitraty WAV file may be not compatible with the on the AudioPlaySdWav player.</p>
 <h2 id="streaming-sound-from-through-usb">Streaming Sound from through USB</h2>
-<p>TODO</p>
+<p>Open the PassThroughUSB example in the IDE: file -&gt; example -&gt; Audio -&gt; Hardware Testing -&gt; PassThroughUSB</p>
+<p>Select Audio for USB Type: Tools -&gt; USB Type -&gt; Audio</p>
+<p>Run the example and play a sound file on your PC, the audio source comes from your PC.</p>
+<p>Do not forget to set the USB type to serial if you are not using the USB streaming any more.</p>
 <h2 id="microphone-how-to-solder-it">microphone: how to solder it</h2>
 <p>If your microphone has no JACK input port, you have to solder it. Microphone are stereo but the teensy input microphone is mono. The soldering of the JACK microphone is quite touchy. please get in touch with Teachers.
 TODO</p>

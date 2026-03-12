@@ -11,7 +11,9 @@ nav:
     - ' 7: Audio Processing Basics II ' : lectures/dsp2.md
     - ' 8: Faust on the Teensy and Advanced Control ' : lectures/faust-teensy.md
     - ' Some Other Useful Things to Know ' : lectures/useful.md
-  - Projects: projects.md
+  - Projects:
+    - ' Instructions ' : projects/instructions.md
+    - ' 2026 Projects ' : projects/2026.md
   - Code: "https://github.com/inria-emeraude/son"
     
 theme: 
