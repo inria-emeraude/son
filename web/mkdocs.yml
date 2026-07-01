@@ -1,6 +1,7 @@
 site_name: SON @ INSA Lyon
 site_description: 3TC Course -- INSA Lyon -- Embedded Audio DSP Project
 nav:
+  - Home: index.md
   - Lectures:
     - ' 1: Programming Environment Setup ' : lectures/setup.md
     - ' 2: Audio Signal Processing Fundamentals ' : lectures/audio-dsp.md
