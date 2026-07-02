@@ -1,21 +1,23 @@
 # SON: 3TC Audio Project @ INSA Lyon
 
-In this project, students program an embedded system (the Teensy 4.0: <https://www.pjrc.com/store/teensy40.html>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++). The idea is also to encourage students to develop a sense of independent work/entrepreneurship.
+In this project, students program an embedded system (the Teensy 4.0: <https://www.pjrc.com/store/teensy40.html>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++). The idea is also to encourage students to develop a sense of independent work/entrepreneurship. The course was originally created by  [Romain Michon](http://perso.citi-lab.fr/rmichon/) in 2023. In 2026 Romain Michon will be mooving to U. Saint-\'Etienne, Tanguy Risset will be the course responsible.
 
-The 2 weeks project period starts with a workshop on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.
+The 3 weeks project period starts with a workshop on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.
 
-After this period, various project ideas are suggested to students. Projects can focus more on DSP or on the "product/hardware" aspect. Students work in groups of 2 on projects.
+After this period, various project ideas are suggested to students and a 2 weeks project will start. Students work *in groups of 2* on projects. Projects can focus more on DSP or on the "product/hardware" aspect. 
 
 The project period culminates in a final presentation taking the form of a poster/demo session where each group of students has a booth and can present its project, etc.
 
 Students are provided with plenty of fully-operational starter code/projects so that they have "something that works" right from the beginning.
 
-## Instructors
+## Instructors 
+(mail contact: firstname.lastname@insa-lyon.fr)
 
-* [Romain Michon](http://perso.citi-lab.fr/rmichon/) (Inria)
-* [Tanguy Risset](http://perso.citi.insa-lyon.fr/trisset/) (INSA Lyon)
+* [Tanguy Risset](http://perso.citi.insa-lyon.fr/trisset/) (INSA Lyon, )
+* Alexandre Bento (INSA Lyon)
 * Clemens Wegener (Inria)
 * Benjamin Quiédeville (Inria/GRAME)
+* Guest star: [Romain Michon](http://perso.citi-lab.fr/rmichon/) (U. Saint-Etienne) creator of the SON course
 
 ## Resources
 

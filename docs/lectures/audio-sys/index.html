@@ -35,6 +35,9 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lectures</a>
                                 <ul class="dropdown-menu">
@@ -202,7 +205,63 @@
 }
 </code></pre>
 <p><code>audioCallback</code> is called every time a new buffer is needed by the audio interface (ADC/DAC). For example, if the sampling rate is 48 kHz and the block size is 256 samples, <code>audioCallback</code> will be called 187.5 (48000/256) per seconds. Here, the <code>for</code> loop parses the input buffer and copy it to the output by modifying its gain. Note that <code>gain</code> is set outside of the <code>for</code> loop. That's a very common thing to do in the field of real-time audio processing: what happens outside of the <code>for</code> loop is called the <strong>control rate</strong> and what happens inside the <code>for</code> loop is called the <strong>audio rate</strong>. The parameters of an audio program are typically processed at control rate since user interface elements usually run at a much lower rate than audio.</p>
-<p>Block size is directly linked to the audio latency of the system by the following formula: <script type="math/tex">latency = BS/fs</script> where <script type="math/tex">latency</script> is in seconds. Hence, the greater the block size, the larger the latency. For example, a block size of 256 samples at a sampling rate of 48 kHz will induce a latency of approximately 5ms. If the system has an audio input, this value has to be doubled, of course. A latency of 10ms might not seem like a lot but if the system is used for music purposes, this might be perceived by the performer. </p>
+<p>Block size is directly linked to the audio latency of the system by the following formula: <span class="math"><svg style="width: 7.021em; height: 0.907em; vertical-align: -0.205em;  vertical-align: -0.206em;" viewBox=".45 -7.02 70.21 9.07">
+<title>
+\(latency = BS/fs\)
+</title>
+<defs>
+<path id='eq4-g4-157' d='M.62 1.92H1.13L3.95-7.02H3.43L.62 1.92Z'/>
+<path id='eq4-g1-61' d='M5.48-3.28V-3.83H.4V-3.28H5.48ZM5.48-1.26V-1.82H.4V-1.26H5.48Z'/>
+<path id='eq4-g7-23' d='M5.35-1.99C5.35-2.71 5.04-3.08 4.1-3.48C4.8-3.65 5.09-3.77 5.41-4.05C5.69-4.29 5.84-4.62 5.84-5.02C5.84-5.97 5.13-6.48 3.85-6.48H1.29V-6.32C1.92-6.27 2.05-6.2 2.05-5.92C2.05-5.77 2.01-5.53 1.95-5.28L.72-.89C.55-.32 .48-.26-.08-.16V0H2.72C4.28 0 5.35-.8 5.35-1.99ZM4.28-2.02C4.28-.95 3.54-.3 2.33-.3C1.92-.3 1.7-.44 1.7-.71C1.7-.84 1.82-1.31 2.04-2.1L2.36-3.29C2.99-3.29 3.41-3.25 3.61-3.17C4.03-3.01 4.28-2.57 4.28-2.02ZM4.83-5.11C4.83-4.09 4.17-3.6 2.8-3.6H2.46L3.11-5.91C3.17-6.12 3.29-6.18 3.67-6.18C4.48-6.18 4.83-5.85 4.83-5.11Z'/>
+<path id='eq4-g7-40' d='M4.28-1.81C4.28-2.45 4.06-2.83 3.16-3.74C2.25-4.65 2.17-4.78 2.17-5.27C2.17-5.9 2.59-6.28 3.27-6.28C3.63-6.28 3.93-6.16 4.14-5.93C4.37-5.68 4.45-5.34 4.47-4.67L4.65-4.65L5.04-6.62H4.81C4.67-6.41 4.59-6.36 4.37-6.36C4.24-6.36 4.12-6.39 3.91-6.47C3.7-6.56 3.37-6.61 3.07-6.61C2.03-6.61 1.3-5.93 1.3-4.95C1.3-4.42 1.45-4.13 2.04-3.49C2.17-3.36 2.3-3.23 2.43-3.08L2.82-2.66C3.29-2.17 3.41-1.92 3.41-1.49C3.41-.73 2.87-.17 2.13-.17C1.3-.17 .68-.87 .68-1.85C.68-1.92 .68-1.96 .7-2.04L.51-2.06L.17 .15H.35C.42-.08 .53-.18 .72-.18C.83-.18 .97-.14 1.24-.05C1.7 .12 1.97 .18 2.27 .18C3.41 .18 4.28-.67 4.28-1.81Z'/>
+<path id='eq4-g7-48' d='M4.72-.99L4.61-1.09L4.33-.81C4.02-.5 3.9-.41 3.81-.41C3.73-.41 3.67-.47 3.67-.54C3.67-.73 4.09-2.44 4.56-4.14C4.59-4.24 4.6-4.26 4.62-4.35L4.55-4.38L3.94-4.31L3.91-4.28L3.8-3.8C3.72-4.17 3.43-4.38 3.01-4.38C1.69-4.38 .17-2.57 .17-.99C.17-.3 .55 .11 1.18 .11C1.88 .11 2.3-.22 3.18-1.45C2.97-.64 2.95-.56 2.95-.31C2.95-.02 3.07 .1 3.34 .1C3.74 .1 3.98-.09 4.72-.99ZM3.62-3.55C3.62-2.72 3.12-1.55 2.44-.81C2.2-.55 1.87-.38 1.58-.38C1.22-.38 1-.66 1-1.11C1-1.65 1.35-2.62 1.77-3.25C2.16-3.83 2.61-4.16 3.02-4.16C3.04-4.16 3.05-4.16 3.07-4.16C3.4-4.14 3.62-3.9 3.62-3.55Z'/>
+<path id='eq4-g7-50' d='M3.63-.95L3.47-1.05C2.93-.47 2.54-.25 2.05-.25C1.49-.25 1.15-.67 1.15-1.38C1.15-2.22 1.5-3.11 2.05-3.69C2.34-3.99 2.74-4.17 3.14-4.17C3.36-4.17 3.5-4.09 3.5-3.97C3.5-3.92 3.49-3.87 3.44-3.78C3.37-3.65 3.35-3.59 3.35-3.49C3.35-3.26 3.5-3.12 3.74-3.12C4.02-3.12 4.22-3.31 4.22-3.57C4.22-4.04 3.78-4.38 3.18-4.38C1.69-4.38 .3-2.93 .3-1.38C.3-.44 .83 .11 1.76 .11C2.5 .11 3.03-.19 3.63-.95Z'/>
+<path id='eq4-g7-52' d='M3.67-.96L3.55-1.08C2.84-.5 2.53-.34 2.09-.34C1.54-.34 1.17-.69 1.17-1.24C1.17-1.39 1.19-1.53 1.27-1.85L1.55-1.89C3.04-2.09 4.09-2.85 4.09-3.7C4.09-4.12 3.79-4.38 3.3-4.38C1.87-4.38 .31-2.75 .31-1.25C.31-.45 .84 .11 1.62 .11C2.32 .11 3.09-.29 3.67-.96ZM3.43-3.76C3.43-3.45 3.25-3.1 2.94-2.8C2.57-2.45 2.19-2.27 1.34-2.06L1.51-2.5C1.85-3.38 2.58-4.15 3.09-4.15C3.3-4.15 3.43-4 3.43-3.76Z'/>
+<path id='eq4-g7-53' d='M4.21-6.08C4.21-6.45 3.84-6.73 3.35-6.73C2.88-6.73 2.5-6.52 2.14-6.08C1.84-5.69 1.63-5.22 1.33-4.25H.42L.35-3.93H1.24L.37 .24C.14 1.31-.18 1.85-.6 1.85C-.71 1.85-.79 1.78-.79 1.69C-.79 1.65-.78 1.63-.75 1.58C-.71 1.52-.7 1.48-.7 1.42C-.7 1.21-.88 1.04-1.09 1.04S-1.46 1.22-1.46 1.45C-1.46 1.8-1.12 2.05-.67 2.05C.21 2.05 .89 1.08 1.31-.75L2.02-3.93H3.11L3.17-4.25H2.09C2.38-5.82 2.75-6.51 3.31-6.51C3.44-6.51 3.52-6.46 3.52-6.38C3.52-6.38 3.51-6.33 3.48-6.29C3.43-6.21 3.42-6.16 3.42-6.08C3.42-5.85 3.57-5.69 3.79-5.69C4.02-5.69 4.21-5.87 4.21-6.08Z'/>
+<path id='eq4-g7-59' d='M2.39-1.13L2.26-1.22C2.17-1.11 2.08-.99 2-.88C1.68-.47 1.5-.32 1.32-.32C1.22-.32 1.17-.38 1.17-.5C1.17-.6 1.22-.79 1.27-.98L2.77-6.73L2.72-6.78C2.13-6.65 1.76-6.58 1.17-6.51V-6.35H1.34C1.65-6.35 1.85-6.26 1.85-6.12C1.85-6.09 1.84-6.02 1.81-5.95L.45-.7C.42-.61 .41-.53 .41-.45C.41-.08 .58 .11 .89 .11C1.41 .11 1.75-.18 2.39-1.13Z'/>
+<path id='eq4-g7-61' d='M4.7-1.03L4.57-1.16C4.5-1.07 4.43-.98 4.36-.9C4.07-.54 3.89-.38 3.75-.38C3.66-.38 3.59-.45 3.59-.54C3.59-.62 3.63-.8 3.73-1.16L4.3-3.21C4.36-3.41 4.39-3.63 4.39-3.77C4.39-4.13 4.12-4.38 3.73-4.38C3.1-4.38 2.47-3.77 1.45-2.19L2.11-4.36L2.08-4.38L.48-4.07V-3.91C.98-3.9 1.11-3.84 1.11-3.64C1.11-3.58 1.1-3.52 1.09-3.47L.14 0H.88C1.35-1.57 1.44-1.79 1.88-2.46C2.47-3.38 2.98-3.87 3.34-3.87C3.49-3.87 3.58-3.76 3.58-3.58C3.58-3.46 3.52-3.14 3.44-2.83L3.01-1.19C2.88-.67 2.85-.55 2.85-.45C2.85-.07 2.99 .09 3.32 .09C3.76 .09 4.01-.11 4.7-1.03Z'/>
+<path id='eq4-g7-66' d='M3.02-1.18C3.02-1.57 2.81-2 2.34-2.57C1.97-3.04 1.81-3.34 1.81-3.61C1.81-3.95 2.01-4.15 2.36-4.15C2.88-4.15 3.18-3.78 3.28-3.01H3.43L3.63-4.39H3.49C3.41-4.25 3.34-4.21 3.2-4.21C3.12-4.21 3.03-4.23 2.84-4.28C2.59-4.36 2.45-4.38 2.28-4.38C1.55-4.38 1.08-3.95 1.08-3.29C1.08-2.97 1.29-2.54 1.71-2C2.09-1.5 2.26-1.15 2.26-.86C2.26-.41 1.97-.1 1.53-.1C.97-.1 .67-.51 .52-1.45H.36L.16 .13H.32C.41-.04 .45-.08 .56-.08S.84-.04 1.04 .01C1.27 .08 1.42 .11 1.59 .11C2.42 .11 3.02-.43 3.02-1.18Z'/>
+<path id='eq4-g7-67' d='M2.94-4.25H2.14L2.42-5.27C2.43-5.29 2.43-5.31 2.43-5.32C2.43-5.39 2.4-5.42 2.35-5.42C2.29-5.42 2.26-5.41 2.2-5.33C1.26-4.1 .57-4.31 .57-3.99C.57-3.98 .57-3.96 .58-3.93H1.31L.6-1.2C.57-1.07 .37-.46 .37-.27C.37-.05 .58 .11 .84 .11C1.3 .11 1.63-.17 2.25-1.09L2.12-1.16C1.64-.54 1.48-.38 1.32-.38C1.23-.38 1.17-.46 1.17-.58C1.17-.59 1.17-.6 1.18-.63L2.05-3.93H2.89L2.94-4.25Z'/>
+<path id='eq4-g7-72' d='M4.23-3.83C4.23-4.13 3.98-4.38 3.68-4.38C3.45-4.38 3.3-4.23 3.3-4.01C3.3-3.85 3.37-3.75 3.57-3.62C3.76-3.51 3.83-3.42 3.83-3.29C3.83-2.89 3.47-2.12 2.62-.71L2.42-1.87C2.27-2.75 1.72-4.38 1.57-4.38H1.53L1.44-4.37L.47-4.2L.15-4.14V-3.97C.27-4 .35-4.01 .46-4.01C.85-4.01 1.03-3.86 1.22-3.37C1.49-2.7 2.03-.48 2.03-.08C2.03 .03 2 .15 1.94 .27C1.86 .4 1.41 .98 1.23 1.17C1 1.42 .88 1.5 .75 1.5C.68 1.5 .63 1.47 .52 1.39C.37 1.27 .27 1.22 .15 1.22C-.07 1.22-.24 1.39-.24 1.61C-.24 1.87-.03 2.04 .27 2.04C.83 2.04 1.91 .9 2.93-.8C3.76-2.17 4.23-3.27 4.23-3.83Z'/>
+</defs>
+<g id='eq4-page1'>
+<use x='.04' y='0' xlink:href='#eq4-g7-59'/>
+<use x='3.55' y='0' xlink:href='#eq4-g7-48'/>
+<use x='8.86' y='0' xlink:href='#eq4-g7-67'/>
+<use x='12.35' y='0' xlink:href='#eq4-g7-52'/>
+<use x='17.17' y='0' xlink:href='#eq4-g7-61'/>
+<use x='22.39' y='0' xlink:href='#eq4-g7-50'/>
+<use x='27.5' y='0' xlink:href='#eq4-g7-72'/>
+<use x='35.07' y='0' xlink:href='#eq4-g1-61'/>
+<use x='44.12' y='0' xlink:href='#eq4-g7-23'/>
+<use x='50.61' y='0' xlink:href='#eq4-g7-40'/>
+<use x='55.93' y='0' xlink:href='#eq4-g4-157'/>
+<use x='62.25' y='0' xlink:href='#eq4-g7-53'/>
+<use x='67.03' y='0' xlink:href='#eq4-g7-66'/>
+</g>
+</svg></span> where <span class="math"><svg style="width: 3.128em; height: 0.882em; vertical-align: -0.204em;  vertical-align: -0.205em;" viewBox=".45 -6.78 31.28 8.82">
+<title>
+\(latency\)
+</title>
+<defs>
+<path id='eq5-g1-48' d='M4.72-.99L4.61-1.09L4.33-.81C4.02-.5 3.9-.41 3.81-.41C3.73-.41 3.67-.47 3.67-.54C3.67-.73 4.09-2.44 4.56-4.14C4.59-4.24 4.6-4.26 4.62-4.35L4.55-4.38L3.94-4.31L3.91-4.28L3.8-3.8C3.72-4.17 3.43-4.38 3.01-4.38C1.69-4.38 .17-2.57 .17-.99C.17-.3 .55 .11 1.18 .11C1.88 .11 2.3-.22 3.18-1.45C2.97-.64 2.95-.56 2.95-.31C2.95-.02 3.07 .1 3.34 .1C3.74 .1 3.98-.09 4.72-.99ZM3.62-3.55C3.62-2.72 3.12-1.55 2.44-.81C2.2-.55 1.87-.38 1.58-.38C1.22-.38 1-.66 1-1.11C1-1.65 1.35-2.62 1.77-3.25C2.16-3.83 2.61-4.16 3.02-4.16C3.04-4.16 3.05-4.16 3.07-4.16C3.4-4.14 3.62-3.9 3.62-3.55Z'/>
+<path id='eq5-g1-50' d='M3.63-.95L3.47-1.05C2.93-.47 2.54-.25 2.05-.25C1.49-.25 1.15-.67 1.15-1.38C1.15-2.22 1.5-3.11 2.05-3.69C2.34-3.99 2.74-4.17 3.14-4.17C3.36-4.17 3.5-4.09 3.5-3.97C3.5-3.92 3.49-3.87 3.44-3.78C3.37-3.65 3.35-3.59 3.35-3.49C3.35-3.26 3.5-3.12 3.74-3.12C4.02-3.12 4.22-3.31 4.22-3.57C4.22-4.04 3.78-4.38 3.18-4.38C1.69-4.38 .3-2.93 .3-1.38C.3-.44 .83 .11 1.76 .11C2.5 .11 3.03-.19 3.63-.95Z'/>
+<path id='eq5-g1-52' d='M3.67-.96L3.55-1.08C2.84-.5 2.53-.34 2.09-.34C1.54-.34 1.17-.69 1.17-1.24C1.17-1.39 1.19-1.53 1.27-1.85L1.55-1.89C3.04-2.09 4.09-2.85 4.09-3.7C4.09-4.12 3.79-4.38 3.3-4.38C1.87-4.38 .31-2.75 .31-1.25C.31-.45 .84 .11 1.62 .11C2.32 .11 3.09-.29 3.67-.96ZM3.43-3.76C3.43-3.45 3.25-3.1 2.94-2.8C2.57-2.45 2.19-2.27 1.34-2.06L1.51-2.5C1.85-3.38 2.58-4.15 3.09-4.15C3.3-4.15 3.43-4 3.43-3.76Z'/>
+<path id='eq5-g1-59' d='M2.39-1.13L2.26-1.22C2.17-1.11 2.08-.99 2-.88C1.68-.47 1.5-.32 1.32-.32C1.22-.32 1.17-.38 1.17-.5C1.17-.6 1.22-.79 1.27-.98L2.77-6.73L2.72-6.78C2.13-6.65 1.76-6.58 1.17-6.51V-6.35H1.34C1.65-6.35 1.85-6.26 1.85-6.12C1.85-6.09 1.84-6.02 1.81-5.95L.45-.7C.42-.61 .41-.53 .41-.45C.41-.08 .58 .11 .89 .11C1.41 .11 1.75-.18 2.39-1.13Z'/>
+<path id='eq5-g1-61' d='M4.7-1.03L4.57-1.16C4.5-1.07 4.43-.98 4.36-.9C4.07-.54 3.89-.38 3.75-.38C3.66-.38 3.59-.45 3.59-.54C3.59-.62 3.63-.8 3.73-1.16L4.3-3.21C4.36-3.41 4.39-3.63 4.39-3.77C4.39-4.13 4.12-4.38 3.73-4.38C3.1-4.38 2.47-3.77 1.45-2.19L2.11-4.36L2.08-4.38L.48-4.07V-3.91C.98-3.9 1.11-3.84 1.11-3.64C1.11-3.58 1.1-3.52 1.09-3.47L.14 0H.88C1.35-1.57 1.44-1.79 1.88-2.46C2.47-3.38 2.98-3.87 3.34-3.87C3.49-3.87 3.58-3.76 3.58-3.58C3.58-3.46 3.52-3.14 3.44-2.83L3.01-1.19C2.88-.67 2.85-.55 2.85-.45C2.85-.07 2.99 .09 3.32 .09C3.76 .09 4.01-.11 4.7-1.03Z'/>
+<path id='eq5-g1-67' d='M2.94-4.25H2.14L2.42-5.27C2.43-5.29 2.43-5.31 2.43-5.32C2.43-5.39 2.4-5.42 2.35-5.42C2.29-5.42 2.26-5.41 2.2-5.33C1.26-4.1 .57-4.31 .57-3.99C.57-3.98 .57-3.96 .58-3.93H1.31L.6-1.2C.57-1.07 .37-.46 .37-.27C.37-.05 .58 .11 .84 .11C1.3 .11 1.63-.17 2.25-1.09L2.12-1.16C1.64-.54 1.48-.38 1.32-.38C1.23-.38 1.17-.46 1.17-.58C1.17-.59 1.17-.6 1.18-.63L2.05-3.93H2.89L2.94-4.25Z'/>
+<path id='eq5-g1-72' d='M4.23-3.83C4.23-4.13 3.98-4.38 3.68-4.38C3.45-4.38 3.3-4.23 3.3-4.01C3.3-3.85 3.37-3.75 3.57-3.62C3.76-3.51 3.83-3.42 3.83-3.29C3.83-2.89 3.47-2.12 2.62-.71L2.42-1.87C2.27-2.75 1.72-4.38 1.57-4.38H1.53L1.44-4.37L.47-4.2L.15-4.14V-3.97C.27-4 .35-4.01 .46-4.01C.85-4.01 1.03-3.86 1.22-3.37C1.49-2.7 2.03-.48 2.03-.08C2.03 .03 2 .15 1.94 .27C1.86 .4 1.41 .98 1.23 1.17C1 1.42 .88 1.5 .75 1.5C.68 1.5 .63 1.47 .52 1.39C.37 1.27 .27 1.22 .15 1.22C-.07 1.22-.24 1.39-.24 1.61C-.24 1.87-.03 2.04 .27 2.04C.83 2.04 1.91 .9 2.93-.8C3.76-2.17 4.23-3.27 4.23-3.83Z'/>
+</defs>
+<g id='eq5-page1'>
+<use x='.04' y='0' xlink:href='#eq5-g1-59'/>
+<use x='3.55' y='0' xlink:href='#eq5-g1-48'/>
+<use x='8.86' y='0' xlink:href='#eq5-g1-67'/>
+<use x='12.35' y='0' xlink:href='#eq5-g1-52'/>
+<use x='17.17' y='0' xlink:href='#eq5-g1-61'/>
+<use x='22.39' y='0' xlink:href='#eq5-g1-50'/>
+<use x='27.5' y='0' xlink:href='#eq5-g1-72'/>
+</g>
+</svg></span> is in seconds. Hence, the greater the block size, the larger the latency. For example, a block size of 256 samples at a sampling rate of 48 kHz will induce a latency of approximately 5ms. If the system has an audio input, this value has to be doubled, of course. A latency of 10ms might not seem like a lot but if the system is used for music purposes, this might be perceived by the performer. </p>
 <p>Embedded systems such as the Teensy can achieve much lower latencies than regular computers because of their lightness. Hence, the block size of your Teensy can be as small as 8!</p>
 <h2 id="first-audio-program-on-the-teensy-crazy-sine">First Audio Program on the Teensy: <code>crazy-sine</code></h2>
 <p>The <a href="https://github.com/inria-emeraude/son">course repository</a> hosts an example containing a program synthesizing a sine wave on the Teensy and controlling its frequency: <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine">crazy-sine</a>. This program contains all the building blocks of a real-time audio program including... the audio callback which can be found in <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine/MyDsp.cpp"><code>AudioDsp.cpp</code></a>! The audio callback is implemented in this class in the <code>update</code> method and take the following shape:</p>
@@ -226,30 +285,174 @@ void MyDsp::update(void) {
 }
 </code></pre>
 <p>The <code>update</code> method is called every time a new audio buffer is needed by the system. A new audio buffer <code>audioBlock</code> containing <code>AUDIO_OUTPUTS</code> channels is first created. For every audio channel, memory is allocated and a full block of samples is computed. Individual samples resulting from computing a sine wave through an echo (<code>echo</code> and <code>sine</code> are defined in the <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src"><code>libraries</code> folder</a> and implement an echo and a sine wave oscillator, respectively) are stored in <code>currentSample</code>. <code>currentSample</code> is a floating point number whose range is {-1;1}. This is a standard in the world of digital audio, hence, a signal actually ranging between {-1;1} will correspond to the "loudest" sound that can be played on a given system. <code>max(-1,min(1,currentSample));</code> ensures that <code>currentSample</code> doesn't exceed this range.</p>
-<p><code>AUDIO_BLOCK_SAMPLES</code> corresponds to the block size (256 samples by default on the Teensy, but this value can potentially be adjusted). The values contained in <code>currentSample</code> (between -1 and 1) must be converted to 16 bits signed integers (to ensure compatibility with the rest of the Teensy audio library). For that, we just have to multiply <code>currentSample</code> by <script type="math/tex">2^{16-1}</script> (if we were looking at unsigned integers, which can happen on some system, we would multiply <code>currentSample</code> by <script type="math/tex">2^{16}</script>).</p>
+<p><code>AUDIO_BLOCK_SAMPLES</code> corresponds to the block size (256 samples by default on the Teensy, but this value can potentially be adjusted). The values contained in <code>currentSample</code> (between -1 and 1) must be converted to 16 bits signed integers (to ensure compatibility with the rest of the Teensy audio library). For that, we just have to multiply <code>currentSample</code> by <span class="math"><svg style="width: 2.002em; height: 0.857em; vertical-align: -0.000em;  vertical-align: -0.000em;" viewBox=".3 -8.57 20.02 8.57">
+<title>
+\(2^{16-1}\)
+</title>
+<defs>
+<path id='eq6-g1-0' d='M4.16-1.66V-2.06H.45V-1.66H4.16Z'/>
+<use id='eq6-g8-50' xlink:href='#eq6-g5-50' transform='scale(1.37)'/>
+<path id='eq6-g5-49' d='M2.85 0V-.11C2.28-.12 2.17-.19 2.17-.54V-4.88L2.11-4.9L.8-4.24V-4.14C.89-4.17 .97-4.2 1-4.22C1.13-4.27 1.25-4.3 1.33-4.3C1.48-4.3 1.54-4.19 1.54-3.96V-.67C1.54-.43 1.49-.27 1.37-.2C1.26-.14 1.16-.12 .85-.11V0H2.85Z'/>
+<path id='eq6-g5-50' d='M3.44-.99L3.35-1.03C3.08-.62 2.99-.55 2.66-.55H.93L2.14-1.83C2.79-2.5 3.07-3.05 3.07-3.62C3.07-4.34 2.49-4.9 1.73-4.9C1.33-4.9 .96-4.74 .69-4.45C.46-4.2 .35-3.97 .22-3.46L.38-3.42C.67-4.13 .93-4.36 1.43-4.36C2.04-4.36 2.45-3.95 2.45-3.34C2.45-2.78 2.12-2.1 1.51-1.46L.22-.09V0H3.04L3.44-.99Z'/>
+<path id='eq6-g5-54' d='M3.39-1.59C3.39-2.51 2.86-3.1 2.03-3.1C1.71-3.1 1.56-3.05 1.1-2.78C1.3-3.87 2.11-4.65 3.25-4.84L3.23-4.96C2.41-4.88 1.99-4.75 1.46-4.38C.67-3.82 .25-2.99 .25-2.02C.25-1.39 .44-.75 .75-.39C1.03-.07 1.42 .1 1.87 .1C2.77 .1 3.39-.59 3.39-1.59ZM2.74-1.34C2.74-.54 2.46-.1 1.95-.1C1.31-.1 .92-.78 .92-1.91C.92-2.28 .98-2.48 1.12-2.59C1.28-2.7 1.5-2.77 1.75-2.77C2.38-2.77 2.74-2.25 2.74-1.34Z'/>
+</defs>
+<g id='eq6-page1'>
+<use x='0' y='0' xlink:href='#eq6-g8-50'/>
+<use x='4.98' y='-3.62' xlink:href='#eq6-g5-49'/>
+<use x='8.62' y='-3.62' xlink:href='#eq6-g5-54'/>
+<use x='12.54' y='-3.62' xlink:href='#eq6-g1-0'/>
+<use x='17.46' y='-3.62' xlink:href='#eq6-g5-49'/>
+</g>
+</svg></span> (if we were looking at unsigned integers, which can happen on some system, we would multiply <code>currentSample</code> by <span class="math"><svg style="width: 1.171em; height: 0.857em; vertical-align: -0.000em;  vertical-align: -0.000em;" viewBox=".3 -8.57 11.71 8.57">
+<title>
+\(2^{16}\)
+</title>
+<defs>
+<use id='eq7-g5-50' xlink:href='#eq7-g2-50' transform='scale(1.37)'/>
+<path id='eq7-g2-49' d='M2.85 0V-.11C2.28-.12 2.17-.19 2.17-.54V-4.88L2.11-4.9L.8-4.24V-4.14C.89-4.17 .97-4.2 1-4.22C1.13-4.27 1.25-4.3 1.33-4.3C1.48-4.3 1.54-4.19 1.54-3.96V-.67C1.54-.43 1.49-.27 1.37-.2C1.26-.14 1.16-.12 .85-.11V0H2.85Z'/>
+<path id='eq7-g2-50' d='M3.44-.99L3.35-1.03C3.08-.62 2.99-.55 2.66-.55H.93L2.14-1.83C2.79-2.5 3.07-3.05 3.07-3.62C3.07-4.34 2.49-4.9 1.73-4.9C1.33-4.9 .96-4.74 .69-4.45C.46-4.2 .35-3.97 .22-3.46L.38-3.42C.67-4.13 .93-4.36 1.43-4.36C2.04-4.36 2.45-3.95 2.45-3.34C2.45-2.78 2.12-2.1 1.51-1.46L.22-.09V0H3.04L3.44-.99Z'/>
+<path id='eq7-g2-54' d='M3.39-1.59C3.39-2.51 2.86-3.1 2.03-3.1C1.71-3.1 1.56-3.05 1.1-2.78C1.3-3.87 2.11-4.65 3.25-4.84L3.23-4.96C2.41-4.88 1.99-4.75 1.46-4.38C.67-3.82 .25-2.99 .25-2.02C.25-1.39 .44-.75 .75-.39C1.03-.07 1.42 .1 1.87 .1C2.77 .1 3.39-.59 3.39-1.59ZM2.74-1.34C2.74-.54 2.46-.1 1.95-.1C1.31-.1 .92-.78 .92-1.91C.92-2.28 .98-2.48 1.12-2.59C1.28-2.7 1.5-2.77 1.75-2.77C2.38-2.77 2.74-2.25 2.74-1.34Z'/>
+</defs>
+<g id='eq7-page1'>
+<use x='0' y='0' xlink:href='#eq7-g5-50'/>
+<use x='4.98' y='-3.62' xlink:href='#eq7-g2-49'/>
+<use x='8.62' y='-3.62' xlink:href='#eq7-g2-54'/>
+</g>
+</svg></span>).</p>
 <p>Note that <code>currentSample</code> is multiplied by 0.5 to control the output gain of the system here (we'll see later in this class that echos tend to add energy to the system hence we must limit the gain of the output signal to prevent potential saturation).</p>
 <p>Once a full block has been computed, it is transmitted to the rest of the system using the <code>transmit</code> function. Once this is done, the memory that was allocated for the audio block is freed using the <code>release</code> function. The <code>update</code> method is called over and over until the Teensy is powered out.</p>
 <h2 id="c-sine-wave-oscillator">C++ Sine Wave Oscillator</h2>
 <p>Sine wave are at the basis of many algorithms in the field of audio. The sound of a sine wave is what we call a "pure tone" since it only has a single harmonic. One of the consequences of this is that all sounds can be synthesized using a combination of sine waves (<a href="https://en.wikipedia.org/wiki/Fourier_transform">Fourier transform</a>).</p>
 <p>From a mathematical standpoint, a sine oscillator can be implemented with the following differential equation:</p>
-<p>
-<script type="math/tex; mode=display">x(t) = Asin(\omega t + \phi)</script>
-</p>
+<div class="math"><svg style="width: 8.081em; height: 0.917em; vertical-align: 0.001em; " viewBox="130.82 -9.18 80.81 9.17">
+<title>
+\[x(t) = Asin(\omega t + \phi)\]
+</title>
+<defs>
+<path id='eq1-g1-61' d='M5.48-3.28V-3.83H.4V-3.28H5.48ZM5.48-1.26V-1.82H.4V-1.26H5.48Z'/>
+<path id='eq1-g4-184' d='M2.47-2.84H.3V-2.18H2.47V0H3.13V-2.18H5.3V-2.84H3.13V-5.02H2.47V-2.84Z'/>
+<path id='eq1-g4-185' d='M2.93-7.12C1.49-6.18 .48-4.58 .48-2.55C.48-.7 1.53 1.16 2.9 2L3.02 1.85C1.71 .81 1.33-.39 1.33-2.58C1.33-4.78 1.74-5.93 3.02-6.96L2.93-7.12Z'/>
+<path id='eq1-g4-186' d='M.38-7.12L.29-6.96C1.57-5.93 1.98-4.78 1.98-2.58C1.98-.39 1.6 .81 .29 1.85L.41 2C1.78 1.16 2.83-.7 2.83-2.55C2.83-4.58 1.82-6.18 .38-7.12Z'/>
+<path id='eq1-g7-22' d='M5.6 0V-.16C5.03-.21 4.96-.29 4.84-1.01L3.91-6.63H3.65L.77-1.67C-.01-.35-.11-.24-.51-.16V0H1.35V-.16C.84-.21 .76-.26 .76-.51C.76-.69 .79-.78 .96-1.12L1.53-2.24H3.71L3.91-.94C3.92-.85 3.93-.76 3.93-.68C3.93-.31 3.79-.22 3.16-.16V0H5.6ZM3.66-2.6H1.74L3.23-5.18L3.66-2.6Z'/>
+<path id='eq1-g7-56' d='M2.33-1.02L2.2-1.13C1.78-.57 1.56-.36 1.39-.36C1.31-.36 1.23-.43 1.23-.51C1.23-.67 1.33-.96 1.39-1.16L2.26-4.36L2.23-4.38C1.23-4.19 1.03-4.16 .65-4.13V-3.97C1.18-3.96 1.27-3.93 1.27-3.73C1.27-3.65 1.24-3.48 1.18-3.3L.7-1.54C.55-.94 .49-.66 .49-.46C.49-.09 .65 .11 .94 .11C1.41 .11 1.77-.19 2.33-1.02ZM2.74-5.84C2.74-6.12 2.51-6.38 2.24-6.38S1.78-6.16 1.78-5.86C1.78-5.54 1.97-5.33 2.25-5.33C2.51-5.33 2.74-5.56 2.74-5.84Z'/>
+<path id='eq1-g7-61' d='M4.7-1.03L4.57-1.16C4.5-1.07 4.43-.98 4.36-.9C4.07-.54 3.89-.38 3.75-.38C3.66-.38 3.59-.45 3.59-.54C3.59-.62 3.63-.8 3.73-1.16L4.3-3.21C4.36-3.41 4.39-3.63 4.39-3.77C4.39-4.13 4.12-4.38 3.73-4.38C3.1-4.38 2.47-3.77 1.45-2.19L2.11-4.36L2.08-4.38L.48-4.07V-3.91C.98-3.9 1.11-3.84 1.11-3.64C1.11-3.58 1.1-3.52 1.09-3.47L.14 0H.88C1.35-1.57 1.44-1.79 1.88-2.46C2.47-3.38 2.98-3.87 3.34-3.87C3.49-3.87 3.58-3.76 3.58-3.58C3.58-3.46 3.52-3.14 3.44-2.83L3.01-1.19C2.88-.67 2.85-.55 2.85-.45C2.85-.07 2.99 .09 3.32 .09C3.76 .09 4.01-.11 4.7-1.03Z'/>
+<path id='eq1-g7-66' d='M3.02-1.18C3.02-1.57 2.81-2 2.34-2.57C1.97-3.04 1.81-3.34 1.81-3.61C1.81-3.95 2.01-4.15 2.36-4.15C2.88-4.15 3.18-3.78 3.28-3.01H3.43L3.63-4.39H3.49C3.41-4.25 3.34-4.21 3.2-4.21C3.12-4.21 3.03-4.23 2.84-4.28C2.59-4.36 2.45-4.38 2.28-4.38C1.55-4.38 1.08-3.95 1.08-3.29C1.08-2.97 1.29-2.54 1.71-2C2.09-1.5 2.26-1.15 2.26-.86C2.26-.41 1.97-.1 1.53-.1C.97-.1 .67-.51 .52-1.45H.36L.16 .13H.32C.41-.04 .45-.08 .56-.08S.84-.04 1.04 .01C1.27 .08 1.42 .11 1.59 .11C2.42 .11 3.02-.43 3.02-1.18Z'/>
+<path id='eq1-g7-67' d='M2.94-4.25H2.14L2.42-5.27C2.43-5.29 2.43-5.31 2.43-5.32C2.43-5.39 2.4-5.42 2.35-5.42C2.29-5.42 2.26-5.41 2.2-5.33C1.26-4.1 .57-4.31 .57-3.99C.57-3.98 .57-3.96 .58-3.93H1.31L.6-1.2C.57-1.07 .37-.46 .37-.27C.37-.05 .58 .11 .84 .11C1.3 .11 1.63-.17 2.25-1.09L2.12-1.16C1.64-.54 1.48-.38 1.32-.38C1.23-.38 1.17-.46 1.17-.58C1.17-.59 1.17-.6 1.18-.63L2.05-3.93H2.89L2.94-4.25Z'/>
+<path id='eq1-g7-71' d='M4.13-1.02L3.99-1.1C3.91-1 3.86-.95 3.77-.83C3.54-.54 3.43-.44 3.31-.44C3.17-.44 3.08-.57 3.01-.84C2.99-.93 2.98-.98 2.97-1C2.73-1.94 2.61-2.47 2.61-2.62C3.05-3.38 3.4-3.82 3.58-3.82C3.64-3.82 3.73-3.79 3.82-3.74C3.94-3.67 4.01-3.65 4.1-3.65C4.3-3.65 4.44-3.8 4.44-4.01C4.44-4.23 4.27-4.38 4.03-4.38C3.59-4.38 3.23-4.02 2.53-2.96L2.42-3.5C2.28-4.18 2.17-4.38 1.91-4.38C1.68-4.38 1.36-4.3 .74-4.09L.64-4.05L.67-3.9L.84-3.94C1.03-3.99 1.15-4.01 1.23-4.01C1.48-4.01 1.54-3.92 1.68-3.33L1.97-2.1L1.15-.94C.94-.65 .75-.47 .65-.47C.59-.47 .49-.5 .39-.56C.26-.63 .16-.66 .07-.66C-.13-.66-.27-.51-.27-.31C-.27-.05-.08 .11 .23 .11S.66 .02 1.15-.58L2.04-1.75L2.34-.56C2.47-.04 2.6 .11 2.92 .11C3.3 .11 3.55-.13 4.13-1.02Z'/>
+<path id='eq1-g7-108' d='M6.62-2.51C6.62-3.54 5.96-4.29 5.87-4.38H5.54C5.61-4.26 5.85-3.78 5.85-3.08C5.85-1.92 5.09-.3 4.11-.3C3.74-.3 3.48-.51 3.48-.86C3.48-1.86 4.02-2.79 4.02-3.02C4.02-3.06 4-3.08 3.96-3.08H3.48C3.18-3.08 3.41-.3 1.88-.3C1.17-.3 1.13-.99 1.13-1.26C1.13-2.84 2.29-4.17 2.49-4.38H2.16C2.15-4.38 .23-3.08 .23-1.29C.23-.67 .56 .11 1.59 .11C2.81 .11 3.17-.9 3.17-.91H3.18C3.18-.9 3.16-.82 3.16-.69C3.16-.39 3.29 .11 4.16 .11C5.42 .11 6.62-1.24 6.62-2.51Z'/>
+<path id='eq1-g7-113' d='M5.21-2.89C5.21-3.61 4.68-4.23 3.69-4.36L4.28-6.25L3.45-6.12L3.01-4.35C1.45-4.19 .24-2.9 .24-1.43C.24-.69 .64 .04 1.91 .11L1.44 2.05H1.69L2.3 .1C3.93-.03 5.21-1.42 5.21-2.89ZM4.42-2.97C4.42-1.28 3.36-.26 2.39-.17L3.59-4.05C4.28-3.8 4.42-3.22 4.42-2.97ZM2.94-4.08L1.98-.19C1.31-.38 1.07-.98 1.07-1.4C1.07-2.93 1.91-3.94 2.94-4.08Z'/>
+</defs>
+<g id='eq1-page1'>
+<use x='131.09' y='-2.07' xlink:href='#eq1-g7-71'/>
+<use x='136.5' y='-2.07' xlink:href='#eq1-g4-185'/>
+<use x='140.17' y='-2.07' xlink:href='#eq1-g7-67'/>
+<use x='143.52' y='-2.07' xlink:href='#eq1-g4-186'/>
+<use x='150.1' y='-2.07' xlink:href='#eq1-g1-61'/>
+<use x='159.51' y='-2.07' xlink:href='#eq1-g7-22'/>
+<use x='165.99' y='-2.07' xlink:href='#eq1-g7-66'/>
+<use x='169.92' y='-2.07' xlink:href='#eq1-g7-56'/>
+<use x='173.11' y='-2.07' xlink:href='#eq1-g7-61'/>
+<use x='178.72' y='-2.07' xlink:href='#eq1-g4-185'/>
+<use x='182.44' y='-2.07' xlink:href='#eq1-g7-108'/>
+<use x='189.48' y='-2.07' xlink:href='#eq1-g7-67'/>
+<use x='195.04' y='-2.07' xlink:href='#eq1-g4-184'/>
+<use x='203.13' y='-2.07' xlink:href='#eq1-g7-113'/>
+<use x='208.8' y='-2.07' xlink:href='#eq1-g4-186'/>
+</g>
+</svg></div>
 <p>with:</p>
 <ul>
-<li>
-<script type="math/tex">A</script>: the peak amplitude</li>
-<li>
-<script type="math/tex">\omega = 2 \pi f</script>: the radian frequency (rad/sec)</li>
-<li>
-<script type="math/tex">f</script>: the frequency in Hz</li>
-<li>
-<script type="math/tex">t</script>: the time seconds</li>
-<li>
-<script type="math/tex">\phi</script>: the initial phase (radians)</li>
+<li><span class="math"><svg style="width: 0.610em; height: 0.663em; vertical-align: -0.000em;  vertical-align: -0.000em;" viewBox=".24 -6.63 6.1 6.63">
+<title>
+\(A\)
+</title>
+<defs>
+<path id='eq12-g1-22' d='M5.6 0V-.16C5.03-.21 4.96-.29 4.84-1.01L3.91-6.63H3.65L.77-1.67C-.01-.35-.11-.24-.51-.16V0H1.35V-.16C.84-.21 .76-.26 .76-.51C.76-.69 .79-.78 .96-1.12L1.53-2.24H3.71L3.91-.94C3.92-.85 3.93-.76 3.93-.68C3.93-.31 3.79-.22 3.16-.16V0H5.6ZM3.66-2.6H1.74L3.23-5.18L3.66-2.6Z'/>
+</defs>
+<g id='eq12-page1'>
+<use x='.75' y='0' xlink:href='#eq12-g1-22'/>
+</g>
+</svg></span>: the peak amplitude</li>
+<li><span class="math"><svg style="width: 3.502em; height: 0.878em; vertical-align: -0.205em;  vertical-align: -0.206em;" viewBox=".23 -6.73 35.02 8.78">
+<title>
+\(\omega = 2 \pi f\)
+</title>
+<defs>
+<path id='eq13-g8-50' d='M4.71-1.36L4.59-1.41C4.22-.84 4.09-.75 3.64-.75H1.27L2.94-2.5C3.82-3.42 4.21-4.18 4.21-4.95C4.21-5.95 3.4-6.71 2.37-6.71C1.83-6.71 1.31-6.49 .94-6.09C.63-5.76 .48-5.44 .31-4.73L.52-4.68C.91-5.66 1.27-5.98 1.96-5.98C2.79-5.98 3.35-5.41 3.35-4.58C3.35-3.8 2.9-2.88 2.06-2L.3-.12V0H4.17L4.71-1.36Z'/>
+<path id='eq13-g1-61' d='M5.48-3.28V-3.83H.4V-3.28H5.48ZM5.48-1.26V-1.82H.4V-1.26H5.48Z'/>
+<path id='eq13-g4-53' d='M4.21-6.08C4.21-6.45 3.84-6.73 3.35-6.73C2.88-6.73 2.5-6.52 2.14-6.08C1.84-5.69 1.63-5.22 1.33-4.25H.42L.35-3.93H1.24L.37 .24C.14 1.31-.18 1.85-.6 1.85C-.71 1.85-.79 1.78-.79 1.69C-.79 1.65-.78 1.63-.75 1.58C-.71 1.52-.7 1.48-.7 1.42C-.7 1.21-.88 1.04-1.09 1.04S-1.46 1.22-1.46 1.45C-1.46 1.8-1.12 2.05-.67 2.05C.21 2.05 .89 1.08 1.31-.75L2.02-3.93H3.11L3.17-4.25H2.09C2.38-5.82 2.75-6.51 3.31-6.51C3.44-6.51 3.52-6.46 3.52-6.38C3.52-6.38 3.51-6.33 3.48-6.29C3.43-6.21 3.42-6.16 3.42-6.08C3.42-5.85 3.57-5.69 3.79-5.69C4.02-5.69 4.21-5.87 4.21-6.08Z'/>
+<path id='eq13-g4-99' d='M5.17-4.38H1.74C.82-4.38 .28-3.29 .2-3.1H.31C.36-3.17 .72-3.65 1.24-3.65H1.76L1.06-1.56C.84-.9 .03-.87 .03-.2V-.15C.03 .02 .16 .11 .4 .11C.77 .11 1.13-.13 1.62-1.54L2.34-3.65H3.34L2.86-1.52C2.79-1.23 2.75-.98 2.75-.78V-.69C2.75-.27 3.05 .11 3.53 .11C3.76 .11 4.03 .04 4.03-.29V-.33C4.03-.91 3.43-.83 3.43-1.39C3.43-1.47 3.44-1.56 3.47-1.67L3.96-3.65H5L5.17-4.38Z'/>
+<path id='eq13-g4-108' d='M6.62-2.51C6.62-3.54 5.96-4.29 5.87-4.38H5.54C5.61-4.26 5.85-3.78 5.85-3.08C5.85-1.92 5.09-.3 4.11-.3C3.74-.3 3.48-.51 3.48-.86C3.48-1.86 4.02-2.79 4.02-3.02C4.02-3.06 4-3.08 3.96-3.08H3.48C3.18-3.08 3.41-.3 1.88-.3C1.17-.3 1.13-.99 1.13-1.26C1.13-2.84 2.29-4.17 2.49-4.38H2.16C2.15-4.38 .23-3.08 .23-1.29C.23-.67 .56 .11 1.59 .11C2.81 .11 3.17-.9 3.17-.91H3.18C3.18-.9 3.16-.82 3.16-.69C3.16-.39 3.29 .11 4.16 .11C5.42 .11 6.62-1.24 6.62-2.51Z'/>
+</defs>
+<g id='eq13-page1'>
+<use x='0' y='0' xlink:href='#eq13-g4-108'/>
+<use x='9.85' y='0' xlink:href='#eq13-g1-61'/>
+<use x='18.52' y='0' xlink:href='#eq13-g8-50'/>
+<use x='23.73' y='0' xlink:href='#eq13-g4-99'/>
+<use x='31.04' y='0' xlink:href='#eq13-g4-53'/>
+</g>
+</svg></span>: the radian frequency (rad/sec)</li>
+<li><span class="math"><svg style="width: 0.567em; height: 0.878em; vertical-align: -0.205em;  vertical-align: -0.206em;" viewBox=".27 -6.73 5.67 8.78">
+<title>
+\(f\)
+</title>
+<defs>
+<path id='eq14-g1-53' d='M4.21-6.08C4.21-6.45 3.84-6.73 3.35-6.73C2.88-6.73 2.5-6.52 2.14-6.08C1.84-5.69 1.63-5.22 1.33-4.25H.42L.35-3.93H1.24L.37 .24C.14 1.31-.18 1.85-.6 1.85C-.71 1.85-.79 1.78-.79 1.69C-.79 1.65-.78 1.63-.75 1.58C-.71 1.52-.7 1.48-.7 1.42C-.7 1.21-.88 1.04-1.09 1.04S-1.46 1.22-1.46 1.45C-1.46 1.8-1.12 2.05-.67 2.05C.21 2.05 .89 1.08 1.31-.75L2.02-3.93H3.11L3.17-4.25H2.09C2.38-5.82 2.75-6.51 3.31-6.51C3.44-6.51 3.52-6.46 3.52-6.38C3.52-6.38 3.51-6.33 3.48-6.29C3.43-6.21 3.42-6.16 3.42-6.08C3.42-5.85 3.57-5.69 3.79-5.69C4.02-5.69 4.21-5.87 4.21-6.08Z'/>
+</defs>
+<g id='eq14-page1'>
+<use x='1.73' y='0' xlink:href='#eq14-g1-53'/>
+</g>
+</svg></span>: the frequency in Hz</li>
+<li><span class="math"><svg style="width: 0.257em; height: 0.553em; vertical-align: -0.011em;  vertical-align: -0.011em;" viewBox=".33 -5.42 2.57 5.53">
+<title>
+\(t\)
+</title>
+<defs>
+<path id='eq15-g1-67' d='M2.94-4.25H2.14L2.42-5.27C2.43-5.29 2.43-5.31 2.43-5.32C2.43-5.39 2.4-5.42 2.35-5.42C2.29-5.42 2.26-5.41 2.2-5.33C1.26-4.1 .57-4.31 .57-3.99C.57-3.98 .57-3.96 .58-3.93H1.31L.6-1.2C.57-1.07 .37-.46 .37-.27C.37-.05 .58 .11 .84 .11C1.3 .11 1.63-.17 2.25-1.09L2.12-1.16C1.64-.54 1.48-.38 1.32-.38C1.23-.38 1.17-.46 1.17-.58C1.17-.59 1.17-.6 1.18-.63L2.05-3.93H2.89L2.94-4.25Z'/>
+</defs>
+<g id='eq15-page1'>
+<use x='-.04' y='0' xlink:href='#eq15-g1-67'/>
+</g>
+</svg></span>: the time seconds</li>
+<li><span class="math"><svg style="width: 0.497em; height: 0.831em; vertical-align: -0.206em;  vertical-align: -0.206em;" viewBox=".49 -6.25 4.97 8.31">
+<title>
+\(\phi\)
+</title>
+<defs>
+<path id='eq16-g1-113' d='M5.21-2.89C5.21-3.61 4.68-4.23 3.69-4.36L4.28-6.25L3.45-6.12L3.01-4.35C1.45-4.19 .24-2.9 .24-1.43C.24-.69 .64 .04 1.91 .11L1.44 2.05H1.69L2.3 .1C3.93-.03 5.21-1.42 5.21-2.89ZM4.42-2.97C4.42-1.28 3.36-.26 2.39-.17L3.59-4.05C4.28-3.8 4.42-3.22 4.42-2.97ZM2.94-4.08L1.98-.19C1.31-.38 1.07-.98 1.07-1.4C1.07-2.93 1.91-3.94 2.94-4.08Z'/>
+</defs>
+<g id='eq16-page1'>
+<use x='.25' y='0' xlink:href='#eq16-g1-113'/>
+</g>
+</svg></span>: the initial phase (radians)</li>
 </ul>
-<p>
-<script type="math/tex">x(t)</script> could be translated to C++ by writing something like (<script type="math/tex">\phi</script> is ignored here):</p>
+<p><span class="math"><svg style="width: 1.553em; height: 0.912em; vertical-align: -0.200em;  vertical-align: -0.201em;" viewBox="-.27 -7.12 15.53 9.12">
+<title>
+\(x(t)\)
+</title>
+<defs>
+<path id='eq8-g1-185' d='M2.93-7.12C1.49-6.18 .48-4.58 .48-2.55C.48-.7 1.53 1.16 2.9 2L3.02 1.85C1.71 .81 1.33-.39 1.33-2.58C1.33-4.78 1.74-5.93 3.02-6.96L2.93-7.12Z'/>
+<path id='eq8-g1-186' d='M.38-7.12L.29-6.96C1.57-5.93 1.98-4.78 1.98-2.58C1.98-.39 1.6 .81 .29 1.85L.41 2C1.78 1.16 2.83-.7 2.83-2.55C2.83-4.58 1.82-6.18 .38-7.12Z'/>
+<path id='eq8-g4-67' d='M2.94-4.25H2.14L2.42-5.27C2.43-5.29 2.43-5.31 2.43-5.32C2.43-5.39 2.4-5.42 2.35-5.42C2.29-5.42 2.26-5.41 2.2-5.33C1.26-4.1 .57-4.31 .57-3.99C.57-3.98 .57-3.96 .58-3.93H1.31L.6-1.2C.57-1.07 .37-.46 .37-.27C.37-.05 .58 .11 .84 .11C1.3 .11 1.63-.17 2.25-1.09L2.12-1.16C1.64-.54 1.48-.38 1.32-.38C1.23-.38 1.17-.46 1.17-.58C1.17-.59 1.17-.6 1.18-.63L2.05-3.93H2.89L2.94-4.25Z'/>
+<path id='eq8-g4-71' d='M4.13-1.02L3.99-1.1C3.91-1 3.86-.95 3.77-.83C3.54-.54 3.43-.44 3.31-.44C3.17-.44 3.08-.57 3.01-.84C2.99-.93 2.98-.98 2.97-1C2.73-1.94 2.61-2.47 2.61-2.62C3.05-3.38 3.4-3.82 3.58-3.82C3.64-3.82 3.73-3.79 3.82-3.74C3.94-3.67 4.01-3.65 4.1-3.65C4.3-3.65 4.44-3.8 4.44-4.01C4.44-4.23 4.27-4.38 4.03-4.38C3.59-4.38 3.23-4.02 2.53-2.96L2.42-3.5C2.28-4.18 2.17-4.38 1.91-4.38C1.68-4.38 1.36-4.3 .74-4.09L.64-4.05L.67-3.9L.84-3.94C1.03-3.99 1.15-4.01 1.23-4.01C1.48-4.01 1.54-3.92 1.68-3.33L1.97-2.1L1.15-.94C.94-.65 .75-.47 .65-.47C.59-.47 .49-.5 .39-.56C.26-.63 .16-.66 .07-.66C-.13-.66-.27-.51-.27-.31C-.27-.05-.08 .11 .23 .11S.66 .02 1.15-.58L2.04-1.75L2.34-.56C2.47-.04 2.6 .11 2.92 .11C3.3 .11 3.55-.13 4.13-1.02Z'/>
+</defs>
+<g id='eq8-page1'>
+<use x='0' y='0' xlink:href='#eq8-g4-71'/>
+<use x='5.4' y='0' xlink:href='#eq8-g1-185'/>
+<use x='9.08' y='0' xlink:href='#eq8-g4-67'/>
+<use x='12.43' y='0' xlink:href='#eq8-g1-186'/>
+</g>
+</svg></span> could be translated to C++ by writing something like (<span class="math"><svg style="width: 0.497em; height: 0.831em; vertical-align: -0.206em;  vertical-align: -0.206em;" viewBox=".49 -6.25 4.97 8.31">
+<title>
+\(\phi\)
+</title>
+<defs>
+<path id='eq9-g1-113' d='M5.21-2.89C5.21-3.61 4.68-4.23 3.69-4.36L4.28-6.25L3.45-6.12L3.01-4.35C1.45-4.19 .24-2.9 .24-1.43C.24-.69 .64 .04 1.91 .11L1.44 2.05H1.69L2.3 .1C3.93-.03 5.21-1.42 5.21-2.89ZM4.42-2.97C4.42-1.28 3.36-.26 2.39-.17L3.59-4.05C4.28-3.8 4.42-3.22 4.42-2.97ZM2.94-4.08L1.98-.19C1.31-.38 1.07-.98 1.07-1.4C1.07-2.93 1.91-3.94 2.94-4.08Z'/>
+</defs>
+<g id='eq9-page1'>
+<use x='.25' y='0' xlink:href='#eq9-g1-113'/>
+</g>
+</svg></span> is ignored here):</p>
 <pre><code>float currentSample = A*std::sin(2*PI*f*t);
 </code></pre>
 <p>however sine oscillators are rarely implemented as such since calling the <code>std::sin</code> function at every sample can be quite computationally expensive. For that reason, it is better to pre-compute the sine wave and store it in a wave table before computation starts. That kind of algorithm is then called a "wave table oscillator."</p>
@@ -264,7 +467,22 @@ for(int i=0; i&lt;size; i++){
   return table[index%tableSize];
 }
 </code></pre>
-<p>The size of the table plays an important role on the quality of the generated sound. The greater the size, the more accurate/pure the sine wave. A low resolution sine wave will produce more distortion. In <code>Sine.cpp</code>, the sine wave table has a size of <script type="math/tex">2^{14}</script> which presents a good compromise between sound quality and memory.</p>
+<p>The size of the table plays an important role on the quality of the generated sound. The greater the size, the more accurate/pure the sine wave. A low resolution sine wave will produce more distortion. In <code>Sine.cpp</code>, the sine wave table has a size of <span class="math"><svg style="width: 1.174em; height: 0.851em; vertical-align: -0.000em;  vertical-align: -0.000em;" viewBox=".3 -8.51 11.74 8.51">
+<title>
+\(2^{14}\)
+</title>
+<defs>
+<use id='eq10-g5-50' xlink:href='#eq10-g2-50' transform='scale(1.37)'/>
+<path id='eq10-g2-49' d='M2.85 0V-.11C2.28-.12 2.17-.19 2.17-.54V-4.88L2.11-4.9L.8-4.24V-4.14C.89-4.17 .97-4.2 1-4.22C1.13-4.27 1.25-4.3 1.33-4.3C1.48-4.3 1.54-4.19 1.54-3.96V-.67C1.54-.43 1.49-.27 1.37-.2C1.26-.14 1.16-.12 .85-.11V0H2.85Z'/>
+<path id='eq10-g2-50' d='M3.44-.99L3.35-1.03C3.08-.62 2.99-.55 2.66-.55H.93L2.14-1.83C2.79-2.5 3.07-3.05 3.07-3.62C3.07-4.34 2.49-4.9 1.73-4.9C1.33-4.9 .96-4.74 .69-4.45C.46-4.2 .35-3.97 .22-3.46L.38-3.42C.67-4.13 .93-4.36 1.43-4.36C2.04-4.36 2.45-3.95 2.45-3.34C2.45-2.78 2.12-2.1 1.51-1.46L.22-.09V0H3.04L3.44-.99Z'/>
+<path id='eq10-g2-52' d='M3.42-1.21V-1.67H2.68V-4.9H2.36L.09-1.67V-1.21H2.12V0H2.68V-1.21H3.42ZM2.12-1.67H.38L2.12-4.16V-1.67Z'/>
+</defs>
+<g id='eq10-page1'>
+<use x='0' y='0' xlink:href='#eq10-g5-50'/>
+<use x='4.98' y='-3.62' xlink:href='#eq10-g2-49'/>
+<use x='8.62' y='-3.62' xlink:href='#eq10-g2-52'/>
+</g>
+</svg></span> which presents a good compromise between sound quality and memory.</p>
 <p>It is important to keep in mind that when working with embedded systems memory is also an important factor to take into account. </p>
 <p>The sine table is then read with a "phasor." A phasor produces a ramp signal which is reset at a certain frequency. It can also be seen as a sawtooth wave. <a href="https://github.com/inria-emeraude/son/tree/main/examples/teensy/libraries/mydsp/src/Phasor.cpp">Phasor.cpp</a> is used for that purpose and its <code>tick</code> method is defined as:</p>
 <pre><code>float Phasor::tick(){
@@ -284,10 +502,59 @@ for(int i=0; i&lt;size; i++){
 <h3 id="looping-through-a-small-tune">Looping Through a Small Tune</h3>
 <p>In the world of music technology, musical notes are usually represented by <a href="https://djip.co/blog/logic-studio-9-midi-note-numbers">MIDI numbers</a>. In MIDI, each pitch of the chromatic scale has a number between 0 and 127 associated to it: <a href="https://djip.co/blog/logic-studio-9-midi-note-numbers">https://djip.co/blog/logic-studio-9-midi-note-numbers</a></p>
 <p>As you can see, middle C (Do) corresponds to number 72. MIDI note numbers can be converted to a frequency using the following formula:</p>
-<p>
-<script type="math/tex; mode=display">f=2^{(d-69)/12}.440</script>
-</p>
-<p>where <script type="math/tex">d</script> is the MIDI number.</p>
+<div class="math"><svg style="width: 7.496em; height: 1.136em; vertical-align: 0.002em; " viewBox="134.38 -11.38 74.96 11.36">
+<title>
+\[f=2^{(d-69)/12}.440\]
+</title>
+<defs>
+<path id='eq2-g7-51' d='M3.96-.73L3.85-.8C3.41-.35 3.33-.29 3.19-.29C3.1-.29 3.03-.35 3.03-.43C3.02-.55 3.25-1.4 3.51-2.22L4.25-4.91L4.21-4.95C3.77-4.87 3.46-4.83 2.92-4.78L2.93-4.66C3.38-4.64 3.44-4.62 3.45-4.47C3.45-4.37 3.44-4.35 3.33-3.96L3.01-2.78C2.93-3.08 2.78-3.2 2.46-3.2C1.36-3.2 .06-1.83 .09-.75C.12-.23 .46 .08 1.01 .08C1.58 .08 1.99-.12 2.48-.88C2.4-.51 2.38-.4 2.39-.23C2.4-.04 2.54 .09 2.75 .09C3.11 .09 3.54-.2 3.96-.73ZM2.89-2.62C2.93-1.51 2.11-.27 1.34-.27C1.04-.27 .85-.46 .83-.75C.82-1.35 1.2-2.19 1.73-2.7C1.95-2.9 2.25-3.03 2.48-3.03H2.51C2.75-3.01 2.88-2.88 2.89-2.62Z'/>
+<use id='eq2-g17-48' xlink:href='#eq2-g14-48' transform='scale(1.37)'/>
+<use id='eq2-g17-50' xlink:href='#eq2-g14-50' transform='scale(1.37)'/>
+<use id='eq2-g17-52' xlink:href='#eq2-g14-52' transform='scale(1.37)'/>
+<path id='eq2-g4-0' d='M4.16-1.66V-2.06H.45V-1.66H4.16Z'/>
+<path id='eq2-g4-157' d='M.45 1.4H.83L2.88-5.12H2.51L.45 1.4Z'/>
+<path id='eq2-g4-185' d='M2.14-5.2C1.09-4.51 .35-3.34 .35-1.86C.35-.51 1.12 .85 2.12 1.46L2.2 1.35C1.25 .59 .97-.28 .97-1.88C.97-3.49 1.27-4.33 2.2-5.08L2.14-5.2Z'/>
+<path id='eq2-g4-186' d='M.28-5.2L.21-5.08C1.14-4.33 1.44-3.49 1.44-1.88C1.44-.28 1.17 .59 .21 1.35L.3 1.46C1.3 .85 2.06-.51 2.06-1.86C2.06-3.34 1.33-4.51 .28-5.2Z'/>
+<path id='eq2-g14-48' d='M3.45-2.39C3.45-3.88 2.79-4.9 1.84-4.9C1.44-4.9 1.14-4.77 .87-4.52C.45-4.12 .17-3.28 .17-2.43C.17-1.64 .41-.8 .75-.39C1.02-.07 1.39 .1 1.81 .1C2.18 .1 2.49-.02 2.75-.28C3.17-.67 3.45-1.51 3.45-2.39ZM2.75-2.38C2.75-.86 2.43-.09 1.81-.09S.87-.86 .87-2.37C.87-3.91 1.2-4.71 1.82-4.71C2.43-4.71 2.75-3.89 2.75-2.38Z'/>
+<path id='eq2-g14-49' d='M2.85 0V-.11C2.28-.12 2.17-.19 2.17-.54V-4.88L2.11-4.9L.8-4.24V-4.14C.89-4.17 .97-4.2 1-4.22C1.13-4.27 1.25-4.3 1.33-4.3C1.48-4.3 1.54-4.19 1.54-3.96V-.67C1.54-.43 1.49-.27 1.37-.2C1.26-.14 1.16-.12 .85-.11V0H2.85Z'/>
+<path id='eq2-g14-50' d='M3.44-.99L3.35-1.03C3.08-.62 2.99-.55 2.66-.55H.93L2.14-1.83C2.79-2.5 3.07-3.05 3.07-3.62C3.07-4.34 2.49-4.9 1.73-4.9C1.33-4.9 .96-4.74 .69-4.45C.46-4.2 .35-3.97 .22-3.46L.38-3.42C.67-4.13 .93-4.36 1.43-4.36C2.04-4.36 2.45-3.95 2.45-3.34C2.45-2.78 2.12-2.1 1.51-1.46L.22-.09V0H3.04L3.44-.99Z'/>
+<path id='eq2-g14-52' d='M3.42-1.21V-1.67H2.68V-4.9H2.36L.09-1.67V-1.21H2.12V0H2.68V-1.21H3.42ZM2.12-1.67H.38L2.12-4.16V-1.67Z'/>
+<path id='eq2-g14-54' d='M3.39-1.59C3.39-2.51 2.86-3.1 2.03-3.1C1.71-3.1 1.56-3.05 1.1-2.78C1.3-3.87 2.11-4.65 3.25-4.84L3.23-4.96C2.41-4.88 1.99-4.75 1.46-4.38C.67-3.82 .25-2.99 .25-2.02C.25-1.39 .44-.75 .75-.39C1.03-.07 1.42 .1 1.87 .1C2.77 .1 3.39-.59 3.39-1.59ZM2.74-1.34C2.74-.54 2.46-.1 1.95-.1C1.31-.1 .92-.78 .92-1.91C.92-2.28 .98-2.48 1.12-2.59C1.28-2.7 1.5-2.77 1.75-2.77C2.38-2.77 2.74-2.25 2.74-1.34Z'/>
+<path id='eq2-g14-57' d='M3.33-2.85C3.33-4.05 2.66-4.9 1.72-4.9C.86-4.9 .22-4.17 .22-3.19C.22-2.3 .74-1.72 1.52-1.72C1.92-1.72 2.22-1.83 2.61-2.13C2.31-.95 1.51-.17 .41 .01L.43 .16C1.24 .07 1.64-.07 2.13-.43C2.88-.98 3.33-1.88 3.33-2.85ZM2.62-2.57C2.62-2.43 2.59-2.36 2.51-2.3C2.31-2.12 2.04-2.03 1.78-2.03C1.23-2.03 .88-2.57 .88-3.43C.88-3.85 1-4.28 1.15-4.47C1.28-4.62 1.46-4.7 1.67-4.7C2.3-4.7 2.62-4.07 2.62-2.85V-2.57Z'/>
+<path id='eq2-g1-61' d='M5.48-3.28V-3.83H.4V-3.28H5.48ZM5.48-1.26V-1.82H.4V-1.26H5.48Z'/>
+<path id='eq2-g10-53' d='M4.21-6.08C4.21-6.45 3.84-6.73 3.35-6.73C2.88-6.73 2.5-6.52 2.14-6.08C1.84-5.69 1.63-5.22 1.33-4.25H.42L.35-3.93H1.24L.37 .24C.14 1.31-.18 1.85-.6 1.85C-.71 1.85-.79 1.78-.79 1.69C-.79 1.65-.78 1.63-.75 1.58C-.71 1.52-.7 1.48-.7 1.42C-.7 1.21-.88 1.04-1.09 1.04S-1.46 1.22-1.46 1.45C-1.46 1.8-1.12 2.05-.67 2.05C.21 2.05 .89 1.08 1.31-.75L2.02-3.93H3.11L3.17-4.25H2.09C2.38-5.82 2.75-6.51 3.31-6.51C3.44-6.51 3.52-6.46 3.52-6.38C3.52-6.38 3.51-6.33 3.48-6.29C3.43-6.21 3.42-6.16 3.42-6.08C3.42-5.85 3.57-5.69 3.79-5.69C4.02-5.69 4.21-5.87 4.21-6.08Z'/>
+<path id='eq2-g10-149' d='M1.8-.43C1.8-.73 1.54-.99 1.24-.99S.69-.74 .69-.43C.69-.05 1.03 .11 1.24 .11S1.8-.06 1.8-.43Z'/>
+</defs>
+<g id='eq2-page1'>
+<use x='135.84' y='-2.07' xlink:href='#eq2-g10-53'/>
+<use x='143.13' y='-2.07' xlink:href='#eq2-g1-61'/>
+<use x='151.8' y='-2.07' xlink:href='#eq2-g17-50'/>
+<use x='157.36' y='-6.18' xlink:href='#eq2-g4-185'/>
+<use x='160.36' y='-6.18' xlink:href='#eq2-g7-51'/>
+<use x='165.17' y='-6.18' xlink:href='#eq2-g4-0'/>
+<use x='170.08' y='-6.18' xlink:href='#eq2-g14-54'/>
+<use x='173.72' y='-6.18' xlink:href='#eq2-g14-57'/>
+<use x='177.72' y='-6.18' xlink:href='#eq2-g4-186'/>
+<use x='180.72' y='-6.18' xlink:href='#eq2-g4-157'/>
+<use x='184.07' y='-6.18' xlink:href='#eq2-g14-49'/>
+<use x='187.71' y='-6.18' xlink:href='#eq2-g14-50'/>
+<use x='192' y='-2.07' xlink:href='#eq2-g10-149'/>
+<use x='194.66' y='-2.07' xlink:href='#eq2-g17-52'/>
+<use x='199.64' y='-2.07' xlink:href='#eq2-g17-52'/>
+<use x='204.62' y='-2.07' xlink:href='#eq2-g17-48'/>
+</g>
+</svg></div>
+<p>where <span class="math"><svg style="width: 0.508em; height: 0.691em; vertical-align: -0.013em;  vertical-align: -0.013em;" viewBox=".4 -6.78 5.08 6.91">
+<title>
+\(d\)
+</title>
+<defs>
+<path id='eq11-g1-51' d='M4.71-1L4.6-1.1C4.05-.48 3.95-.4 3.78-.4C3.68-.4 3.6-.48 3.6-.6C3.6-.75 3.91-1.92 4.25-3.04L5.23-6.73L5.18-6.78C4.66-6.67 4.3-6.61 3.66-6.55V-6.38C4.21-6.36 4.28-6.33 4.28-6.12C4.28-5.99 4.27-5.96 4.13-5.43L3.69-3.8C3.61-4.22 3.43-4.38 3.05-4.38C1.76-4.38 .15-2.51 .15-1.02C.15-.32 .55 .11 1.19 .11C1.87 .11 2.3-.21 2.98-1.2C2.87-.7 2.85-.55 2.85-.32C2.85-.05 3.01 .13 3.27 .13C3.68 .13 4.21-.28 4.71-1ZM3.53-3.58C3.53-2.07 2.5-.37 1.59-.37C1.24-.37 1.01-.63 1.01-1.02C1.01-1.85 1.51-3 2.16-3.69C2.43-3.97 2.77-4.15 3.05-4.15C3.06-4.15 3.08-4.15 3.09-4.15C3.38-4.13 3.53-3.94 3.53-3.58Z'/>
+</defs>
+<g id='eq11-page1'>
+<use x='.25' y='0' xlink:href='#eq11-g1-51'/>
+</g>
+</svg></span> is the MIDI number.</p>
 <p>Write a small tune/song looping through at least 5 notes and play it with the <code>crazy-sine</code> program on your Teensy.</p>
 <p><strong>Hint:</strong> For that, you'll probably have to replace the <code>myDsp.setFreq(random(50,1000));</code> line of of <code>crazy-sine.ino</code> by something else.</p>
 <p><strong>Solution:</strong></p>
@@ -326,9 +593,59 @@ void loop() {
 <pre><code>float currentSample = echo.tick(sine0.tick()*gain0 + sine1.tick()*gain1);
 </code></pre>
 <p>but the problem with that option is that memory will be allocated twice for the <code>sineTable</code> array which is a terrible idea in the context of our embedded audio system with very little memory. Instead, the additive synthesizer should reuse the same instance of <code>sineTable</code> for each oscillator. In the <code>tick</code> method of <code>Sine.cpp</code>, try to call the <code>sineTable</code> a second time after <code>float currentSample = sineTable[index]*gain;</code> to add a second oscillator to the generated sample. The value of its index could be something like <code>index = (int) (index*1.5)%SINE_TABLE_SIZE;</code> so that the frequency of the second oscillator is one fifth above the main frequency. In other words, the differential equation of the synth should be:</p>
-<p>
-<script type="math/tex; mode=display">x(t) = sin(2 \pi f t) + sin(2 \pi (1.5f) t)</script>
-</p>
+<div class="math"><svg style="width: 13.957em; height: 0.917em; vertical-align: 0.001em; " viewBox="101.44 -9.18 139.57 9.17">
+<title>
+\[x(t) = sin(2 \pi f t) + sin(2 \pi (1.5f) t)\]
+</title>
+<defs>
+<path id='eq3-g11-49' d='M3.91 0V-.15C3.13-.16 2.97-.26 2.97-.73V-6.69L2.89-6.71L1.1-5.81V-5.67C1.22-5.72 1.33-5.76 1.37-5.78C1.55-5.85 1.72-5.89 1.82-5.89C2.02-5.89 2.11-5.74 2.11-5.42V-.92C2.11-.6 2.03-.37 1.88-.28C1.73-.19 1.59-.16 1.17-.15V0H3.91Z'/>
+<path id='eq3-g11-50' d='M4.71-1.36L4.59-1.41C4.22-.84 4.09-.75 3.64-.75H1.27L2.94-2.5C3.82-3.42 4.21-4.18 4.21-4.95C4.21-5.95 3.4-6.71 2.37-6.71C1.83-6.71 1.31-6.49 .94-6.09C.63-5.76 .48-5.44 .31-4.73L.52-4.68C.91-5.66 1.27-5.98 1.96-5.98C2.79-5.98 3.35-5.41 3.35-4.58C3.35-3.8 2.9-2.88 2.06-2L.3-.12V0H4.17L4.71-1.36Z'/>
+<path id='eq3-g11-53' d='M4.35-6.76L4.26-6.83C4.11-6.62 4.01-6.57 3.8-6.57H1.73L.65-4.22C.64-4.2 .64-4.17 .64-4.17C.64-4.12 .67-4.09 .75-4.09C1.07-4.09 1.47-4.02 1.88-3.89C3.02-3.52 3.54-2.91 3.54-1.93C3.54-.97 2.94-.23 2.16-.23C1.97-.23 1.8-.3 1.5-.52C1.18-.74 .95-.84 .74-.84C.46-.84 .32-.72 .32-.48C.32-.1 .78 .14 1.53 .14C2.36 .14 3.08-.13 3.57-.64C4.03-1.08 4.24-1.65 4.24-2.4C4.24-3.12 4.05-3.57 3.55-4.07C3.12-4.51 2.55-4.73 1.38-4.94L1.8-5.79H3.74C3.9-5.79 3.94-5.81 3.97-5.88L4.35-6.76Z'/>
+<path id='eq3-g1-61' d='M5.48-3.28V-3.83H.4V-3.28H5.48ZM5.48-1.26V-1.82H.4V-1.26H5.48Z'/>
+<path id='eq3-g4-184' d='M2.47-2.84H.3V-2.18H2.47V0H3.13V-2.18H5.3V-2.84H3.13V-5.02H2.47V-2.84Z'/>
+<path id='eq3-g4-185' d='M2.93-7.12C1.49-6.18 .48-4.58 .48-2.55C.48-.7 1.53 1.16 2.9 2L3.02 1.85C1.71 .81 1.33-.39 1.33-2.58C1.33-4.78 1.74-5.93 3.02-6.96L2.93-7.12Z'/>
+<path id='eq3-g4-186' d='M.38-7.12L.29-6.96C1.57-5.93 1.98-4.78 1.98-2.58C1.98-.39 1.6 .81 .29 1.85L.41 2C1.78 1.16 2.83-.7 2.83-2.55C2.83-4.58 1.82-6.18 .38-7.12Z'/>
+<path id='eq3-g7-53' d='M4.21-6.08C4.21-6.45 3.84-6.73 3.35-6.73C2.88-6.73 2.5-6.52 2.14-6.08C1.84-5.69 1.63-5.22 1.33-4.25H.42L.35-3.93H1.24L.37 .24C.14 1.31-.18 1.85-.6 1.85C-.71 1.85-.79 1.78-.79 1.69C-.79 1.65-.78 1.63-.75 1.58C-.71 1.52-.7 1.48-.7 1.42C-.7 1.21-.88 1.04-1.09 1.04S-1.46 1.22-1.46 1.45C-1.46 1.8-1.12 2.05-.67 2.05C.21 2.05 .89 1.08 1.31-.75L2.02-3.93H3.11L3.17-4.25H2.09C2.38-5.82 2.75-6.51 3.31-6.51C3.44-6.51 3.52-6.46 3.52-6.38C3.52-6.38 3.51-6.33 3.48-6.29C3.43-6.21 3.42-6.16 3.42-6.08C3.42-5.85 3.57-5.69 3.79-5.69C4.02-5.69 4.21-5.87 4.21-6.08Z'/>
+<path id='eq3-g7-56' d='M2.33-1.02L2.2-1.13C1.78-.57 1.56-.36 1.39-.36C1.31-.36 1.23-.43 1.23-.51C1.23-.67 1.33-.96 1.39-1.16L2.26-4.36L2.23-4.38C1.23-4.19 1.03-4.16 .65-4.13V-3.97C1.18-3.96 1.27-3.93 1.27-3.73C1.27-3.65 1.24-3.48 1.18-3.3L.7-1.54C.55-.94 .49-.66 .49-.46C.49-.09 .65 .11 .94 .11C1.41 .11 1.77-.19 2.33-1.02ZM2.74-5.84C2.74-6.12 2.51-6.38 2.24-6.38S1.78-6.16 1.78-5.86C1.78-5.54 1.97-5.33 2.25-5.33C2.51-5.33 2.74-5.56 2.74-5.84Z'/>
+<path id='eq3-g7-61' d='M4.7-1.03L4.57-1.16C4.5-1.07 4.43-.98 4.36-.9C4.07-.54 3.89-.38 3.75-.38C3.66-.38 3.59-.45 3.59-.54C3.59-.62 3.63-.8 3.73-1.16L4.3-3.21C4.36-3.41 4.39-3.63 4.39-3.77C4.39-4.13 4.12-4.38 3.73-4.38C3.1-4.38 2.47-3.77 1.45-2.19L2.11-4.36L2.08-4.38L.48-4.07V-3.91C.98-3.9 1.11-3.84 1.11-3.64C1.11-3.58 1.1-3.52 1.09-3.47L.14 0H.88C1.35-1.57 1.44-1.79 1.88-2.46C2.47-3.38 2.98-3.87 3.34-3.87C3.49-3.87 3.58-3.76 3.58-3.58C3.58-3.46 3.52-3.14 3.44-2.83L3.01-1.19C2.88-.67 2.85-.55 2.85-.45C2.85-.07 2.99 .09 3.32 .09C3.76 .09 4.01-.11 4.7-1.03Z'/>
+<path id='eq3-g7-66' d='M3.02-1.18C3.02-1.57 2.81-2 2.34-2.57C1.97-3.04 1.81-3.34 1.81-3.61C1.81-3.95 2.01-4.15 2.36-4.15C2.88-4.15 3.18-3.78 3.28-3.01H3.43L3.63-4.39H3.49C3.41-4.25 3.34-4.21 3.2-4.21C3.12-4.21 3.03-4.23 2.84-4.28C2.59-4.36 2.45-4.38 2.28-4.38C1.55-4.38 1.08-3.95 1.08-3.29C1.08-2.97 1.29-2.54 1.71-2C2.09-1.5 2.26-1.15 2.26-.86C2.26-.41 1.97-.1 1.53-.1C.97-.1 .67-.51 .52-1.45H.36L.16 .13H.32C.41-.04 .45-.08 .56-.08S.84-.04 1.04 .01C1.27 .08 1.42 .11 1.59 .11C2.42 .11 3.02-.43 3.02-1.18Z'/>
+<path id='eq3-g7-67' d='M2.94-4.25H2.14L2.42-5.27C2.43-5.29 2.43-5.31 2.43-5.32C2.43-5.39 2.4-5.42 2.35-5.42C2.29-5.42 2.26-5.41 2.2-5.33C1.26-4.1 .57-4.31 .57-3.99C.57-3.98 .57-3.96 .58-3.93H1.31L.6-1.2C.57-1.07 .37-.46 .37-.27C.37-.05 .58 .11 .84 .11C1.3 .11 1.63-.17 2.25-1.09L2.12-1.16C1.64-.54 1.48-.38 1.32-.38C1.23-.38 1.17-.46 1.17-.58C1.17-.59 1.17-.6 1.18-.63L2.05-3.93H2.89L2.94-4.25Z'/>
+<path id='eq3-g7-71' d='M4.13-1.02L3.99-1.1C3.91-1 3.86-.95 3.77-.83C3.54-.54 3.43-.44 3.31-.44C3.17-.44 3.08-.57 3.01-.84C2.99-.93 2.98-.98 2.97-1C2.73-1.94 2.61-2.47 2.61-2.62C3.05-3.38 3.4-3.82 3.58-3.82C3.64-3.82 3.73-3.79 3.82-3.74C3.94-3.67 4.01-3.65 4.1-3.65C4.3-3.65 4.44-3.8 4.44-4.01C4.44-4.23 4.27-4.38 4.03-4.38C3.59-4.38 3.23-4.02 2.53-2.96L2.42-3.5C2.28-4.18 2.17-4.38 1.91-4.38C1.68-4.38 1.36-4.3 .74-4.09L.64-4.05L.67-3.9L.84-3.94C1.03-3.99 1.15-4.01 1.23-4.01C1.48-4.01 1.54-3.92 1.68-3.33L1.97-2.1L1.15-.94C.94-.65 .75-.47 .65-.47C.59-.47 .49-.5 .39-.56C.26-.63 .16-.66 .07-.66C-.13-.66-.27-.51-.27-.31C-.27-.05-.08 .11 .23 .11S.66 .02 1.15-.58L2.04-1.75L2.34-.56C2.47-.04 2.6 .11 2.92 .11C3.3 .11 3.55-.13 4.13-1.02Z'/>
+<path id='eq3-g7-99' d='M5.17-4.38H1.74C.82-4.38 .28-3.29 .2-3.1H.31C.36-3.17 .72-3.65 1.24-3.65H1.76L1.06-1.56C.84-.9 .03-.87 .03-.2V-.15C.03 .02 .16 .11 .4 .11C.77 .11 1.13-.13 1.62-1.54L2.34-3.65H3.34L2.86-1.52C2.79-1.23 2.75-.98 2.75-.78V-.69C2.75-.27 3.05 .11 3.53 .11C3.76 .11 4.03 .04 4.03-.29V-.33C4.03-.91 3.43-.83 3.43-1.39C3.43-1.47 3.44-1.56 3.47-1.67L3.96-3.65H5L5.17-4.38Z'/>
+<path id='eq3-g7-149' d='M1.8-.43C1.8-.73 1.54-.99 1.24-.99S.69-.74 .69-.43C.69-.05 1.03 .11 1.24 .11S1.8-.06 1.8-.43Z'/>
+</defs>
+<g id='eq3-page1'>
+<use x='101.71' y='-2.07' xlink:href='#eq3-g7-71'/>
+<use x='107.12' y='-2.07' xlink:href='#eq3-g4-185'/>
+<use x='110.79' y='-2.07' xlink:href='#eq3-g7-67'/>
+<use x='114.14' y='-2.07' xlink:href='#eq3-g4-186'/>
+<use x='120.72' y='-2.07' xlink:href='#eq3-g1-61'/>
+<use x='129.65' y='-2.07' xlink:href='#eq3-g7-66'/>
+<use x='133.57' y='-2.07' xlink:href='#eq3-g7-56'/>
+<use x='136.77' y='-2.07' xlink:href='#eq3-g7-61'/>
+<use x='142.38' y='-2.07' xlink:href='#eq3-g4-185'/>
+<use x='146.1' y='-2.07' xlink:href='#eq3-g11-50'/>
+<use x='151.31' y='-2.07' xlink:href='#eq3-g7-99'/>
+<use x='158.62' y='-2.07' xlink:href='#eq3-g7-53'/>
+<use x='163.1' y='-2.07' xlink:href='#eq3-g7-67'/>
+<use x='166.45' y='-2.07' xlink:href='#eq3-g4-186'/>
+<use x='172.48' y='-2.07' xlink:href='#eq3-g4-184'/>
+<use x='180.57' y='-2.07' xlink:href='#eq3-g7-66'/>
+<use x='184.5' y='-2.07' xlink:href='#eq3-g7-56'/>
+<use x='187.69' y='-2.07' xlink:href='#eq3-g7-61'/>
+<use x='193.3' y='-2.07' xlink:href='#eq3-g4-185'/>
+<use x='197.02' y='-2.07' xlink:href='#eq3-g11-50'/>
+<use x='202.23' y='-2.07' xlink:href='#eq3-g7-99'/>
+<use x='208.31' y='-2.07' xlink:href='#eq3-g4-185'/>
+<use x='212.02' y='-2.07' xlink:href='#eq3-g11-49'/>
+<use x='217.16' y='-2.07' xlink:href='#eq3-g7-149'/>
+<use x='219.82' y='-2.07' xlink:href='#eq3-g11-53'/>
+<use x='226.54' y='-2.07' xlink:href='#eq3-g7-53'/>
+<use x='231.06' y='-2.07' xlink:href='#eq3-g4-186'/>
+<use x='234.84' y='-2.07' xlink:href='#eq3-g7-67'/>
+<use x='238.18' y='-2.07' xlink:href='#eq3-g4-186'/>
+</g>
+</svg></div>
 <p><strong>Hint:</strong> Beware of clipping! Adding two sine waves together even though they don't have the same frequency will likely produce a signal whose range exceeds {-1;1}: you should take that into account for your final product. </p>
 <p><strong>Solution:</strong></p>
 <p>In <code>Sine.cpp</code>:</p>
