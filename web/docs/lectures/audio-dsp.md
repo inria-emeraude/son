@@ -36,9 +36,9 @@ In the field of audio, an ADC (Analog to Digital Converter) is a hardware compon
 
 One of the main factor to consider when sampling an audio signal is the human hearing range. In theory, humans can hear any sound between 20 and 20000 Hz. In practice, our ability to perceive high frequencies decays over time and is affected by environmental factors (e.g., if we're exposed to sound with high volume, if we contract some diseases such as hear infections, etc.). By the age of 30, most adults can't hear frequencies over 17 kHz. 
 
-When sampling an audio signal, the number of samples per second also known as the sampling rate (noted \(fs\)) will determine the highest frequency than can be sampled by the system. The rule is very simple: the highest frequency that can be sampled is half the sampling rate. Hence, in order to sample a frequency of 20 kHz, the sampling rate of the system must be at least 40 kHz which corresponds to 40000 values (samples) per second. The highest frequency that can be sampled is also known as the "**Nyquist Frequency**" (\(fn\)):
+When sampling an audio signal, the number of samples per second also known as the sampling rate (noted \(fs\)) will determine the highest frequency than can be sampled by the system. The rule is very simple: the highest frequency that can be sampled is half the sampling rate. Hence, in order to sample a frequency of 20 kHz, the sampling rate of the system must be at least 40 kHz which corresponds to 40000 values (samples) per second. The highest frequency that can be sampled is also known as the "**Nyquist Frequency**" ($f_n$):
 
-\[fn=\frac{fs}{2}\]
+$$f_n=\frac{f_s}{2}$$
 
 The standard for modern audio systems is to use a sampling rate of 48 kHz. \(fs\) is 44.1 kHz on compact discs (CDs) and many home and recording studios use a sampling rate of 96 or 192 kHz.
 

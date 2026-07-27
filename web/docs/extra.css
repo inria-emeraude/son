@@ -16,3 +16,10 @@
 .dropdown-item{
   font-size: 1rem;
 }
+
+/* Math formulas are rendered at build time as inline SVG by mdx_math_svg;
+   the glyph paths have no explicit fill, so they default to black and are
+   invisible on the dark "darkly" theme. Force a light fill instead. */
+span.math svg, div.math svg {
+  fill: #f8f9fa;
+}

@@ -1,6 +1,6 @@
-# SON: 3TC Audio Project @ INSA Lyon
+# SON 2027: 3TC Audio Project @ INSA Lyon 
 
-In this project, students program an embedded system (the Teensy 4.0: <https://www.pjrc.com/store/teensy40.html>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++). The idea is also to encourage students to develop a sense of independent work/entrepreneurship. The course was originally created by  [Romain Michon](http://perso.citi-lab.fr/rmichon/) in 2023. In 2026 Romain Michon will be mooving to U. Saint-\'Etienne, Tanguy Risset will be the course responsible.
+In this project, students program an embedded system (the Teensy 4.0: <https://www.pjrc.com/store/teensy40.html>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++). The idea is also to encourage students to develop a sense of independent work/entrepreneurship. The course was originally created by  [Romain Michon](http://perso.citi-lab.fr/rmichon/) in 2023. In 2027 Romain Michon will be mooving to U. Saint-\'Etienne, Tanguy Risset will be the course responsible.
 
 The 3 weeks project period starts with a workshop on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.
 
@@ -16,7 +16,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 * [Tanguy Risset](http://perso.citi.insa-lyon.fr/trisset/) (INSA Lyon, )
 * Alexandre Bento (INSA Lyon)
 * Clemens Wegener (Inria)
-* Benjamin Quiédeville (Inria/GRAME)
+* Benjamin Quiédeville (GRAME)
 * Guest star: [Romain Michon](http://perso.citi-lab.fr/rmichon/) (U. Saint-Etienne) creator of the SON course
 
 ## Resources
@@ -38,41 +38,38 @@ Students are provided with plenty of fully-operational starter code/projects so 
 
 ## Course Overview
 
-* **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/setup.md)** -- *02/02/2026 08h00-10h00*
-* **Lecture 2: [Audio Signal Processing Fundamentals](lectures/audio-dsp.md)**  -- *02/02/2026 14h00-16h00*
-* **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/audio-sys.md)** -- *02/02/2026 16h00-18h00* 
-* **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/control.md)** -- *04/02/2026 08h00-10h00*
-* **Lecture 5: [Introduction to Faust](lectures/faust.md)** -- *04/02/2026 10h00-12h00*
-* **Lecture 6: [Audio Processing Basics I](lectures/dsp1.md)** -- *05/02/2026 08h00-10h00* 
-* **Lab** -- *05/02/2026 10h00-12h00*
-* **Lecture 7: [Audio Processing Basics II](lectures/dsp2.md)** -- *06/02/2026 08h00-10h00*
-* **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)** -- *06/02/2026 10h00-12h00*
-* **Project Validation Session** -- *06/02/2026 16h00-18h00*
+* **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/setup.md)** -- *02/02/2027 14h00-16h00*
+* **Lecture 2: [Audio Signal Processing Fundamentals](lectures/audio-dsp.md)**  -- *03/02/2027 :08h00-10h00*
+* **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/audio-sys.md)** -- *03/02/2027 10h00-12h00* 
+* **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/control.md)** -- *04/02/2027 08h00-10h00*
+* **Lecture 5: [Audio Processing Basics I](lectures/dsp1.md)** -- *04/02/2027 10h00-12h00* 
+* **Lecture 6: [Audio Processing Basics II](lectures/dsp2.md)** -- *05/02/2027 08h00-10h00*
+* **Lab** -- *05/02/2027 10h00-12h00*
+* **Lecture 7: [Introduction to Faust](lectures/faust.md)** -- *08/02/2027 08h00-10h00*
+* **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)** -- *08/02/2027 14h00-16h00*
+* **Project Validation Session** -- *08/02/2027 16h00-18h00*
 * **[Some Other Useful Things to Know](lectures/useful.md)**
-* **Independent work on Projects** -- *09/02/2026 - 27/02/2026*
+* **Independent work on Projects** -- *09/02/2027 - 19/02/2027*
 
 | | G1 | G2 | G3 | G4 |
 |---|---|---|---|---|
-| **TP1** | 09/02/2026 -- 08h00-10h00 -- TD C | 09/02/2026 -- 08h00-10h00 -- TD D | 09/02/2026 -- 08h00-10h00 -- TD E | 09/02/2026 -- 08h00-10h00 -- TD F |
-| **TP2** | 09/02/2026 -- 14h00-16h00 -- TD E | 09/02/2026 -- 14h00-16h00 -- TD C | 09/02/2026 -- 14h00-16h00 -- TD D | 09/02/2026 -- 14h00-16h00 -- TD F |
-| **TP3** | 09/02/2026 -- 16h00-18h00 -- TD E | 09/02/2026 -- 16h00-18h00 -- TD C | 09/02/2026 -- 16h00-18h00 -- TD D | 09/02/2026 -- 16h00-18h00 -- TD F |
-| **TP4** | 11/02/2026 -- 08h00-10h00 -- TD E | 11/02/2026 -- 08h00-10h00 -- TD C | 11/02/2026 -- 08h00-10h00 -- TD D | 11/02/2026 -- 08h00-10h00 -- TD F |
-| **TP5** | 11/02/2026 -- 10h00-12h00 -- TD E | 11/02/2026 -- 10h00-12h00 -- TD C | 11/02/2026 -- 10h00-12h00 -- TD D | 11/02/2026 -- 10h00-12h00 -- TD F |
-| **TP6** | 11/02/2026 -- 14h00-16h00 -- TD C | 11/02/2026 -- 14h00-16h00 -- TD D | 11/02/2026 -- 14h00-16h00 -- TD F | 11/02/2026 -- 14h00-16h00 -- TD E |
-| **TP7** | 11/02/2026 -- 16h00-18h00 -- TD C | 11/02/2026 -- 16h00-18h00 -- TD D | 11/02/2026 -- 16h00-18h00 -- TD F | 11/02/2026 -- 16h00-18h00 -- TD E |
-| **TP8** | 12/02/2026 -- 08h00-10h00 -- TD F | 12/02/2026 -- 08h00-10h00 -- TD E | 12/02/2026 -- 08h00-10h00 -- TD D | 12/02/2026 -- 08h00-10h00 -- TD C |
-| **TP9** | 13/02/2026 -- 08h00-10h00 -- TD C | 13/02/2026 -- 08h00-10h00 -- TD F | 13/02/2026 -- 08h00-10h00 -- TD E | 13/02/2026 -- 08h00-10h00 -- TD D |
-| **TP10** | 13/02/2026 -- 10h00-12h00 -- TD C | 13/02/2026 -- 10h00-12h00 -- TD F | 13/02/2026 -- 10h00-12h00 -- TD E | 13/02/2026 -- 10h00-12h00 -- TD D |
-| **MLS/TP11** | 13/02/2026 -- 14h00-16h00 -- TD E |  13/02/2026 -- 14h00-16h00 -- TD C |  13/02/2026 -- 14h00-16h00 -- TD D |  13/02/2026 -- 14h00-16h00 -- TD F |
-| **MLS/TP12** | 13/02/2026 -- 16h00-18h00 -- TD E | 13/02/2026 -- 16h00-18h00 -- TD C | 13/02/2026 -- 16h00-18h00 -- TD D | 13/02/2026 -- 16h00-18h00 -- TD F |
-| **TP13** | 23/02/2026 -- 08h00-10h00 -- TD E | 23/02/2026 -- 08h00-10h00 -- TD D | 23/02/2026 -- 08h00-10h00 -- TD F | 23/02/2026 -- 08h00-10h00 -- TD C |
-| **TP14** | 24/02/2026 -- 14h00-16h00 -- TD F | 24/02/2026 -- 14h00-16h00 -- TD C | 24/02/2026 -- 14h00-16h00 -- TD E | 24/02/2026 -- 14h00-16h00 -- TD D |
-| **TP15** | 25/02/2026 -- 08h00-10h00 -- TD E | 25/02/2026 -- 08h00-10h00 -- TD C | 25/02/2026 -- 08h00-10h00 -- TP Info C | 25/02/2026 -- 08h00-10h00 -- TD D |
-| **TP16** | 25/02/2026 -- 10h00-12h00 -- TD E | 25/02/2026 -- 10h00-12h00 -- TD C | 25/02/2026 -- 10h00-12h00 -- TP Info C | 25/02/2026 -- 10h00-12h00 -- TD D |
-| **TP17** | 25/02/2026 -- 14h00-16h00 -- TP Info C | 25/02/2026 -- 14h00-16h00 -- TD E | 25/02/2026 -- 14h00-16h00 -- TD D | 25/02/2026 -- 14h00-16h00 -- TD C |
-| **TP18** | 25/02/2026 -- 16h00-18h00 -- TD Info C | 25/02/2026 -- 16h00-18h00 -- TD E | 25/02/2026 -- 16h00-18h00 -- TD D | 25/02/2026 -- 16h00-18h00 -- TD C |
-| **TP19** | 26/02/2026 -- 08h00-10h00 -- TD C | 26/02/2026 -- 08h00-10h00 -- TD E | 26/02/2026 -- 08h00-10h00 -- TD D | 26/02/2026 -- 08h00-10h00 -- TP Info C |
+| **TP0** | 10/02/2027 -- 08h00-12h00 -- TD C | 09/02/2027 -- 08h00-12h00 -- TD D | 10/02/2027 -- 08h00-12h00 -- TD E | 10/02/2027 -- 08h00-12h00 -- TD F |
+| **TP1** | 10/02/2027 -- 14h00-16h00 -- TD E | 10/02/2027 -- 14h00-16h00 -- TD C | 10/02/2027 -- 14h00-16h00 -- TD D | 10/02/2027 -- 14h00-16h00 -- TD F |
+| **TP2** | 11/02/2027 -- 08h00-12h00 -- TD E | 09/02/2027 -- 08h00-12h00 -- TD C | 09/02/2027 -- 08h00-12h00 -- TD D | 09/02/2027 -- 08h00-12h00 -- TD F |
+| **TP3** | 12/02/2027 -- 08h00-12h00 -- TD E | 12/02/2027 -- 08h00-12h00 -- TD C | 12/02/2027 -- 08h00-12h00 -- TD D | 12/02/2027 -- 08h00-12h00 -- TD F |
 
-* **Final Presentations (G1 + G2)** -- *27/02/2026 08h00-12h00*
-* **Final Presentations (G3 + G4)** -- *27/02/2025 14h00-18h00*
+---
+| | G1 | G2 | G3 | G4 |
+|---|---|---|---|---|
+| **MLS** | 12/02/2027 -- 14h00-15h00 -- TD C | 12/02/2027 -- 15h00-16h00 -- TD C | 12/02/2027 -- 16h00-17h00 -- TD D | 12/02/2027 -- 17h00-18h00 -- TD F |
+
+| | G1 | G2 | G3 | G4 |
+|---|---|---|---|---|
+| **TP5** | 16/02/2027 -- 14h00-18h00 -- TD C | 16/02/2027 -- 14h00-18h00 -- TD D | 16/02/2027 -- 14h00-18h00 -- TD F | 15/02/2027 -- 08h00-12h00 -- TD E |
+| **TP6** | 17/02/2027 -- 08h00-12h00 -- TD C | 17/02/2027 -- 08h00-12h00 -- TD D | 17/02/2027 -- 08h00-12h00 -- TD F | 17/02/2027 -- 08h00-12h00 -- TD E |
+| **TP7** | 17/02/2027 -- 14h00-18h00 -- TD C | 17/02/2027 -- 14h00-18h00 -- TD D | 17/02/2027 -- 14h00-18h00 -- TD F | 17/02/2027 -- 14h00-18h00 -- TD E |
+| **TP8** | 18/02/2027 -- 08h00-12h00 -- TD F | 18/02/2027 -- 08h00-12h00 -- TD E | 18/02/2027 -- 08h00-12h00 -- TD D | 18/02/2027 -- 08h00-12h00 -- TD C |
+
+* **Final Presentations (G3 + G4)** -- *19/02/2027 08h00-12h00*
+* **Final Presentations (G1 + G2)** -- *19/02/2025 14h00-18h00*
 

@@ -16,3 +16,14 @@
 .dropdown-item{
   font-size: 1rem;
 }
+
+/* Fix MathJax formulas rendered in black (invisible on the dark "darkly" theme) */
+.MathJax, .MathJax_Display, .MathJax_Preview,
+.MJXc-display, .mjx-chtml, mjx-container,
+.MathJax * {
+  color: #f8f9fa !important;
+}
+
+.MathJax_SVG svg, mjx-container svg {
+  fill: #f8f9fa !important;
+}

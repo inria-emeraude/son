@@ -103,7 +103,7 @@ void loop() {
 }
 ```
 
-Uploaded it on the Teensy (make sure that the right board and port are selected in `Tools`).
+Upload it on the Teensy (make sure that the right board and port are selected in `Tools`).
 
 Open the serial debugger by clicking on the loop on the top right corner of the Arduino IDE.
 
