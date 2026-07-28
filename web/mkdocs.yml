@@ -7,9 +7,9 @@ nav:
     - ' 2: Audio Signal Processing Fundamentals ' : lectures/audio-dsp.md
     - ' 3: Digital Audio Systems Architectures and Audio Callback ' : lectures/audio-sys.md
     - ' 4: Hardware Control and Audio Codec Configuration ' : lectures/control.md
-    - ' 5: Introduction to Faust ' : lectures/faust.md
-    - ' 6: Audio Processing Basics I ' : lectures/dsp1.md
-    - ' 7: Audio Processing Basics II ' : lectures/dsp2.md
+    - ' 5: Audio Processing Basics I ' : lectures/dsp1.md
+    - ' 6: Audio Processing Basics II ' : lectures/dsp2.md
+    - ' 7: Introduction to Faust ' : lectures/faust.md
     - ' 8: Faust on the Teensy and Advanced Control ' : lectures/faust-teensy.md
     - ' Some Other Useful Things to Know ' : lectures/useful.md
   - Projects:
