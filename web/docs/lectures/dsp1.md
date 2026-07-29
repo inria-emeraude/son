@@ -1,4 +1,4 @@
-# Audio Processing Basics I
+# Audio Processing Basics I [slide version](../img/slides-cours5.pdf)
 
 This lecture and [the following one](dsp2.md) present a selection of audio processing and synthesis algorithms. It is in no way comprehensive: the goal is just to give you a sense of what's out there.
 

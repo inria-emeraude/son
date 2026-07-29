@@ -1,6 +1,6 @@
-# Audio Processing Basics II
+# Audio Processing Basics II [slide version](../img/slides-cours6.pdf)
 
-## Harmonic Distortion: Rock On!
+## Harmonic Distortion: 
 
 Distortion is one of the most common electric guitar effect. It consists of over driving a signal by increasing its gain to "square" the extremities of its waveform. This results in the creation of lots of harmonics, producing very "rich" sounds. Overdrive is easily achievable with an analog electronic circuit and "sharp edges" in the waveform are rounded thanks to the tolerance of the electronic components. In the digital world, things are slightly more complicated since clipping will happen resulting in a very dirty sound with potentially lots of aliasing. One way to solve this problem is to use a "cubic function" which will round the edges of the signal above a certain amplitude:
 

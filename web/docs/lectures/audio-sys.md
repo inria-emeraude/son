@@ -1,4 +1,4 @@
-# Digital Audio Systems Architectures and Audio Callback
+# Digital Audio Systems Architectures and Audio Callback [slide version](../img/slides-cours3.pdf)
 
 By the end of this lecture, you should be able to produce sound with your Teensy and have a basic understanding of the software and hardware architecture of embedded audio systems.
 

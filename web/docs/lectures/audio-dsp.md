@@ -1,4 +1,4 @@
-# Audio Signal Processing Fundamentals
+# Audio Signal Processing Fundamentals [slide version](../img/slides-cours2.pdf)
 
 The goal of this lecture is to provide an overview of the basics of digital audio.
 

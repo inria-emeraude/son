@@ -1,4 +1,4 @@
-# Hardware Control and Audio Codec Configuration
+# Hardware Control and Audio Codec Configuration [slide version](../img/slides-cours4.pdf)
 
 The two main goals of this lecture are:
 

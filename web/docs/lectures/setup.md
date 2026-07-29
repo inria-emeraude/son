@@ -1,4 +1,4 @@
-# Programming Environment Setup
+# Programming Environment Setup [slide version](../img/slides-cours1.pdf)
 
 The Teensy 4.0 microcontroller platform is used throughout this course. The goal of this first session is to teach you how to program the Teensy from your own computer.
 
