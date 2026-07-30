@@ -44,10 +44,10 @@ Students are provided with plenty of fully-operational starter code/projects so 
 * **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/control.md)** -- *04/02/2027 08h00-10h00*
 * **Lecture 5: [Audio Processing Basics I](lectures/dsp1.md)** -- *04/02/2027 10h00-12h00* 
 * **Lecture 6: [Audio Processing Basics II](lectures/dsp2.md)** -- *05/02/2027 08h00-10h00*
-* **Lab** -- *05/02/2027 10h00-12h00*
-* **Lecture 7: [Introduction to Faust](lectures/faust.md)** -- *08/02/2027 08h00-10h00*
-* **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)** -- *08/02/2027 14h00-16h00*
-* **Project Validation Session** -- *08/02/2027 16h00-18h00*
+* Lecture 7 **Lab** ending exercices in Claude Chappe -- *05/02/2027 10h00-12h00*
+* **Lecture 8: **  Lab: ending all exercices in TD Rooms -- *08/02/2027 08h00-10h00*
+* **Lecture 9**: [Introduction to Faust](lectures/faust.md) and [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)** -- *08/02/2027 14h00-16h00*
+*  **Lecture 9** **Project Validation Session** -- *08/02/2027 16h00-18h00*
 * **[Some Other Useful Things to Know](lectures/useful.md)**
 * **Independent work on Projects** -- *09/02/2027 - 19/02/2027*
 
