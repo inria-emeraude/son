@@ -5,6 +5,7 @@ nav:
   - Lectures:
     - ' 1: Programming Environment Setup ' : lectures/setup.md
     - ' 2: Audio Signal Processing Fundamentals ' : lectures/audio-dsp.md
+    - ' 2bis: History of Digital Audio ' : lectures/history.md
     - ' 3: Digital Audio Systems Architectures and Audio Callback ' : lectures/audio-sys.md
     - ' 4: Hardware Control and Audio Codec Configuration ' : lectures/control.md
     - ' 5: Audio Processing Basics I ' : lectures/dsp1.md
