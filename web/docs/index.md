@@ -47,14 +47,14 @@ Students are provided with plenty of fully-operational starter code/projects so 
 * Lecture 7 **Lab** ending exercices in Claude Chappe -- *05/02/2027 10h00-12h00*
 * **Lecture 8: **  Lab: ending all exercices in TD Rooms -- *08/02/2027 08h00-10h00*
 * **Lecture 9**: [Introduction to Faust](lectures/faust.md) and [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)** -- *08/02/2027 14h00-16h00*
-*  **Lecture 9** **Project Validation Session** -- *08/02/2027 16h00-18h00*
+*  **Lecture 10** **Project Validation Session** -- *08/02/2027 16h00-18h00*
 * **[Some Other Useful Things to Know](lectures/useful.md)**
 * **Independent work on Projects** -- *09/02/2027 - 19/02/2027*
 
 | | G1 | G2 | G3 | G4 |
 |---|---|---|---|---|
-| **TP0** | 10/02/2027 -- 08h00-12h00 -- TD C | 09/02/2027 -- 08h00-12h00 -- TD D | 10/02/2027 -- 08h00-12h00 -- TD E | 10/02/2027 -- 08h00-12h00 -- TD F |
-| **TP1** | 10/02/2027 -- 14h00-16h00 -- TD E | 10/02/2027 -- 14h00-16h00 -- TD C | 10/02/2027 -- 14h00-16h00 -- TD D | 10/02/2027 -- 14h00-16h00 -- TD F |
+| **TP0** | 10/02/2027 -- 08h00-12h00 -- TD C | 10/02/2027 -- 08h00-12h00 -- TD D | 10/02/2027 -- 08h00-12h00 -- TD E | 10/02/2027 -- 08h00-12h00 -- TD F |
+| **TP1** | 10/02/2027 -- 14h00-18h00 -- TD E | 10/02/2027 -- 14h00-18h00 -- TD C | 10/02/2027 -- 14h00-18h00 -- TD D | 10/02/2027 -- 14h00-18h00 -- TD F |
 | **TP2** | 11/02/2027 -- 08h00-12h00 -- TD E | 09/02/2027 -- 08h00-12h00 -- TD C | 09/02/2027 -- 08h00-12h00 -- TD D | 09/02/2027 -- 08h00-12h00 -- TD F |
 | **TP3** | 12/02/2027 -- 08h00-12h00 -- TD E | 12/02/2027 -- 08h00-12h00 -- TD C | 12/02/2027 -- 08h00-12h00 -- TD D | 12/02/2027 -- 08h00-12h00 -- TD F |
 
