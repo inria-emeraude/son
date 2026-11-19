@@ -55,7 +55,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 |---|---|---|---|---|
 | **TP0** | 10/02/2027 -- 08h00-12h00 -- TD C | 10/02/2027 -- 08h00-12h00 -- TD D | 10/02/2027 -- 08h00-12h00 -- TD E | 10/02/2027 -- 08h00-12h00 -- TD F |
 | **TP1** | 10/02/2027 -- 14h00-18h00 -- TD E | 10/02/2027 -- 14h00-18h00 -- TD C | 10/02/2027 -- 14h00-18h00 -- TD D | 10/02/2027 -- 14h00-18h00 -- TD F |
-| **TP2** | 11/02/2027 -- 08h00-12h00 -- TD E | 09/02/2027 -- 08h00-12h00 -- TD C | 09/02/2027 -- 08h00-12h00 -- TD D | 09/02/2027 -- 08h00-12h00 -- TD F |
+| **TP2** | 11/02/2027 -- 08h00-12h00 -- TD E | 11/02/2027 -- 08h00-12h00 -- TD C | 11/02/2027 -- 08h00-12h00 -- TD D | 11/02/2027 -- 08h00-12h00 -- TD F |
 | **TP3** | 12/02/2027 -- 08h00-12h00 -- TD E | 12/02/2027 -- 08h00-12h00 -- TD C | 12/02/2027 -- 08h00-12h00 -- TD D | 12/02/2027 -- 08h00-12h00 -- TD F |
 
 ---
@@ -71,5 +71,5 @@ Students are provided with plenty of fully-operational starter code/projects so 
 | **TP8** | 18/02/2027 -- 08h00-12h00 -- TD F | 18/02/2027 -- 08h00-12h00 -- TD E | 18/02/2027 -- 08h00-12h00 -- TD D | 18/02/2027 -- 08h00-12h00 -- TD C |
 
 * **Final Presentations (G3 + G4)** -- *19/02/2027 08h00-12h00*
-* **Final Presentations (G1 + G2)** -- *19/02/2025 14h00-18h00*
+* **Final Presentations (G1 + G2)** -- *19/02/2027 14h00-18h00*
 
