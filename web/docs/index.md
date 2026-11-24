@@ -40,6 +40,7 @@ Students are provided with plenty of fully-operational starter code/projects so 
 
 * **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/setup.md)** -- *02/02/2027 14h00-16h00*
 * **Lecture 2: [Audio Signal Processing Fundamentals](lectures/audio-dsp.md)**  -- *03/02/2027 :08h00-10h00*
+    - Including a "[Brève histoire de l’informatique musicale](img/history_digital_audio.pdf)" (Slides by R. Michon)
 * **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/audio-sys.md)** -- *03/02/2027 10h00-12h00* 
 * **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/control.md)** -- *04/02/2027 08h00-10h00*
 * **Lecture 5: [Audio Processing Basics I](lectures/dsp1.md)** -- *04/02/2027 10h00-12h00* 
